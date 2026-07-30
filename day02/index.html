@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1242">
+<title>每天认识一个行业 · Day 02 OPC</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+    background: #f4f5f7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { width: 1242px; height: 1660px; position: relative; overflow: hidden; background: #fff; margin: 20px auto; border-radius: 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); }
+  .inner { padding: 64px 60px; height: 100%; display: flex; flex-direction: column; position: relative; z-index: 1; }
+
+  /* ====== 装饰元素 ====== */
+  .deco-circle { position: absolute; border-radius: 50%; opacity: 0.06; pointer-events: none; }
+  .deco-dots { position: absolute; pointer-events: none; opacity: 0.08; font-size: 20px; letter-spacing: 12px; color: #2d3a6e; }
+  .deco-line { position: absolute; pointer-events: none; }
+
+  /* ====== 标题 ====== */
+  .section-title { font-size: 38px; font-weight: 700; color: #1d1d1f; margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+  .section-title .num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: #1a1a2e; color: #fff; border-radius: 12px; font-size: 20px; font-weight: 700; flex-shrink: 0; }
+  .badge { display: inline-block; font-size: 18px; font-weight: 600; letter-spacing: 4px; color: #2d3a6e; margin-bottom: 12px; }
+
+  p { font-size: 26px; color: #333; line-height: 1.7; margin-bottom: 16px; }
+  p strong { color: #1d1d1f; }
+  ul { margin: 10px 0 16px 28px; }
+  ul li { font-size: 24px; color: #444; line-height: 1.6; margin-bottom: 6px; }
+
+  /* ====== 数据卡片 ====== */
+  .stat-row { display: flex; gap: 16px; margin: 10px 0 16px; }
+  .stat-box { flex: 1; background: #f5f7fb; border-radius: 16px; padding: 22px 24px; }
+  .stat-box .num { font-size: 40px; font-weight: 800; color: #2d3a6e; line-height: 1; }
+  .stat-box .num .u { font-size: 22px; font-weight: 500; }
+  .stat-box .label { font-size: 20px; color: #555; margin-top: 6px; line-height: 1.5; }
+
+  /* ====== 对比框 ====== */
+  .compare-row { display: flex; gap: 16px; margin: 14px 0; }
+  .compare-box { flex: 1; border-radius: 16px; padding: 24px 28px; }
+  .compare-box.old { background: #f8f0f0; }
+  .compare-box.new { background: #f0f7f0; }
+  .compare-box .label { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .compare-box.old .label { color: #a84a4a; }
+  .compare-box.new .label { color: #3a8a4a; }
+  .compare-box .item { font-size: 22px; color: #444; line-height: 1.6; padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .compare-box .item:last-child { border-bottom: none; }
+  .compare-box .item strong { font-size: 26px; }
+
+  /* ====== 案例卡片 ====== */
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; }
+  .case-card { background: #f8f9fc; border-radius: 14px; padding: 18px 20px; border: 1px solid #f0f2f5; }
+  .case-card .emoji { font-size: 32px; margin-bottom: 4px; }
+  .case-card .name { font-size: 22px; font-weight: 700; color: #1d1d1f; }
+  .case-card .tag { display: inline-block; font-size: 16px; padding: 2px 10px; border-radius: 20px; background: #eef3fa; color: #3a6a9c; margin: 4px 0; }
+  .case-card .desc { font-size: 18px; color: #555; line-height: 1.5; margin-top: 4px; }
+  .case-card .money { font-size: 24px; font-weight: 700; color: #2d3a6e; margin-top: 4px; }
+
+  /* ====== 成本明细 ====== */
+  .cost-list { margin: 10px 0; }
+  .cost-item { display: flex; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid #f0f2f5; font-size: 22px; color: #444; }
+  .cost-item:last-child { border-bottom: none; font-weight: 700; color: #1d1d1f; background: #f5f7fb; border-radius: 0 0 10px 10px; }
+  .cost-item .label { }
+  .cost-item .price { font-weight: 600; }
+
+  /* ====== 收入分布柱状图 ====== */
+  .income-chart { margin: 14px 0; }
+  .income-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .income-row .il { font-size: 18px; color: #666; min-width: 140px; }
+  .income-row .ib { flex: 1; height: 28px; background: #f0f2f5; border-radius: 6px; overflow: hidden; position: relative; }
+  .income-row .ib .fill { height: 100%; border-radius: 6px; }
+  .income-row .iv { font-size: 18px; font-weight: 600; color: #1d1d1f; min-width: 50px; text-align: right; }
+
+  /* ====== 时间线 ====== */
+  .timeline { display: flex; gap: 8px; margin: 14px 0; }
+  .tl-item { flex: 1; text-align: center; padding: 14px 8px; border-radius: 12px; background: #f5f7fb; }
+  .tl-item .tl-step { font-size: 18px; font-weight: 700; color: #2d3a6e; }
+  .tl-item .tl-desc { font-size: 16px; color: #666; margin-top: 4px; }
+  .tl-item .tl-time { font-size: 16px; color: #aaa; margin-top: 4px; }
+  .tl-item.highlight { background: #2d3a6e; }
+  .tl-item.highlight .tl-step { color: #fff; }
+  .tl-item.highlight .tl-desc { color: rgba(255,255,255,0.7); }
+  .tl-item.highlight .tl-time { color: rgba(255,255,255,0.5); }
+
+  /* ====== 两步对比 ====== */
+  .two-col { display: flex; gap: 16px; margin: 10px 0; }
+  .two-col .col { flex: 1; border-radius: 14px; padding: 20px 22px; }
+  .two-col .col.dark { background: #1a1a2e; color: #fff; }
+  .two-col .col.light { background: #f5f7fb; }
+  .two-col .col .col-title { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+  .two-col .col.dark .col-title { color: #fff; }
+  .two-col .col.light .col-title { color: #1d1d1f; }
+  .two-col .col p { font-size: 20px; line-height: 1.6; margin-bottom: 6px; }
+  .two-col .col.dark p { color: rgba(255,255,255,0.8); }
+  .two-col .col.light p { color: #444; }
+
+  /* ====== 步骤 ====== */
+  .step-list { margin: 10px 0; }
+  .step-item { display: flex; gap: 14px; margin-bottom: 10px; align-items: flex-start; }
+  .step-item .s-num { width: 40px; height: 40px; border-radius: 50%; background: #2d3a6e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; flex-shrink: 0; }
+  .step-item .s-content { flex: 1; }
+  .step-item .s-content .s-title { font-size: 24px; font-weight: 700; color: #1d1d1f; }
+  .step-item .s-content .s-desc { font-size: 20px; color: #555; line-height: 1.5; margin-top: 2px; }
+
+  /* ====== QA卡片 ====== */
+  .qa-box { background: #f5f7fb; border-radius: 16px; padding: 28px 32px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .qa-box .q { font-size: 24px; font-weight: 700; color: #2d3a6e; margin-bottom: 10px; }
+  .qa-box .a { font-size: 22px; color: #444; line-height: 1.7; }
+  .qa-box .a strong { color: #1d1d1f; }
+  .qa-box .divider { border-top: 1px dashed #e0e2e8; margin: 14px 0; }
+
+  /* ====== 封面专用 ====== */
+  .cover { background: linear-gradient(135deg, #1a1a2e 0%, #2d3a6e 50%, #1a1a2e 100%); color: #fff; }
+  .cover .big-title { font-size: 68px; font-weight: 800; line-height: 1.2; letter-spacing: 2px; }
+  .cover .big-title .highlight { color: #c9a84c; }
+  .cover .sub-title { font-size: 30px; color: rgba(255,255,255,0.7); margin-top: 12px; line-height: 1.5; }
+  .cover .stats { display: flex; gap: 20px; margin-top: 24px; }
+  .cover .stats .s-item { }
+  .cover .stats .s-item .s-num { font-size: 36px; font-weight: 800; color: #c9a84c; }
+  .cover .stats .s-item .s-label { font-size: 18px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .cover .tagline { font-size: 18px; color: rgba(255,255,255,0.3); letter-spacing: 3px; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
+  .cover .series-badge { font-size: 16px; font-weight: 600; letter-spacing: 6px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+
+  /* ====== 分类卡 ====== */
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 10px 0; }
+  .type-card { border-radius: 14px; padding: 18px 16px; text-align: center; }
+  .type-card.t1 { background: #f0f4fe; } .type-card.t2 { background: #fef5e6; } .type-card.t3 { background: #edf7ee; }
+  .type-card .t-emoji { font-size: 36px; margin-bottom: 4px; }
+  .type-card .t-name { font-size: 22px; font-weight: 700; color: #1d1d1f; }
+  .type-card .t-desc { font-size: 17px; color: #555; line-height: 1.5; margin: 4px 0; }
+  .type-card .t-money { font-size: 20px; font-weight: 700; color: #2d3a6e; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- 卡片1: 封面 -->
+<!-- ============================================================ -->
+<div class="page cover">
+  <div style="position:absolute;top:-120px;right:-80px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.02);"></div>
+  <div style="position:absolute;bottom:-200px;left:-100px;width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,0.015);"></div>
+  <div style="position:absolute;top:300px;right:100px;font-size:60px;opacity:0.04;letter-spacing:20px;color:#fff;">OPC</div>
+  <div class="inner" style="justify-content:space-between;">
+    <div>
+      <div class="series-badge">每天认识一个行业 · DAY 02</div>
+      <div class="big-title">
+        OPC <span class="highlight">一人公司</span>
+      </div>
+      <div class="sub-title">一个人 + AI，怎么撑起一家公司<br>利润率87%，启动成本只要2万</div>
+      <div class="stats">
+        <div class="s-item"><div class="s-num">91<small style="font-size:18px;">%</small></div><div class="s-label">典型利润率</div></div>
+        <div class="s-item"><div class="s-num">10<span style="font-size:18px;">x</span></div><div class="s-label">AI提效倍数</div></div>
+        <div class="s-item"><div class="s-num">10</div><div class="s-label">个月从0到上线</div></div>
+      </div>
+    </div>
+    <div class="tagline">一个财务人的行业拆解日记</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 卡片2: OPC是什么 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="deco-circle" style="top:-80px;right:-60px;width:300px;height:300px;background:#2d3a6e;"></div>
+  <div class="deco-dots" style="bottom:60px;right:60px;">✦ ✦ ✦ ✦ ✦</div>
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+      <span style="font-size:48px;">🏢</span>
+      <div><div class="badge">每天认识一个行业 · DAY 02</div></div>
+    </div>
+    <div class="section-title"><span class="num">1</span>OPC 是什么</div>
+    <p>以前创业至少要凑个团队：产品、开发、运营、客服、财务…<br>现在<strong>一个人+AI就能干完。</strong></p>
+    <p><strong>OPC（One-Person Company）</strong>就是一个人借助AI工具，自己完成从产品开发到营销客服的全流程。</p>
+
+    <div class="compare-row">
+      <div class="compare-box old">
+        <div class="label">传统创业</div>
+        <div class="item">凑团队：产品+开发+运营+客服+销售</div>
+        <div class="item">启动资金：200-400万</div>
+        <div class="item">从0到上线：约3年</div>
+        <div class="item">利润率：6.7%</div>
+      </div>
+      <div class="compare-box new">
+        <div class="label">OPC模式</div>
+        <div class="item">一个人+AI工具搞定全部</div>
+        <div class="item">启动资金：2-10万</div>
+        <div class="item">从0到上线：约10个月</div>
+        <div class="item">利润率：87%</div>
+      </div>
+    </div>
+
+    <p style="margin-top:10px;"><strong>核心公式：</strong>OPC = 个人 + AI智能体 + 算力 + 数据</p>
+
+    <div style="display:flex;gap:12px;margin-top:6px;">
+      <div style="flex:1;text-align:center;padding:14px;background:#f5f7fb;border-radius:12px;"><div style="font-size:28px;">🤖</div><div style="font-size:18px;color:#555;">AI干活</div></div>
+      <div style="flex:1;text-align:center;padding:14px;background:#f5f7fb;border-radius:12px;"><div style="font-size:28px;">💰</div><div style="font-size:18px;color:#555;">成本极低</div></div>
+      <div style="flex:1;text-align:center;padding:14px;background:#f5f7fb;border-radius:12px;"><div style="font-size:28px;">🌍</div><div style="font-size:18px;color:#555;">全球市场</div></div>
+      <div style="flex:1;text-align:center;padding:14px;background:#f5f7fb;border-radius:12px;"><div style="font-size:28px;">📈</div><div style="font-size:18px;color:#555;">高利润率</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 卡片3: 数据趋势 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="deco-circle" style="bottom:-100px;right:-80px;width:400px;height:400px;background:#2d3a6e;"></div>
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;"><span style="font-size:48px;">📊</span></div>
+    <div class="section-title"><span class="num">2</span>一组数据看趋势</div>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="num">5670<span class="u">万户</span></div><div class="label">中国私营企业总数</div></div>
+      <div class="stat-box"><div class="num">280<span class="u">万人</span></div><div class="label">美国独立开发者<br>较2020年+133%</div></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="num">27<span class="u">%</span></div><div class="label">全球一人运营店铺<br>从2023年15%飙升</div></div>
+      <div class="stat-box"><div class="num">91<span class="u">%</span></div><div class="label">典型OPC SaaS<br>创业利润率</div></div>
+    </div>
+
+    <div style="background:#f0f4fe;border-radius:14px;padding:18px 22px;margin:10px 0;">
+      <p style="font-size:22px;color:#2d3a6e;margin:0;"><strong>关键信号：</strong>AI工具成本一年下降了67%，单人效率较传统团队提升8-10倍。预计2028年前将出现全球第一家估值<strong>10亿美元</strong>的一人公司。</p>
+    </div>
+
+    <div style="background:#fef8ed;border-radius:14px;padding:18px 22px;border-left:6px solid #c9a84c;">
+      <p style="font-size:22px;color:#7a6030;margin:0;"><strong>自媒体数据：</strong>单人运营账号占比68%，月入超10万元的占比7.3%（较2023年翻倍）。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 卡片4: 成本对比 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;"><span style="font-size:48px;">💰</span></div>
+    <div class="section-title"><span class="num">3</span>成本对比 · OPC vs 传统团队</div>
+
+    <div class="compare-row">
+      <div class="compare-box old">
+        <div class="label" style="font-size:22px;">传统5人团队</div>
+        <div class="item">月均总成本 <strong style="color:#a84a4a;">18-33万元</strong></div>
+        <div class="item">首年启动资金 <strong style="color:#a84a4a;">200-400万元</strong></div>
+        <div class="item">利润率 <strong style="color:#a84a4a;">6.7%</strong></div>
+      </div>
+      <div class="compare-box new">
+        <div class="label" style="font-size:22px;">OPC一人模式</div>
+        <div class="item">月均总成本 <strong style="color:#3a8a4a;">1500-7000元</strong></div>
+        <div class="item">首年启动资金 <strong style="color:#3a8a4a;">2-10万元</strong></div>
+        <div class="item">利润率 <strong style="color:#3a8a4a;">87%</strong></div>
+      </div>
+    </div>
+
+    <p style="font-size:22px;color:#555;"><strong>差距在哪？</strong>传统模式的钱大部分花在人力上，OPC模式用AI替代了大部分人力工作。</p>
+
+    <p style="font-size:22px;font-weight:600;color:#1d1d1f;margin-bottom:8px;">OPC月支出明细：</p>
+    <div class="cost-list" style="background:#f8f9fc;border-radius:12px;overflow:hidden;">
+      <div class="cost-item"><span class="label">AI工具（ChatGPT/Claude/Cursor等）</span><span class="price">500-1300元</span></div>
+      <div class="cost-item"><span class="label">云服务与基础设施</span><span class="price">400-3000元</span></div>
+      <div class="cost-item"><span class="label">SaaS工具订阅</span><span class="price">600-1400元</span></div>
+      <div class="cost-item"><span class="label">市场营销</span><span class="price">700-3500元</span></div>
+      <div class="cost-item"><span class="label">专业服务（会计法务）</span><span class="price">400-1000元</span></div>
+      <div class="cost-item"><span class="label">合计</span><span class="price">2600-10200元/月</span></div>
+    </div>
+    <p style="font-size:20px;color:#888;margin-top:6px;">比在北京租个一居室还便宜</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 卡片5: 5个真实案例 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="deco-dots" style="top:80px;right:60px;">✦ ✦ ✦ ✦</div>
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;"><span style="font-size:48px;">🚀</span></div>
+    <div class="section-title"><span class="num">4</span>5个真实案例</div>
+
+    <div class="case-grid">
+      <div class="case-card"><div class="emoji">💻</div><div class="name">ChatBiz</div><div class="tag">技术型</div><div class="desc">AI客服工具，2周开发，一人运营</div><div class="money">月营收 $3.2万</div></div>
+      <div class="case-card"><div class="emoji">🤖</div><div class="name">ChatDoc</div><div class="tag">技术型</div><div class="desc">不会代码，6周自学开发</div><div class="money">月营收 $3.6万 · 利润率91%</div></div>
+      <div class="case-card"><div class="emoji">🎥</div><div class="name">SarahChen Studio</div><div class="tag">内容型</div><div class="desc">YouTube科技频道，AI辅助创作</div><div class="money">月广告 $1.2万</div></div>
+      <div class="case-card"><div class="emoji">📱</div><div class="name">数码荔枝</div><div class="tag">内容型</div><div class="desc">小红书35万粉，课程+社群</div><div class="money">年收入 200万+</div></div>
+    </div>
+
+    <div style="background:#f8f9fc;border-radius:14px;padding:16px 20px;display:flex;gap:14px;align-items:center;margin-top:4px;">
+      <span style="font-size:36px;">🔏</span>
+      <div>
+        <div style="font-size:20px;font-weight:700;color:#1d1d1f;">智能印章 · 硬件型</div>
+        <div style="font-size:18px;color:#555;">Kickstarter众筹37万美元，AI功能印章+29元/月订阅，一人运营</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 卡片6: 三种OPC类型 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;"><span style="font-size:48px;">🎯</span></div>
+    <div class="section-title"><span class="num">5</span>三种OPC类型，你适合哪种？</div>
+
+    <div class="type-grid">
+      <div class="type-card t1"><div class="t-emoji">💻</div><div class="t-name">技术型</div><div class="t-desc">有编程基础或愿意学<br>做SaaS工具/AI应用</div><div class="t-money">月入 1-10万美元</div></div>
+      <div class="type-card t2"><div class="t-emoji">✍️</div><div class="t-name">内容型</div><div class="t-desc">有表达欲/专业积累<br>自媒体+知识付费</div><div class="t-money">月入 0.5-5万美元</div></div>
+      <div class="type-card t3"><div class="t-emoji">🎨</div><div class="t-name">产品型</div><div class="t-desc">有创意/产品直觉<br>AI原生App/硬件+订阅</div><div class="t-money">月入 1-7万美元</div></div>
+    </div>
+
+    <p style="font-size:20px;font-weight:600;color:#1d1d1f;margin-bottom:8px;">OPC创业者收入分布：</p>
+    <div class="income-chart">
+      <div class="income-row"><span class="il">0-100美元 (27%)</span><div class="ib"><div class="fill" style="width:27%;background:#e8e8ec;"></div></div><span class="iv">27%</span></div>
+      <div class="income-row"><span class="il">100-1000美元 (31%)</span><div class="ib"><div class="fill" style="width:31%;background:#d0d5dd;"></div></div><span class="iv">31%</span></div>
+      <div class="income-row"><span class="il">1000-1万美元 (22%)</span><div class="ib"><div class="fill" style="width:22%;background:#aab4c4;"></div></div><span class="iv">22%</span></div>
+      <div class="income-row"><span class="il">1万-10万美元 (14%)</span><div class="ib"><div class="fill" style="width:14%;background:#7a8aaa;"></div></div><span class="iv">14%</span></div>
+      <div class="income-row"><span class="il">10万美元+ (6%)</span><div class="ib"><div class="fill" style="width:6%;background:#2d3a6e;"></div></div><span class="iv">6%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 卡片7: 怎么开始 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;"><span style="font-size:48px;">🗺️</span></div>
+    <div class="section-title"><span class="num">6</span>怎么开始你的OPC</div>
+
+    <div class="step-list">
+      <div class="step-item"><div class="s-num">1</div><div class="s-content"><div class="s-title">从熟悉的领域切入</div><div class="s-desc">别想做大平台。找一个你懂的具体问题，越小越好。</div></div></div>
+      <div class="step-item"><div class="s-num">2</div><div class="s-content"><div class="s-title">2周内做出MVP</div><div class="s-desc">不会代码？用Cursor/ChatGPT学。不会设计？Midjourney/Canva。关键是快。</div></div></div>
+      <div class="step-item"><div class="s-num">3</div><div class="s-content"><div class="s-title">完成首单交付</div><div class="s-desc">第一个客户比完美的产品重要100倍。先跑通闭环。</div></div></div>
+      <div class="step-item"><div class="s-num">4</div><div class="s-content"><div class="s-title">按效果收费</div><div class="s-desc">不是按月收费，是按你创造的价值收费。这是OPC的核心优势。</div></div></div>
+      <div class="step-item"><div class="s-num">5</div><div class="s-content"><div class="s-title">建立自动化系统</div><div class="s-desc">重复工作用AI Agent自动化，精力集中在创造和决策上。</div></div></div>
+    </div>
+
+    <div class="two-col" style="margin-top:10px;">
+      <div class="col dark">
+        <div class="col-title">传统创业时间线</div>
+        <p>Idea → 融资 → 组团队 → 开发 → 上线 → 迭代</p>
+        <p style="font-size:28px;font-weight:700;margin-top:8px;color:#c9a84c;">约 3 年</p>
+      </div>
+      <div class="col light">
+        <div class="col-title">OPC时间线</div>
+        <p>Idea → MVP → Launch → Scale</p>
+        <p style="font-size:28px;font-weight:700;margin-top:8px;color:#3a8a4a;">约 10 个月</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 卡片8: 光与暗 + DeepSeek -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;"><span style="font-size:48px;">⚖️</span></div>
+    <div class="section-title"><span class="num">7</span>OPC的光与暗</div>
+
+    <div class="two-col">
+      <div class="col light" style="border-left:6px solid #3a8a4a;">
+        <div class="col-title" style="color:#3a8a4a;">光的一面 ☀️</div>
+        <p>启动成本极低（2万就够了）</p>
+        <p>利润率超高（87%是典型值）</p>
+        <p>一台电脑服务全球客户</p>
+      </div>
+      <div class="col light" style="border-left:6px solid #c94a4a;">
+        <div class="col-title" style="color:#c94a4a;">暗的一面 🌧️</div>
+        <p>67%的人每周工作超60小时</p>
+        <p>孤独感：没有同事，压力一人扛</p>
+        <p>到几百个客户时一个人忙不过来</p>
+      </div>
+    </div>
+
+    <div style="background:#f5f7fb;border-radius:16px;padding:24px 28px;margin-top:8px;flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:24px;font-weight:700;color:#2d3a6e;margin-bottom:8px;">🤖 用DeepSeek看OPC</div>
+      <div style="font-size:22px;color:#444;line-height:1.7;"><strong>Q：现在做OPC还有机会吗？</strong></div>
+      <div style="font-size:20px;color:#555;line-height:1.6;margin-top:4px;">机会很大，但窗口期在收窄。AI工具让创业门槛降到历史最低——2万元启动、2周出MVP、一个人服务全球客户。但随着更多人入场，获客成本会上升。<strong>2026年仍是好时机，但2027-2028年窗口可能关闭。</strong></div>
+      <div style="border-top:1px dashed #e0e2e8;margin:10px 0;"></div>
+      <div style="font-size:20px;color:#555;line-height:1.6;"><strong>建议：</strong>选小场景→快速上线→先收钱（哪怕1块钱）→听反馈迭代→积累数据。这是你唯一的护城河。</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
