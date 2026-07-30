@@ -2,602 +2,421 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OPC一人公司 行业研究报告 | 每天认识一个行业 · Day 02</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --primary: #1a1a2e;
-    --primary-light: #2d3a6e;
-    --accent: #c9a84c;
-    --bg: #f7f8fa;
-    --card-bg: #ffffff;
-    --text: #1d1d1f;
-    --text-secondary: #6e6e73;
-    --text-tertiary: #aeaeb2;
-    --border: #e8eaed;
-    --border-light: #f0f2f5;
-    --radius: 10px;
-    --radius-sm: 6px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-  }
-  .page { max-width: 820px; margin: 0 auto; background: var(--card-bg); min-height: 100vh; position: relative; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
 
-  /* ====== 封面 ====== */
-  .cover {
-    min-height: 100vh; padding: 80px 64px 60px; position: relative;
-    background: linear-gradient(165deg, #0c0c1a 0%, #16162e 35%, #1a2448 65%, #16203a 100%);
-    color: #fff; display: flex; flex-direction: column; overflow: hidden;
-  }
-  .cover .grain {
-    position: absolute; inset: 0; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .cover .glow1 { position: absolute; top: -20%; right: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
-  .cover .glow2 { position: absolute; bottom: -30%; left: -15%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(45,58,110,0.15) 0%, transparent 70%); pointer-events: none; }
-  .cover .tag { position: relative; z-index: 1; font-size: 11px; font-weight: 600; letter-spacing: 4px; color: rgba(255,255,255,0.3); text-transform: uppercase; }
-  .cover h1 { position: relative; z-index: 1; font-size: 38px; font-weight: 800; line-height: 1.15; margin-top: 44px; letter-spacing: 0.5px; }
-  .cover h1 .hl { color: var(--accent); }
-  .cover .sub { position: relative; z-index: 1; font-size: 15px; color: rgba(255,255,255,0.5); margin-top: 14px; line-height: 1.7; max-width: 75%; }
-  .cover .meta { position: relative; z-index: 1; margin-top: auto; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); }
-  .cover .meta-grid { display: flex; gap: 48px; }
-  .cover .mg-item {}
-  .cover .mg-label { font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 1.5px; margin-bottom: 3px; text-transform: uppercase; }
-  .cover .mg-value { font-size: 13px; color: rgba(255,255,255,0.55); }
+  /* 封面 */
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
 
-  /* ====== 目录 ====== */
-  .toc { padding: 48px 56px 32px; background: #fafbfc; border-bottom: 1px solid var(--border-light); }
-  .toc h2 { font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
-  .toc-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border-light); cursor: pointer; transition: color 0.2s; color: var(--text-secondary); font-size: 13px; text-decoration: none; }
-  .toc-item:hover { color: var(--primary); }
-  .toc-item .toc-num { font-size: 11px; font-weight: 700; color: var(--primary-light); min-width: 24px; }
+  /* 目录 */
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
 
-  /* ====== 内容 ====== */
-  .content { padding: 0 56px 64px; }
+  /* 章节卡片 */
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h2 .num { color: #003366; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section h4 { font-size: 15px; color: #2a4a6c; margin: 16px 0 8px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
 
-  .sec-title {
-    font-size: 22px; font-weight: 800; color: var(--text); margin: 48px 0 20px; padding-bottom: 10px;
-    border-bottom: 2px solid var(--primary); letter-spacing: 0.3px; position: relative;
-  }
-  .sec-title .num { color: var(--text-tertiary); font-weight: 500; margin-right: 10px; }
+  /* 高亮框 */
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
 
-  h3 { font-size: 18px; font-weight: 700; color: var(--text); margin: 28px 0 12px; }
-  h3 .sec-sub { color: var(--primary-light); font-size: 13px; font-weight: 600; display: block; margin-bottom: 2px; letter-spacing: 1px; text-transform: uppercase; }
-  h4 { font-size: 15px; font-weight: 700; color: var(--primary-light); margin: 20px 0 8px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box strong { color: #1a1a2e; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
 
-  p { margin-bottom: 14px; color: #333; line-height: 1.8; font-size: 15px; }
-  strong { color: var(--text); }
-  a { color: var(--primary-light); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* ====== 引用/高亮 ====== */
-  .callout {
-    background: #f5f7fb; border-left: 4px solid var(--primary-light); border-radius: 0 var(--radius) var(--radius) 0;
-    padding: 16px 22px; margin: 18px 0; font-size: 14px; color: #333; line-height: 1.8;
-  }
-  .callout strong { color: var(--primary-light); }
-
-  .highlight-box {
-    background: linear-gradient(135deg, #f0f4fe, #f5f7fb); border-radius: var(--radius);
-    padding: 18px 22px; margin: 18px 0; font-size: 14px; color: var(--primary-light); line-height: 1.8;
-    border: 1px solid #e4e8f0; box-shadow: var(--shadow);
-  }
-  .highlight-box strong { color: var(--primary); }
-
-  .insight-box {
-    background: linear-gradient(135deg, #fef8ed, #fdf5e6); border-radius: var(--radius);
-    padding: 16px 22px; margin: 18px 0; border-left: 4px solid var(--accent);
-    font-size: 14px; color: #6a5530; line-height: 1.8;
-  }
-  .insight-box strong { color: #4a3a20; }
-
-  .risk-box {
-    background: #fdf5f5; border-radius: var(--radius);
-    padding: 16px 22px; margin: 14px 0; border-left: 4px solid #d44a4a;
-    font-size: 14px; color: #5a3030; line-height: 1.8; box-shadow: var(--shadow);
-  }
-  .risk-box strong { color: #8a2020; }
-
-  /* ====== 表格 ====== */
-  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+  /* 表格 */
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  table thead th {
-    background: var(--primary); color: #fff; font-weight: 600; padding: 11px 14px;
-    text-align: left; font-size: 12px; letter-spacing: 0.3px; white-space: nowrap;
-  }
-  table thead th:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
-  table tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border-light); color: #444; font-size: 13px; }
-  table tbody tr:last-child td { border-bottom: none; }
-  table tbody tr:hover { background: #f8f9fc; }
-  table tbody td:first-child { font-weight: 600; color: var(--text); }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
 
-  /* ====== 数据卡片 ====== */
-  .data-row { display: flex; gap: 14px; margin: 18px 0; }
-  .data-card {
-    flex: 1; background: var(--card-bg); border-radius: var(--radius); padding: 20px 22px;
-    border: 1px solid var(--border); box-shadow: var(--shadow); transition: box-shadow 0.2s;
-  }
-  .data-card:hover { box-shadow: var(--shadow-md); }
-  .data-card .num { font-size: 32px; font-weight: 800; color: var(--primary); line-height: 1; letter-spacing: -1px; }
-  .data-card .num .u { font-size: 15px; font-weight: 400; color: var(--text-tertiary); }
-  .data-card .lb { font-size: 12px; color: var(--text-secondary); margin-top: 5px; line-height: 1.5; }
+  /* 数据卡片 */
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 28px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 14px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
 
-  /* ====== 对比 ====== */
-  .compare-grid { display: flex; gap: 16px; margin: 18px 0; }
-  .compare-col { flex: 1; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
-  .compare-col .c-header { padding: 14px 18px; font-weight: 700; font-size: 15px; text-align: center; letter-spacing: 0.3px; }
-  .compare-col .c-header.old { background: linear-gradient(135deg, #fdf5f5, #faf0f0); color: #c94a4a; }
-  .compare-col .c-header.new { background: linear-gradient(135deg, #f0faf4, #eaf5ee); color: #2a8a5a; }
-  .compare-col .c-row { padding: 11px 18px; font-size: 13px; color: #444; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; }
-  .compare-col .c-row b { color: var(--text); }
-  .compare-col .c-row.highlight { background: #f8f9fc; font-weight: 600; }
-  .compare-col .c-row .big { font-size: 17px; }
+  /* 对比表 */
+  .cmp-row { display: flex; gap: 16px; margin: 16px 0; }
+  .cmp-col { flex: 1; border-radius: 8px; border: 1px solid #dde3ed; overflow: hidden; }
+  .cmp-col .ch { padding: 12px 16px; font-weight: 700; font-size: 14px; text-align: center; }
+  .cmp-col .ch.old { background: #fdf5f5; color: #c94a4a; }
+  .cmp-col .ch.new { background: #f0faf4; color: #2a8a5a; }
+  .cmp-col .cr { padding: 10px 16px; font-size: 13px; color: #444; border-top: 1px solid #f0f2f5; display: flex; justify-content: space-between; }
+  .cmp-col .cr b { color: #1a1a2e; font-size: 14px; }
 
-  /* ====== 案例 ====== */
-  .company-list { display: flex; flex-direction: column; gap: 14px; margin: 16px 0; }
-  .company-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 20px 22px; box-shadow: var(--shadow); transition: box-shadow 0.2s;
-  }
-  .company-card:hover { box-shadow: var(--shadow-md); }
-  .company-card .cc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .company-card .cc-header .cc-icon { font-size: 20px; }
-  .company-card .cc-name { font-size: 16px; font-weight: 700; color: var(--text); }
-  .company-card .cc-tag {
-    font-size: 10px; padding: 2px 10px; border-radius: 10px; font-weight: 600; letter-spacing: 0.3px;
-  }
-  .company-card .cc-tag.t1 { background: #f0f4fe; color: #2d3a6e; }
+  /* 流程 */
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  /* 案例 */
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; }
+  .company-card .cc-tag.t1 { background: #e8f0fa; color: #003366; }
   .company-card .cc-tag.t2 { background: #fef5e6; color: #9a7a3a; }
   .company-card .cc-tag.t3 { background: #edf7ee; color: #3a7a4a; }
-  .company-card .cc-body { font-size: 14px; color: #444; line-height: 1.8; }
-  .company-card .cc-body strong { color: var(--text); }
-  .company-card .cc-metrics {
-    display: flex; gap: 20px; margin-top: 10px; padding-top: 10px;
-    border-top: 1px solid var(--border-light); flex-wrap: wrap;
-  }
-  .company-card .cc-metrics .m-item { }
-  .company-card .cc-metrics .m-num { font-weight: 700; color: var(--primary-light); font-size: 15px; }
-  .company-card .cc-metrics .m-label { color: var(--text-tertiary); font-size: 11px; margin-top: 1px; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
 
-  /* ====== 图表 ====== */
-  .chart-bar { margin: 12px 0; }
-  .chart-bar .cr { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
-  .chart-bar .cr .cl { font-size: 12px; color: var(--text-secondary); min-width: 100px; }
-  .chart-bar .cr .cb { flex: 1; height: 18px; background: #f0f2f5; border-radius: 4px; overflow: hidden; }
-  .chart-bar .cr .cb .f { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
-  .chart-bar .cr .cv { font-size: 12px; font-weight: 600; color: var(--text); min-width: 34px; text-align: right; }
-
-  /* ====== 时间线对比 ====== */
-  .tl-comp { display: flex; gap: 16px; margin: 18px 0; }
-  .tl-col { flex: 1; border-radius: var(--radius); padding: 22px 24px; }
-  .tl-col.dark { background: linear-gradient(135deg, #1a1a2e, #22224a); color: #fff; }
-  .tl-col.light { background: #f5f7fb; border: 1px solid var(--border); }
-  .tl-col .tl-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.3px; }
-  .tl-col .tl-step { font-size: 13px; padding: 5px 0; display: flex; align-items: center; gap: 8px; }
-  .tl-col.dark .tl-step { color: rgba(255,255,255,0.65); }
-  .tl-col.light .tl-step { color: #555; }
-  .tl-col .tl-step::before { content: ''; width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
-  .tl-col.dark .tl-step::before { background: rgba(255,255,255,0.3); }
-  .tl-col.light .tl-step::before { background: var(--text-tertiary); }
-  .tl-col .tl-time { font-size: 26px; font-weight: 800; margin-top: 14px; }
-  .tl-col.dark .tl-time { color: var(--accent); }
-  .tl-col.light .tl-time { color: #3a8a4a; }
-
-  /* ====== 列表 ====== */
-  .styled-list { list-style: none; margin: 10px 0 14px; }
-  .styled-list li { padding: 5px 0 5px 22px; position: relative; color: #444; font-size: 14px; line-height: 1.7; }
-  .styled-list li::before { content: ''; position: absolute; left: 4px; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--primary-light); opacity: 0.4; }
-
-  ul, ol { margin: 8px 0 14px 22px; }
-  li { margin-bottom: 4px; color: #444; font-size: 14px; line-height: 1.7; }
-
-  /* ====== 分隔 ====== */
-  .hr { height: 1px; background: var(--border-light); margin: 40px 0; }
-  .hr-sm { height: 1px; background: var(--border-light); margin: 24px 0; }
-
-  /* ====== 评级表 ====== */
-  .rating-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-light); }
-  .rating-row:last-child { border-bottom: none; }
-  .rating-row .r-label { font-size: 13px; font-weight: 600; color: var(--text); min-width: 80px; }
-  .rating-row .r-badge { font-size: 12px; font-weight: 700; padding: 2px 12px; border-radius: 10px; min-width: 40px; text-align: center; }
-  .rating-row .r-badge.green { background: #e8f5e9; color: #2a7a3a; }
-  .rating-row .r-badge.amber { background: #fef5e6; color: #9a7a3a; }
-  .rating-row .r-badge.red { background: #fce8e8; color: #c94a4a; }
-  .rating-row .r-desc { font-size: 12px; color: var(--text-secondary); }
-
-  /* ====== 免责声明 ====== */
-  .disclaimer {
-    margin-top: 48px; padding: 24px 28px; background: #f8f9fa; border-radius: var(--radius);
-    font-size: 11px; color: var(--text-tertiary); line-height: 1.9; border: 1px solid var(--border-light);
-  }
-  .disclaimer strong { color: var(--text-secondary); font-weight: 600; }
-
-  /* ====== 步骤列表 ====== */
+  /* 步骤 */
   .step-list { margin: 12px 0; }
-  .step-item { display: flex; gap: 12px; margin-bottom: 12px; }
-  .step-item .sn { width: 30px; height: 30px; border-radius: 50%; background: var(--primary-light); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-item { display: flex; gap: 12px; margin-bottom: 10px; }
+  .step-item .sn { width: 28px; height: 28px; border-radius: 50%; background: #003366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
   .step-item .sc { flex: 1; }
-  .step-item .sc .st { font-size: 15px; font-weight: 700; color: var(--text); }
-  .step-item .sc .sd { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 2px; }
+  .step-item .sc .st { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .step-item .sc .sd { font-size: 13px; color: #666; line-height: 1.6; margin-top: 2px; }
 
-  /* ====== 响应式 ====== */
-  @media (max-width: 768px) {
-    .content { padding: 0 20px 40px; }
-    .cover { padding: 48px 28px 40px; min-height: 90vh; }
-    .cover h1 { font-size: 28px; margin-top: 32px; }
-    .cover .sub { max-width: 100%; font-size: 14px; }
-    .cover .meta-grid { gap: 24px; flex-wrap: wrap; }
-    .toc { padding: 28px 20px 20px; }
-    .toc-grid { grid-template-columns: 1fr; gap: 4px; }
-    .data-row { flex-direction: column; gap: 10px; }
-    .compare-grid { flex-direction: column; }
-    .tl-comp { flex-direction: column; }
-    .sec-title { font-size: 19px; margin-top: 36px; }
-    .company-card .cc-metrics { gap: 12px; }
+  /* 时间线 */
+  .tl-row { display: flex; gap: 16px; margin: 16px 0; }
+  .tl-col { flex: 1; border-radius: 8px; padding: 20px 22px; }
+  .tl-col.dark { background: #1a2a4a; color: #fff; }
+  .tl-col.light { background: #f7faff; border: 1px solid #e0e8f0; }
+  .tl-col .tl-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+  .tl-col .tl-step { font-size: 13px; padding: 4px 0; display: flex; align-items: center; gap: 6px; }
+  .tl-col.dark .tl-step { color: rgba(255,255,255,0.7); }
+  .tl-col.light .tl-step { color: #555; }
+  .tl-col .tl-time { font-size: 24px; font-weight: 700; margin-top: 12px; }
+  .tl-col.dark .tl-time { color: #c9a84c; }
+  .tl-col.light .tl-time { color: #0a0; }
+
+  /* 评级 */
+  .rating-table {  }
+  .rating-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f0f2f5; font-size: 13px; }
+  .rating-row:last-child { border-bottom: none; }
+  .rating-row .rl { font-weight: 600; color: #1a1a2e; min-width: 70px; }
+  .rating-row .rb { font-weight: 700; padding: 1px 12px; border-radius: 10px; font-size: 12px; min-width: 36px; text-align: center; }
+  .rating-row .rb.green { background: #e8f5e9; color: #2a7a3a; }
+  .rating-row .rb.amber { background: #fef5e6; color: #9a7a3a; }
+  .rating-row .rb.red { background: #fce8e8; color: #c94a4a; }
+
+  .chart-bar { margin: 12px 0; }
+  .chart-bar .cr { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .chart-bar .cr .cl { font-size: 12px; color: #666; min-width: 100px; }
+  .chart-bar .cr .cb { flex: 1; height: 18px; background: #f0f2f5; border-radius: 3px; overflow: hidden; }
+  .chart-bar .cr .cb .f { height: 100%; border-radius: 3px; }
+  .chart-bar .cr .cv { font-size: 12px; font-weight: 600; color: #1a1a2e; min-width: 32px; text-align: right; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+    .cmp-row { flex-direction: column; }
+    .tl-row { flex-direction: column; }
+    .flow-chart { flex-direction: column; align-items: center; }
   }
-
   @media print {
     body { background: #fff; }
-    .page { max-width: 100%; box-shadow: none; }
-    .cover { min-height: 100vh; }
-    .company-card, .table-wrap, .compare-grid { break-inside: avoid; }
-    .data-card:hover, .company-card:hover { box-shadow: var(--shadow); }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
   }
-
-  /* 给封面加个装饰线 */
-  .cover .accent-line { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--primary-light), transparent); z-index: 1; }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- === 封面 === -->
-  <div class="cover">
-    <div class="accent-line"></div>
-    <div class="grain"></div>
-    <div class="glow1"></div>
-    <div class="glow2"></div>
-    <div class="tag">行业研究报告</div>
-    <h1>OPC <span class="hl">一人公司</span><br>AI时代个人创业的范式革命</h1>
-    <div class="sub">报告深度拆解One-Person Company模式的商业逻辑、财务模型与投资价值，<br>覆盖市场规模、成本结构、典型案例与风险因素。</div>
-    <div class="meta">
-      <div class="meta-grid">
-        <div class="mg-item"><div class="mg-label">报告日期</div><div class="mg-value">2026年7月30日</div></div>
-        <div class="mg-item"><div class="mg-label">行业分类</div><div class="mg-value">AI + 个人创业</div></div>
-        <div class="mg-item"><div class="mg-label">分析师</div><div class="mg-value">每天认识一个行业</div></div>
-        <div class="mg-item"><div class="mg-label">评级</div><div class="mg-value"><span style="color:var(--accent);font-weight:700;">积极（Positive）</span></div></div>
-      </div>
+<!-- ======== 封面 ======== -->
+<div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>OPC <span class="hl">一人公司</span><br>AI时代个人创业的范式革命</h1>
+  <p class="subtitle">—— One-Person Company 商业模式、财务模型与投资价值深度分析 ——</p>
+  <div class="info">
+    <p>赛道分类：<strong>AI + 个人创业</strong></p>
+    <p>典型利润率：<strong>87%</strong></p>
+    <p>AI工具成本年降幅：<strong>67%</strong></p>
+    <p>预测首家10亿美金OPC企业：<strong>2028年前</strong></p>
+  </div>
+  <p class="date">报告日期：2026年7月30日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：OPC的定义与演进</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>市场规模与增长动能</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>财务模型分析</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>案例深度拆解 <span class="badge green">4家</span></a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>创业路径与启动指南</a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>风险因素与挑战 <span class="badge red">5大风险</span></a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>未来展望与投资判断</a>
+</div>
+
+<!-- ======== 01 ======== -->
+<div class="section" id="s1">
+<h2><span class="num">01</span>执行摘要</h2>
+<p>OPC（One-Person Company）——即单人借助AI工具独立完成企业全业务流程的新型创业范式——正在全球范围内引发一场深刻的"生产力重构"。本报告从商业逻辑、财务模型与投资价值三个维度，对OPC模式进行系统性分析。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">5,670<span class="u">万户</span></div><div class="lb">中国私营企业主体（2025.01）</div></div>
+  <div class="stat-card"><div class="num">280<span class="u">万人</span></div><div class="lb">美国独立开发者（较2020年+133%）</div></div>
+  <div class="stat-card"><div class="num">87%</div><div class="lb">OPC典型净利润率</div></div>
+  <div class="stat-card"><div class="num">67%</div><div class="lb">AI工具成本年降幅</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>OPC不是"一个人被迫单干"，而是AI时代效率最优的组织形态。单人借助AI工具可实现8-10倍效率提升，典型利润率高达87%，远优于传统创业团队的6-10%。<br><br>
+  <strong>核心结论二：</strong>全球OPC市场正处于爆发前夜。AI工具成本年降幅67%、编程/设计/营销等环节的AI替代率快速提升，共同构成OPC模式的技术底座。<br><br>
+  <strong>核心结论三：</strong>2026年是OPC创业的"黄金窗口期"。预计2028年前将出现首家估值10亿美金的OPC企业，届时赛道将完成从"个体实验"到"主流范式"的跃迁。<br><br>
+  <strong>风险提示：</strong>OPC模式面临规模化瓶颈、法律合规不确定性、以及创业者身心健康等核心挑战，建议理性评估。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<div class="section" id="s2">
+<h2><span class="num">02</span>行业概览：OPC的定义与演进</h2>
+
+<h3>2.1 定义与边界</h3>
+<p>OPC是指在AI技术赋能下，由单一自然人独立完成企业的全价值链活动——包括产品研发、市场营销、客户服务、财务管理等——并实现完整商业闭环的新兴企业形态。</p>
+
+<div class="highlight-box"><strong>核心公式：</strong>OPC = 个人 x AI智能体 x 算力 x 数据</div>
+
+<p>与传统自由职业者不同，OPC具有完整的公司治理结构（通常为有限责任公司），具备可融资、可交易、可传承的资产属性。与多人创业团队相比，OPC的核心优势在于极低的固定成本和高度的运营灵活性。</p>
+
+<h3>2.2 技术驱动力分析</h3>
+<p>OPC模式在2025-2026年实现爆发式增长，背后有三重驱动力：</p>
+<p><strong>第一，大语言模型的成熟。</strong>以DeepSeek V4、GPT-4o、Claude 4为代表的大模型大幅降低了知识工作的门槛。2026年上半年，AI编程工具已覆盖60%以上的前端开发工作，AI设计工具可完成80%以上的视觉产出。</p>
+<p><strong>第二，AI Agent的工具链完备。</strong>从OpenClaw到扣子Coze，Agent平台让非技术人员也能构建自动化工作流，使OPC创业者将重复性工作全部自动化。</p>
+<p><strong>第三，云服务与API的成本骤降。</strong>以Vercel、Supabase为代表的云平台提供按量计费模式，使基础设施成本从月均数万元降至数百元。</p>
+
+<div class="highlight-box green"><strong>关键洞察：</strong>OPC的本质不是"创业降级"，而是"组织进化"。当AI可以替代80%的执行性工作，人类的核心价值从"管理他人"转向"决策与创造"。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<div class="section" id="s3">
+<h2><span class="num">03</span>市场规模与增长动能</h2>
+
+<h3>3.1 全球市场格局</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>时间</th><th>来源</th></tr></thead>
+  <tbody>
+  <tr><td>中国私营企业总数</td><td>5,670.7万户</td><td>2025.01</td><td>国家市场监督管理总局</td></tr>
+  <tr><td>美国独立开发者规模</td><td>约280万人</td><td>2025</td><td>OPC白皮书</td></tr>
+  <tr><td>全球一人运营店铺占比</td><td>27%（较2023年+12pct）</td><td>2025</td><td>McKinsey</td></tr>
+  <tr><td>自媒体单人运营比例</td><td>68%</td><td>2025</td><td>新榜研究院</td></tr>
+  <tr><td>月入超10万元单人账号占比</td><td>7.3%（较2023年翻倍）</td><td>2025</td><td>新榜研究院</td></tr>
+  <tr><td>独立开发者月收入中位数</td><td>$1,200-$3,000</td><td>2025</td><td>Indie Hackers</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 增长动能分析</h3>
+<p><strong>动能一：AI成本下降曲线。</strong>2024-2026年，主流AI API调用成本下降约67%，OPC创业者月工具支出从3,000-5,000元降至1,000-2,000元，直接拉低了盈亏平衡点。</p>
+<p><strong>动能二：远程工作文化固化。</strong>全球远程工作渗透率稳定在25-30%，协作工具成熟使单人创业者零摩擦接入全球网络。</p>
+<p><strong>动能三：API经济成熟。</strong>Stripe、Vercel等API-first平台使单人开发者数天内可构建过去需团队数月开发的产品。</p>
+<p><strong>动能四：Z世代创业偏好。</strong>63%的Z世代受访者表示"更愿意成为独立创业者而非企业员工"，构成OPC的长期需求基础。</p>
+</div>
+
+<!-- ======== 04 ======== -->
+<div class="section" id="s4">
+<h2><span class="num">04</span>财务模型分析</h2>
+
+<h3>4.1 成本结构对比</h3>
+<div class="cmp-row">
+  <div class="cmp-col">
+    <div class="ch old">传统5人团队</div>
+    <div class="cr"><span>月均总成本</span><b style="color:#c94a4a;">18-33万元</b></div>
+    <div class="cr"><span>首年启动资金</span><b style="color:#c94a4a;">200-400万元</b></div>
+    <div class="cr" style="background:#fdf5f5;"><span>净利润率</span><b style="color:#c94a4a;font-size:18px;">6.7%</b></div>
+  </div>
+  <div class="cmp-col">
+    <div class="ch new">OPC一人模式</div>
+    <div class="cr"><span>月均总成本</span><b style="color:#2a8a5a;">2,600-10,200元</b></div>
+    <div class="cr"><span>首年启动资金</span><b style="color:#2a8a5a;">2-10万元</b></div>
+    <div class="cr" style="background:#f0faf4;"><span>净利润率</span><b style="color:#2a8a5a;font-size:18px;">87%</b></div>
+  </div>
+</div>
+<p>两者相差约<strong>30倍</strong>的月均成本与<strong>13倍</strong>的净利润率。差异核心在于传统团队人力成本占总成本75-85%，而OPC用AI替代了人力。</p>
+
+<h3>4.2 单位经济模型</h3>
+<p><strong>客户获取成本（CAC）。</strong>OPC模式下CAC为传统SaaS的30-50%。案例ChatBiz的CAC约$120，传统SaaS平均$300-500。</p>
+<p><strong>LTV/CAC比率。</strong>OPC模式通常在5-8x，远超传统SaaS的3x健康线。以ChatDoc为例（月费$49，月流失率4%），LTV=$1,225，CAC约$180，LTV/CAC达6.8x。</p>
+
+<div class="highlight-box green"><strong>资本效率对比：</strong>传统SaaS每1元融资约产生0.5-0.8元ARR。OPC每投入1元约产生8-12元ARR，是当前一级市场中极为稀缺的高效资本模型。</div>
+
+<h3>4.3 收入分布</h3>
+<p>OPC创业者收入呈典型幂律分布：</p>
+<div class="chart-bar">
+  <div class="cr"><span class="cl">$0-100/月</span><div class="cb"><div class="f" style="width:27%;background:#d0d5dd;"></div></div><span class="cv">27%</span></div>
+  <div class="cr"><span class="cl">$100-1,000/月</span><div class="cb"><div class="f" style="width:31%;background:#aab4c4;"></div></div><span class="cv">31%</span></div>
+  <div class="cr"><span class="cl">$1,000-10,000/月</span><div class="cb"><div class="f" style="width:22%;background:#7a8aaa;"></div></div><span class="cv">22%</span></div>
+  <div class="cr"><span class="cl">$10,000-100,000/月</span><div class="cb"><div class="f" style="width:14%;background:#4a6a9a;"></div></div><span class="cv">14%</span></div>
+  <div class="cr"><span class="cl">$100,000+/月</span><div class="cb"><div class="f" style="width:6%;background:#003366;"></div></div><span class="cv">6%</span></div>
+</div>
+<p>约58%创业者月收入低于$1,000，说明赛道仍处早期；头部6%拿走约40%总收入，头部效应显著。</p>
+</div>
+
+<!-- ======== 05 ======== -->
+<div class="section" id="s5">
+<h2><span class="num">05</span>案例深度拆解</h2>
+<p>案例选取标准：有公开可验证的收入数据，商业模式清晰，运营时间超过6个月。</p>
+
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span>💻</span><span class="cc-name">ChatBiz</span><span class="cc-tag t1">技术型 SaaS</span></div>
+    <div class="cc-body">
+      <strong>产品：</strong>面向中小电商的AI客服工具。创始人使用Cursor+Claude+Vercel开发。<strong>开发周期：</strong>2周。<strong>获客：</strong>X平台内容营销+Google Ads。<strong>护城河：</strong>聚焦Shopify生态深度集成，对话数据积累构成飞轮。
     </div>
   </div>
-
-  <!-- === 目录 === -->
-  <div class="toc">
-    <h2>目录</h2>
-    <div class="toc-grid">
-      <a href="#s1" class="toc-item"><span class="toc-num">01</span>执行摘要</a>
-      <a href="#s5" class="toc-item"><span class="toc-num">05</span>案例深度拆解</a>
-      <a href="#s2" class="toc-item"><span class="toc-num">02</span>行业概览：定义与演进</a>
-      <a href="#s6" class="toc-item"><span class="toc-num">06</span>创业路径与启动指南</a>
-      <a href="#s3" class="toc-item"><span class="toc-num">03</span>市场规模与增长动能</a>
-      <a href="#s7" class="toc-item"><span class="toc-num">07</span>风险因素与挑战</a>
-      <a href="#s4" class="toc-item"><span class="toc-num">04</span>财务模型分析</a>
-      <a href="#s8" class="toc-item"><span class="toc-num">08</span>未来展望与投资判断</a>
+  <div class="company-card">
+    <div class="cc-header"><span>🤖</span><span class="cc-name">ChatDoc</span><span class="cc-tag t1">技术型 SaaS</span></div>
+    <div class="cc-body">
+      <strong>创始人背景：</strong>前产品经理，无编程基础。用Cursor+Claude自学编程6周完成产品。<strong>定价：</strong>$29/$49/$99三层。<strong>财务指标：</strong>MRR $36,000，利润率91%，CAC约$180，LTV/CAC 6.8x。<strong>护城河：</strong>聚焦法律事务所场景积累专业语料。
     </div>
   </div>
-
-  <!-- === 正文 === -->
-  <div class="content">
-
-    <!-- 01 -->
-    <h2 class="sec-title" id="s1"><span class="num">01</span>执行摘要</h2>
-    <p>OPC（One-Person Company）——即单人借助AI工具独立完成企业全业务流程的新型创业范式——正在全球范围内引发一场深刻的"生产力重构"。本报告从商业逻辑、财务模型与投资价值三个维度，对OPC模式进行系统性分析。</p>
-    <p><strong>核心结论：</strong></p>
-    <div class="callout">
-      <strong>1.</strong> OPC不是"一个人被迫单干"，而是AI时代效率最优的组织形态。单人借助AI工具可实现8-10倍效率提升，典型利润率高达87%，远优于传统创业团队的6-10%。<br><br>
-      <strong>2.</strong> 全球OPC市场正处于爆发前夜。AI工具成本年降幅67%、编程/设计/营销等环节的AI替代率快速提升，共同构成OPC模式的技术底座。<br><br>
-      <strong>3.</strong> 2026年是OPC创业的"黄金窗口期"。预计2028年前将出现首家估值10亿美金的OPC企业，届时赛道将完成从"个体实验"到"主流范式"的跃迁。<br><br>
-      <strong>4.</strong> 风险提示：OPC模式面临规模化瓶颈、法律合规不确定性、以及创业者身心健康等核心挑战，建议理性评估。
+  <div class="company-card">
+    <div class="cc-header"><span>📱</span><span class="cc-name">数码荔枝</span><span class="cc-tag t2">内容型 自媒体</span></div>
+    <div class="cc-body">
+      <strong>平台：</strong>小红书科技数码博主。AI辅助选题/封面/文案。<strong>变现：</strong>免费笔记引流→299元课程→999元社群。<strong>数据：</strong>35万粉丝，年营收200万+。<strong>护城河：</strong>垂直品牌心智+高质量社群。
     </div>
-
-    <div class="data-row">
-      <div class="data-card"><div class="num">5,670<span class="u">万户</span></div><div class="lb">中国私营企业主体（2025.01）</div></div>
-      <div class="data-card"><div class="num">280<span class="u">万人</span></div><div class="lb">美国独立开发者（较2020年+133%）</div></div>
-      <div class="data-card"><div class="num">87%</div><div class="lb">OPC典型净利润率</div></div>
-      <div class="data-card"><div class="num">67%</div><div class="lb">AI工具成本年降幅</div></div>
-    </div>
-
-    <div class="hr"></div>
-
-    <!-- 02 -->
-    <h2 class="sec-title" id="s2"><span class="num">02</span>行业概览：OPC的定义与演进</h2>
-
-    <h3>2.1 定义与边界</h3>
-    <p>OPC是指在AI技术赋能下，由单一自然人独立完成企业的全价值链活动——包括产品研发、市场营销、客户服务、财务管理等——并实现完整商业闭环的新兴企业形态。</p>
-    <div class="highlight-box"><strong>核心公式：</strong>OPC = 个人 x AI智能体 x 算力 x 数据</div>
-    <p>与传统自由职业者不同，OPC具有完整的公司治理结构（通常为有限责任公司），具备可融资、可交易、可传承的资产属性。与多人创业团队相比，OPC的核心优势在于极低的固定成本和高度的运营灵活性。</p>
-
-    <h3>2.2 技术驱动力分析</h3>
-    <p>OPC模式在2025-2026年实现爆发式增长，背后有三重技术驱动力：</p>
-    <p><strong>第一，大语言模型的成熟。</strong>以DeepSeek V4、GPT-4o、Claude 4为代表的大模型大幅降低了知识工作的门槛。编程、文案、设计、数据分析等传统需要专业团队的环节，现在可由单人+AI完成。2026年上半年，AI编程工具已覆盖60%以上的前端开发工作，AI设计工具可完成80%以上的视觉产出。</p>
-    <p><strong>第二，AI Agent的工具链完备。</strong>从OpenClaw到扣子Coze，Agent平台让非技术人员也能构建自动化工作流。这使得OPC创业者可以将客户服务、订单处理、内容发布等重复性工作全部自动化。</p>
-    <p><strong>第三，云服务与API的成本骤降。</strong>以Vercel、Supabase为代表的云平台提供按量计费模式，使单人创业者的基础设施成本从月均数万元降至数百元。API经济的成熟使开发者可以像搭积木一样组合各类服务。</p>
-
-    <div class="insight-box">
-      <strong>关键洞察：</strong>OPC的本质不是"创业降级"，而是"组织进化"。当AI可以替代80%的执行性工作，人类的核心价值从"管理他人"转向"决策与创造"。一人公司的效率可能超越十人团队。
-    </div>
-
-    <div class="hr"></div>
-
-    <!-- 03 -->
-    <h2 class="sec-title" id="s3"><span class="num">03</span>市场规模与增长动能</h2>
-
-    <h3>3.1 全球市场格局</h3>
-
-    <div class="table-wrap">
-    <table>
-      <thead><tr><th>指标</th><th>数据</th><th>时间</th><th>来源</th></tr></thead>
-      <tbody>
-        <tr><td>中国私营企业总数</td><td>5,670.7万户</td><td>2025.01</td><td>国家市场监督管理总局</td></tr>
-        <tr><td>美国独立开发者规模</td><td>约280万人</td><td>2025</td><td>OPC白皮书</td></tr>
-        <tr><td>全球一人运营店铺占比</td><td>27%（较2023年+12pct）</td><td>2025</td><td>McKinsey</td></tr>
-        <tr><td>自媒体单人运营比例</td><td>68%</td><td>2025</td><td>新榜研究院</td></tr>
-        <tr><td>月入超10万元单人账号占比</td><td>7.3%（较2023年翻倍）</td><td>2025</td><td>新榜研究院</td></tr>
-        <tr><td>独立开发者月收入中位数</td><td>$1,200-$3,000</td><td>2025</td><td>Indie Hackers</td></tr>
-      </tbody>
-    </table>
-    </div>
-
-    <h3>3.2 增长动能分析</h3>
-    <p><strong>动能一：AI成本下降曲线。</strong>2024年至2026年，主流AI API的调用成本下降了约67%。OPC创业者的AI工具月支出从3,000-5,000元降至1,000-2,000元，直接拉低了盈亏平衡点。</p>
-    <p><strong>动能二：远程工作文化的固化。</strong>全球远程工作渗透率稳定在25-30%。Slack、Notion等协作工具的成熟，使单人创业者可以零摩擦地接入全球供应链与客户网络。</p>
-    <p><strong>动能三：API经济的成熟。</strong>Stripe（支付）、Twilio（通信）、Vercel（部署）等API-first平台的完善，使单人开发者可以在数天内构建过去需要团队数月的产品。</p>
-    <p><strong>动能四：Z世代的创业偏好。</strong>63%的Z世代受访者表示"更愿意成为独立创作者/创业者而非企业员工"。这一代际偏好转变，构成了OPC模式的长期需求基础。</p>
-
-    <div class="hr"></div>
-
-    <!-- 04 -->
-    <h2 class="sec-title" id="s4"><span class="num">04</span>财务模型分析</h2>
-
-    <h3>4.1 成本结构对比</h3>
-
-    <div class="compare-grid">
-      <div class="compare-col">
-        <div class="c-header old">传统5人团队</div>
-        <div class="c-row"><span>人力成本（月）</span><b style="color:#c94a4a;">15-28万元</b></div>
-        <div class="c-row"><span>办公室租金（月）</span><b>1.5-3万元</b></div>
-        <div class="c-row"><span>SaaS工具（月）</span><b>0.5-1.5万元</b></div>
-        <div class="c-row"><span>云服务（月）</span><b>0.5-2万元</b></div>
-        <div class="c-row"><span>营销费用（月）</span><b>1-3万元</b></div>
-        <div class="c-row highlight"><span>月均总成本</span><b style="color:#c94a4a;font-size:17px;">18-33万元</b></div>
-        <div class="c-row" style="background:#fdf5f5;"><span>净利润率</span><b style="color:#c94a4a;font-size:20px;">6.7%</b></div>
-      </div>
-      <div class="compare-col">
-        <div class="c-header new">OPC一人模式</div>
-        <div class="c-row"><span>AI工具（月）</span><b style="color:#2a8a5a;">500-1,300元</b></div>
-        <div class="c-row"><span>云服务（月）</span><b>400-3,000元</b></div>
-        <div class="c-row"><span>SaaS工具（月）</span><b>600-1,400元</b></div>
-        <div class="c-row"><span>市场营销（月）</span><b>700-3,500元</b></div>
-        <div class="c-row"><span>专业服务（月）</span><b>400-1,000元</b></div>
-        <div class="c-row highlight"><span>月均总成本</span><b style="color:#2a8a5a;font-size:17px;">2,600-10,200元</b></div>
-        <div class="c-row" style="background:#f0faf4;"><span>净利润率</span><b style="color:#2a8a5a;font-size:20px;">87%</b></div>
-      </div>
-    </div>
-    <p>两者相差约<strong>30倍</strong>的月均成本与<strong>13倍</strong>的净利润率。这一差异的核心来源并非"OPC创业者不给自己发工资"，而是AI替代人力所释放的效率红利——传统团队人力成本占总成本75-85%，OPC模式下降至0。</p>
-
-    <h3>4.2 单位经济模型</h3>
-    <p>从Unit Economics角度衡量OPC模式的健康度：</p>
-    <p><strong>客户获取成本（CAC）。</strong>OPC模式下CAC通常为传统SaaS的30-50%。典型OPC案例ChatBiz的CAC约$120，而传统SaaS平均为$300-500。</p>
-    <p><strong>客户生命周期价值（LTV）。</strong>典型OPC SaaS月流失率约3-5%（年流失30-50%），略高于传统SaaS但差距在缩小。</p>
-    <p><strong>LTV/CAC比率。</strong>OPC模式的LTV/CAC通常在5-8x，远超传统SaaS的3x健康线。以ChatDoc为例（月费$49，月流失率4%），LTV=$49/0.04=$1,225，CAC约$180，LTV/CAC达6.8x。</p>
-
-    <div class="highlight-box">
-      <strong>资本效率对比：</strong>传统SaaS公司每1元融资约产生0.5-0.8元的ARR。OPC创业者每投入1元约产生8-12元的ARR。这是当前一级市场中极为稀缺的高效资本模型。
-    </div>
-
-    <h3>4.3 收入分布</h3>
-    <p>OPC创业者收入呈典型幂律分布：</p>
-    <div class="chart-bar">
-      <div class="cr"><span class="cl">$0-100/月</span><div class="cb"><div class="f" style="width:27%;background:#e8e8ec;"></div></div><span class="cv">27%</span></div>
-      <div class="cr"><span class="cl">$100-1,000/月</span><div class="cb"><div class="f" style="width:31%;background:#d0d5dd;"></div></div><span class="cv">31%</span></div>
-      <div class="cr"><span class="cl">$1,000-10,000/月</span><div class="cb"><div class="f" style="width:22%;background:#aab4c4;"></div></div><span class="cv">22%</span></div>
-      <div class="cr"><span class="cl">$10,000-100,000/月</span><div class="cb"><div class="f" style="width:14%;background:#7a8aaa;"></div></div><span class="cv">14%</span></div>
-      <div class="cr"><span class="cl">$100,000+/月</span><div class="cb"><div class="f" style="width:6%;background:var(--primary);"></div></div><span class="cv">6%</span></div>
-    </div>
-    <p>约58%的创业者月收入低于$1,000，说明赛道仍处早期；头部6%拿走了约40%的行业总收入，头部效应显著——这与SaaS行业的整体结构一致。</p>
-
-    <div class="hr"></div>
-
-    <!-- 05 -->
-    <h2 class="sec-title" id="s5"><span class="num">05</span>案例深度拆解</h2>
-    <p>案例选取标准：有公开可验证的收入数据，商业模式清晰，运营时间超过6个月。</p>
-
-    <div class="company-list">
-
-    <div class="company-card">
-      <div class="cc-header"><span class="cc-icon">💻</span><span class="cc-name">ChatBiz</span><span class="cc-tag t1">技术型 SaaS</span></div>
-      <div class="cc-body">
-        <strong>产品：</strong>面向中小电商的AI客服工具。创始人使用Cursor+Claude+Vercel开发。<br>
-        <strong>开发周期：</strong>2周（MVP）｜<strong>获客：</strong>X平台内容营销 + Google Ads<br>
-        <strong>运营：</strong>客户自助注册 + AI完成 onboarding。<strong>护城河：</strong>聚焦Shopify生态深度集成，对话数据积累构成飞轮。
-      </div>
-      <div class="cc-metrics">
-        <div class="m-item"><div class="m-num">$32,000/月</div><div class="m-label">MRR</div></div>
-        <div class="m-item"><div class="m-num">400+</div><div class="m-label">付费客户</div></div>
-        <div class="m-item"><div class="m-num">~80%</div><div class="m-label">毛利率（估）</div></div>
-        <div class="m-item"><div class="m-num">6个月</div><div class="m-label">盈亏平衡</div></div>
-      </div>
-    </div>
-
-    <div class="company-card">
-      <div class="cc-header"><span class="cc-icon">🤖</span><span class="cc-name">ChatDoc</span><span class="cc-tag t1">技术型 SaaS</span></div>
-      <div class="cc-body">
-        <strong>创始人背景：</strong>前产品经理，无编程基础。<strong>开发：</strong>用Cursor+Claude自学编程，6周完成产品。<br>
-        <strong>定价：</strong>$29/$49/$99三层架构。<strong>护城河：</strong>聚焦法律事务所场景积累专业语料。
-      </div>
-      <div class="cc-metrics">
-        <div class="m-item"><div class="m-num">$36,000/月</div><div class="m-label">MRR</div></div>
-        <div class="m-item"><div class="m-num">91%</div><div class="m-label">利润率</div></div>
-        <div class="m-item"><div class="m-num">$180</div><div class="m-label">CAC（估）</div></div>
-        <div class="m-item"><div class="m-num">6.8x</div><div class="m-label">LTV/CAC</div></div>
-      </div>
-    </div>
-
-    <div class="company-card">
-      <div class="cc-header"><span class="cc-icon">📱</span><span class="cc-name">数码荔枝</span><span class="cc-tag t2">内容型 自媒体</span></div>
-      <div class="cc-body">
-        <strong>平台：</strong>小红书。<strong>内容：</strong>AI工具测评+效率工作流，AI辅助选题/封面/文案。<br>
-        <strong>变现：</strong>三层结构——免费笔记引流 → 299元课程 → 999元社群。<strong>护城河：</strong>垂直品牌心智+高质量社群关系。
-      </div>
-      <div class="cc-metrics">
-        <div class="m-item"><div class="m-num">200万+/年</div><div class="m-label">年营收</div></div>
-        <div class="m-item"><div class="m-num">35万</div><div class="m-label">粉丝</div></div>
-        <div class="m-item"><div class="m-num">~85%</div><div class="m-label">毛利率（估）</div></div>
-        <div class="m-item"><div class="m-num">3年</div><div class="m-label">运营</div></div>
-      </div>
-    </div>
-
-    <div class="company-card">
-      <div class="cc-header"><span class="cc-icon">🔏</span><span class="cc-name">AI智能印章</span><span class="cc-tag t3">产品型 硬件+订阅</span></div>
-      <div class="cc-body">
-        <strong>产品：</strong>集成AI翻译与OCR的智能印章。<strong>供应链：</strong>AI辅助设计→华强北元器件→东莞共享工厂组装。<br>
-        <strong>变现：</strong>硬件销售+29元/月AI订阅。<strong>护城河：</strong>硬件+软件复合壁垒，众筹社区品牌资产。
-      </div>
-      <div class="cc-metrics">
-        <div class="m-item"><div class="m-num">$370,000</div><div class="m-label">众筹金额</div></div>
-        <div class="m-item"><div class="m-num">4,200+台</div><div class="m-label">销量</div></div>
-        <div class="m-item"><div class="m-num">~65%</div><div class="m-label">硬件毛利率</div></div>
-        <div class="m-item"><div class="m-num">~90%</div><div class="m-label">订阅毛利率</div></div>
-      </div>
-    </div>
-
-    </div>
-
-    <div class="insight-box">
-      <strong>共性特征：</strong>①极度聚焦的垂直场景（Niche Market）；②充分利用AI实现单人全流程闭环；③清晰的变现路径和正的Unit Economics。失败的OPC则普遍存在"想做平台""忽视获客""定价过低"等问题。
-    </div>
-
-    <div class="hr"></div>
-
-    <!-- 06 -->
-    <h2 class="sec-title" id="s6"><span class="num">06</span>创业路径与启动指南</h2>
-
-    <h3>6.1 三种类型比较</h3>
-
-    <div class="table-wrap">
-    <table>
-      <thead><tr><th>维度</th><th>技术型</th><th>内容型</th><th>产品型</th></tr></thead>
-      <tbody>
-        <tr><td>核心能力</td><td>编程/产品思维</td><td>内容输出/私域运营</td><td>用户洞察/快速迭代</td></tr>
-        <tr><td>启动成本</td><td>2-5万元</td><td>0-1万元</td><td>3-10万元</td></tr>
-        <tr><td>MVP周期</td><td>2-6周</td><td>1-2周</td><td>4-12周</td></tr>
-        <tr><td>月收入潜力</td><td>$1万-10万</td><td>$0.5万-5万</td><td>$1万-7万</td></tr>
-        <tr><td>毛利率</td><td>70-90%</td><td>80-95%</td><td>50-80%</td></tr>
-        <tr><td>规模天花板</td><td>较高（可自动化）</td><td>中（受限于个人时间）</td><td>中高（需外包生产）</td></tr>
-      </tbody>
-    </table>
-    </div>
-
-    <h3>6.2 五步启动框架</h3>
-
-    <div class="step-list">
-      <div class="step-item"><div class="sn">1</div><div class="sc"><div class="st">场景选择</div><div class="sd">从你的经验出发，选一个具体的垂直场景。判断标准：是否有一个明确的用户群体面临一个具体痛点？市场是否小到巨头看不上？</div></div></div>
-      <div class="step-item"><div class="sn">2</div><div class="sc"><div class="st">2周MVP</div><div class="sd">用Cursor等AI编程工具、Midjourney等AI设计工具快速开发。核心原则：功能做减法比加法重要，只需解决核心痛点的60%。</div></div></div>
-      <div class="step-item"><div class="sn">3</div><div class="sc"><div class="st">首单获取</div><div class="sd">通过社交媒体或社区论坛寻找第一个付费用户。关键KPI：首单转化时间应小于30天，超过则需重新评估方向。</div></div></div>
-      <div class="step-item"><div class="sn">4</div><div class="sc"><div class="st">价值定价</div><div class="sd">按为客户创造的价值收费（Value-based Pricing），而非成本加成。OPC的核心优势是"一人接近零的边际服务成本"。</div></div></div>
-      <div class="step-item"><div class="sn">5</div><div class="sc"><div class="st">自动化建设</div><div class="sd">收入稳定后，用AI Agent将客服、内容发布、账单管理等重复工作自动化。目标：把时间从运营中释放，聚焦产品与决策。</div></div></div>
-    </div>
-
-    <div class="tl-comp">
-      <div class="tl-col dark">
-        <div class="tl-title">传统创业时间线</div>
-        <div class="tl-step">商业计划与融资（3-6月）</div>
-        <div class="tl-step">团队组建（1-3月）</div>
-        <div class="tl-step">产品开发（6-12月）</div>
-        <div class="tl-step">上线与迭代（6-12月）</div>
-        <div class="tl-step">盈亏平衡（12-24月）</div>
-        <div class="tl-time">约36个月</div>
-      </div>
-      <div class="tl-col light">
-        <div class="tl-title">OPC创业时间线</div>
-        <div class="tl-step">Idea验证（1-2周）</div>
-        <div class="tl-step">MVP开发（2-4周）</div>
-        <div class="tl-step">上线推广（1-2周）</div>
-        <div class="tl-step">首单与迭代（4-8周）</div>
-        <div class="tl-step">盈亏平衡（3-6月）</div>
-        <div class="tl-time" style="color:#3a8a4a;">约10个月</div>
-      </div>
-    </div>
-
-    <div class="hr"></div>
-
-    <!-- 07 -->
-    <h2 class="sec-title" id="s7"><span class="num">07</span>风险因素与挑战</h2>
-
-    <div class="risk-box">
-      <strong>风险一：规模化瓶颈（高风险）。</strong>OPC模式的天然限制在于单一创始人的时间与精力。当客户达到数百上千时，单人可能无法应对。缓解策略：①AI自动化；②放弃低价值客户；③收入稳定后组建小型团队。
-    </div>
-    <div class="risk-box">
-      <strong>风险二：法律合规不确定性（中高风险）。</strong>AI生成内容的版权归属、Agent行为的法律责任等尚未明确。需关注：AI代码授权协议、客户数据隐私、跨境税务合规。
-    </div>
-    <div class="risk-box">
-      <strong>风险三：市场竞争加剧（中风险）。</strong>全球独立开发者社区活跃度同比增3倍以上，获客成本可能在12-18个月内显著上升。
-    </div>
-    <div class="risk-box">
-      <strong>风险四：身心健康（中风险）。</strong>67%的OPC创业者每周工作超60小时。建议保持规律作息，加入创业者社群。
-    </div>
-    <div class="risk-box">
-      <strong>风险五：平台依赖（中风险）。</strong>多数OPC收入集中于单一平台。建议逐步建立多元化的获客与收入渠道。
-    </div>
-
-    <div class="hr"></div>
-
-    <!-- 08 -->
-    <h2 class="sec-title" id="s8"><span class="num">08</span>未来展望与投资判断</h2>
-
-    <h3>8.1 行业演进预测</h3>
-    <p><strong>阶段一（2024-2026）：个体实验期。</strong>AI工具成本骤降催生第一批创业者，市场尚未被主流认可。先行者可获得显著先发优势。</p>
-    <p><strong>阶段二（2027-2029）：生态成长期。</strong>面向OPC的垂直服务平台大量涌现。预计2028年前出现首家估值10亿美元的"一人公司"。</p>
-    <p><strong>阶段三（2030+）：范式固化期。</strong>OPC成为与"就业"和"传统创业"并列的第三大职业选择。监管框架成熟，个人品牌成为重要资产类别。</p>
-
-    <h3>8.2 投资判断</h3>
-
-    <div class="table-wrap">
-    <table>
-      <thead><tr><th>维度</th><th>评级</th><th>说明</th></tr></thead>
-      <tbody>
-        <tr><td>市场规模</td><td><span class="r-badge green">大</span></td><td>全球潜在创业人群超5亿，年增长15-20%</td></tr>
-        <tr><td>增长动能</td><td><span class="r-badge green">强</span></td><td>AI成本下降+远程文化+代际偏好三重驱动</td></tr>
-        <tr><td>竞争格局</td><td><span class="r-badge amber">分散</span></td><td>高度分散，尚未出现平台级龙头</td></tr>
-        <tr><td>进入壁垒</td><td><span class="r-badge red">低</span></td><td>工具门槛极低，供给端快速扩容</td></tr>
-        <tr><td>盈利能力</td><td><span class="r-badge green">强</span></td><td>典型利润率87%，资本效率极高</td></tr>
-        <tr><td>风险水平</td><td><span class="r-badge amber">中高</span></td><td>政策不确定性与规模化瓶颈是主风险</td></tr>
-        <tr style="background:#f5f7fb;"><td><strong>综合评级</strong></td><td><span style="color:#2a8a5a;font-weight:800;font-size:15px;">积极</span></td><td><strong style="color:var(--primary);">建议关注，控制仓位</strong></td></tr>
-      </tbody>
-    </table>
-    </div>
-
-    <div class="highlight-box">
-      <strong>分析师建议：</strong>对个人而言，OPC是当前性价比最高的创业路径——投入小、试错成本低、上行空间大。但不宜All-in。建议副业起步，用6-12个月验证方向，月收入超过主业2-3倍后再全职。对投资者而言，建议关注OPC基础设施层（工具链、支付、合规）的投资机会。
-    </div>
-
-    <div class="hr"></div>
-
-    <!-- === 免责 === -->
-    <div class="disclaimer">
-      <strong>免责声明：</strong>本报告由"每天认识一个行业"编制，仅供参考，不构成投资建议。数据来源于公开信息，编制方不保证其准确性与完整性。报告中涉及的案例与公司仅作行业分析，不构成对其商业模式的推荐或背书。<br><br>
-      <strong>评级说明：</strong>积极（Positive）= 行业具有显著增长潜力，建议关注；中性（Neutral）= 平稳发展，维持配置；谨慎（Cautious）= 面临下行风险，建议降低配置。<br><br>
-      <strong>版权声明：</strong>本报告版权归"每天认识一个行业"所有。报告日期：2026年7月30日。
-    </div>
-
   </div>
+  <div class="company-card">
+    <div class="cc-header"><span>🔏</span><span class="cc-name">AI智能印章</span><span class="cc-tag t3">产品型 硬件+订阅</span></div>
+    <div class="cc-body">
+      <strong>产品：</strong>集成AI翻译与OCR的智能印章。<strong>供应链：</strong>AI设计→华强北元器件→东莞共享工厂组装。<strong>变现：</strong>硬件销售+29元/月订阅。<strong>数据：</strong>Kickstarter众筹37万美元，售出4,200+台。
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box"><strong>共性特征：</strong>①极度聚焦的垂直场景（Niche Market）；②充分利用AI实现单人全流程闭环；③清晰的变现路径和正的Unit Economics。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<div class="section" id="s6">
+<h2><span class="num">06</span>创业路径与启动指南</h2>
+
+<h3>6.1 三种类型比较</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>维度</th><th>💻 技术型</th><th>✍️ 内容型</th><th>🎨 产品型</th></tr></thead>
+  <tbody>
+  <tr><td>核心能力</td><td>编程/产品思维</td><td>内容输出/私域运营</td><td>用户洞察/快速迭代</td></tr>
+  <tr><td>启动成本</td><td>2-5万元</td><td>0-1万元</td><td>3-10万元</td></tr>
+  <tr><td>MVP周期</td><td>2-6周</td><td>1-2周</td><td>4-12周</td></tr>
+  <tr><td>月收入潜力</td><td>$1万-10万</td><td>$0.5万-5万</td><td>$1万-7万</td></tr>
+  <tr><td>毛利率</td><td>70-90%</td><td>80-95%</td><td>50-80%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>6.2 五步启动框架</h3>
+<div class="step-list">
+  <div class="step-item"><div class="sn">1</div><div class="sc"><div class="st">场景选择</div><div class="sd">从你的经验出发，选一个具体的垂直场景。判断标准：是否有一个明确的用户群体面临一个具体痛点？市场是否小到巨头看不上？</div></div></div>
+  <div class="step-item"><div class="sn">2</div><div class="sc"><div class="st">2周MVP</div><div class="sd">用Cursor等AI编程工具、Midjourney等AI设计工具快速开发。核心原则：功能做减法，只需解决核心痛点的60%。</div></div></div>
+  <div class="step-item"><div class="sn">3</div><div class="sc"><div class="st">首单获取</div><div class="sd">通过社交媒体或社区论坛寻找第一个付费用户。关键KPI：首单转化<30天，超过则需重新评估方向。</div></div></div>
+  <div class="step-item"><div class="sn">4</div><div class="sc"><div class="st">价值定价</div><div class="sd">按为客户创造的价值收费（Value-based Pricing），而非成本加成。OPC核心优势是"一人接近零的边际服务成本"。</div></div></div>
+  <div class="step-item"><div class="sn">5</div><div class="sc"><div class="st">自动化建设</div><div class="sd">用AI Agent将重复工作自动化，把时间从运营中释放，聚焦产品与决策。</div></div></div>
+</div>
+
+<div class="tl-row">
+  <div class="tl-col dark">
+    <div class="tl-title">传统创业时间线</div>
+    <div class="tl-step">商业计划与融资（3-6月）</div>
+    <div class="tl-step">团队组建（1-3月）</div>
+    <div class="tl-step">产品开发（6-12月）</div>
+    <div class="tl-step">上线与迭代（6-12月）</div>
+    <div class="tl-step">盈亏平衡（12-24月）</div>
+    <div class="tl-time">约36个月</div>
+  </div>
+  <div class="tl-col light">
+    <div class="tl-title">OPC创业时间线</div>
+    <div class="tl-step">Idea验证（1-2周）</div>
+    <div class="tl-step">MVP开发（2-4周）</div>
+    <div class="tl-step">上线推广（1-2周）</div>
+    <div class="tl-step">首单与迭代（4-8周）</div>
+    <div class="tl-step">盈亏平衡（3-6月）</div>
+    <div class="tl-time" style="color:#0a0;">约10个月</div>
+  </div>
+</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<div class="section" id="s7">
+<h2><span class="num">07</span>风险因素与挑战</h2>
+
+<div class="highlight-box red"><strong>风险一：规模化瓶颈（高风险）。</strong>OPC模式的天然限制在于单一创始人的时间与精力。当客户达到数百上千时，单人可能无法应对。缓解策略：①AI自动化；②放弃低价值客户；③收入稳定后组建小型团队。</div>
+
+<div class="highlight-box red"><strong>风险二：法律合规不确定性（中高风险）。</strong>AI生成内容的版权归属、Agent行为的法律责任等尚未明确。需关注：AI代码授权协议、客户数据隐私、跨境税务合规。</div>
+
+<div class="highlight-box red"><strong>风险三：市场竞争加剧（中风险）。</strong>全球独立开发者社区活跃度同比增3倍以上，获客成本可能在12-18个月内显著上升。</div>
+
+<div class="highlight-box red"><strong>风险四：身心健康（中风险）。</strong>67%的OPC创业者每周工作超60小时。建议保持规律作息，加入创业者社群。</div>
+
+<div class="highlight-box red"><strong>风险五：平台依赖（中风险）。</strong>多数OPC收入集中于单一平台。建议逐步建立多元化的获客与收入渠道。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<div class="section" id="s8">
+<h2><span class="num">08</span>未来展望与投资判断</h2>
+
+<h3>8.1 行业演进预测</h3>
+<p><strong>阶段一（2024-2026）：个体实验期。</strong>AI工具成本骤降催生第一批创业者，市场尚未被主流认可。当前正处这一阶段的中后期。</p>
+<p><strong>阶段二（2027-2029）：生态成长期。</strong>面向OPC的垂直服务平台大量涌现。预计2028年前出现首家估值10亿美元的"一人公司"。</p>
+<p><strong>阶段三（2030+）：范式固化期。</strong>OPC成为与"就业"和"传统创业"并列的第三大职业选择。监管框架成熟。</p>
+
+<h3>8.2 投资判断</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>评估维度</th><th>评级</th><th>说明</th></tr></thead>
+  <tbody>
+  <tr><td>市场规模</td><td><span class="rb green">大</span></td><td>全球潜在创业人群超5亿，年增长15-20%</td></tr>
+  <tr><td>增长动能</td><td><span class="rb green">强</span></td><td>AI成本下降+远程文化+代际偏好三重驱动</td></tr>
+  <tr><td>竞争格局</td><td><span class="rb amber">分散</span></td><td>高度分散，尚未出现平台级龙头</td></tr>
+  <tr><td>进入壁垒</td><td><span class="rb red">低</span></td><td>工具门槛极低，供给端快速扩容</td></tr>
+  <tr><td>盈利能力</td><td><span class="rb green">强</span></td><td>典型利润率87%，资本效率极高</td></tr>
+  <tr><td>风险水平</td><td><span class="rb amber">中高</span></td><td>政策不确定性与规模化瓶颈是主风险</td></tr>
+  <tr style="background:#f8faff;"><td><strong>综合评级</strong></td><td><span style="color:#0a0;font-weight:700;">积极</span></td><td><strong>建议关注，控制仓位</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="policy">
+  <strong>分析师建议：</strong>对个人而言，OPC是当前性价比最高的创业路径——投入小、试错成本低、上行空间大。但不宜All-in。建议副业起步，用6-12个月验证方向，月收入超过主业2-3倍后再全职。对投资者而言，建议关注OPC基础设施层（工具链、支付、合规）的投资机会。
+</div>
+</div>
+
+<div class="footer">— 报告结束 —</div>
+
 </div>
 </body>
 </html>
