@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI算力产业链 行业研究报告 | 每天认识一个行业 · Day 03</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+  .page-break { page-break-after: always; }
+
+  /* 封面 */
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  /* 目录 */
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+
+  /* 章节 */
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section h4 { font-size: 15px; color: #2a4a6c; margin: 16px 0 8px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  /* 高亮框 */
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  /* 表格 */
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  /* 数据卡 */
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  /* 流程 */
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>AI算力产业链<br><span class="hl">全景深度报告</span></h1>
+  <p class="subtitle">—— 从AI芯片到智算中心，算力财富地图全解析 ——</p>
+  <div class="info">
+    <p>全球AI资本开支：<strong>约5,000亿美元（2025年）</strong></p>
+    <p>中国算力基建投资：<strong>6,800亿元（2025年）</strong></p>
+    <p>AI数据中心半导体收入：<strong>预计2028年超1.2万亿美元</strong></p>
+    <p>综合评级：<strong style="color:#0a0;">积极（Positive）</strong></p>
+  </div>
+  <p class="date">报告日期：2026年7月30日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业背景：为什么是算力</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>产业链全景与价值分配</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>芯片层：AI芯片与存储HBM</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>硬件层：PCB与光模块</a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>基础设施层：AI服务器与智算中心</a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>财务视角与投资逻辑</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>风险因素与跟踪框架</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>未来展望与系列预告 <span class="badge red">系列开启</span></a>
+</div>
+
+<!-- ======== 01 ======== -->
+<div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>本报告为"AI算力产业链"系列的首篇总览报告。AI大模型技术的爆发式发展，使算力成为数字经济时代最核心的生产要素。本报告系统梳理算力产业链三大层级——芯片层、硬件层、基础设施层——的结构、价值分配、代表公司与投资逻辑，为后续逐环节深度研究提供全景框架。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">5,000<span class="u">亿美元</span></div><div class="lb">全球AI资本开支（2025年）</div></div>
+  <div class="stat-card"><div class="num">6,800<span class="u">亿元</span></div><div class="lb">中国算力基建投资（2025年）</div></div>
+  <div class="stat-card"><div class="num">+170%</div><div class="lb">数据中心逻辑芯片两年增速</div></div>
+  <div class="stat-card"><div class="num">4万亿<span class="u">美元</span></div><div class="lb">全球AI数据中心累计投资</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>算力是AI时代最确定的高增长赛道。全球AI资本开支2025年约5,000亿美元，2027年或超1万亿美元；AI数据中心半导体收入2028年预计超1.2万亿美元。<br><br>
+  <strong>核心结论二：</strong>产业链价值量越靠近芯片越高，但弹性越往下游越大。芯片占AI服务器价值70%+，存储占10-12%，PCB/光模块/电源合计约15-20%。<br><br>
+  <strong>核心结论三：</strong>存储（HBM）是当前供需缺口最紧张、涨价弹性最大的环节；PCB与光模块是业绩兑现最清晰的方向。<br><br>
+  <strong>风险提示：</strong>高资本开支依赖大厂持续投入，若AI商业化不及预期将影响全产业链；部分环节估值已透支未来增长。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<div class="section" id="s2">
+<h2>02 行业背景：为什么是算力</h2>
+<h3>2.1 算力是AI的物理基础</h3>
+<p>大模型是发动机，算力是汽油。没有算力，AI就是一张PPT。Scaling Law持续演进——模型训练与推理的算力需求呈指数级上升，直接拉动AI芯片、存储、互联、服务器全产业链升级。</p>
+
+<h3>2.2 需求侧：资本开支的军备竞赛</h3>
+<p>全球科技巨头正展开算力"军备竞赛"：</p>
+<ul>
+  <li>北美五大科技巨头（微软、谷歌、亚马逊、Meta、Oracle）2025年资本开支近4,000亿美元</li>
+  <li>全球AI资本开支2025年约5,000亿美元，2027年或超1万亿美元</li>
+  <li>中国2025年算力基建投资6,800亿元，其中算力硬件占比45%（约3,060亿元）</li>
+  <li>全球2023-2030年AI数据中心累计投资预计4万亿美元</li>
+</ul>
+
+<div class="highlight-box green"><strong>关键判断：</strong>这一轮算力投资具有"军备竞赛"属性——大厂为维持模型领先优势必须持续投入，形成"投入→能力→收入→再投入"的正循环。除非AI商业化全面不及预期，否则资本开支的持续性有较强支撑。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<div class="section" id="s3">
+<h2>03 产业链全景与价值分配</h2>
+<h3>3.1 三大层级结构</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>芯片层：AI芯片 + 存储HBM</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>硬件层：PCB + 光模块 + 服务器</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>基础设施层：智算中心 + 液冷 + 电源</span>
+</div>
+
+<h3>3.2 汽车类比法</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>产业链环节</th><th>汽车类比</th><th>核心逻辑</th></tr></thead>
+  <tbody>
+    <tr><td>AI芯片</td><td>发动机</td><td>最核心、最贵，赢家通吃</td></tr>
+    <tr><td>HBM存储</td><td>油箱+燃油</td><td>供不应求，涨价弹性大</td></tr>
+    <tr><td>PCB</td><td>车身骨架</td><td>AI服务器带动价值量暴增</td></tr>
+    <tr><td>光模块</td><td>高速公路收费站</td><td>数据进出咽喉，高速迭代</td></tr>
+    <tr><td>AI服务器</td><td>整车</td><td>组装集成，重资产</td></tr>
+    <tr><td>智算中心</td><td>停车场+加油站</td><td>基础设施，长周期回报</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.3 价值分配</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>环节</th><th>占AI服务器价值比</th><th>特征</th></tr></thead>
+  <tbody>
+    <tr><td>AI芯片（加速器）</td><td>70%+</td><td>高毛利、技术壁垒最高</td></tr>
+    <tr><td>存储（HBM等）</td><td>10-12%</td><td>供需缺口，涨价弹性最大</td></tr>
+    <tr><td>PCB/光模块/电源等</td><td>合计15-20%</td><td>跟随出货量，弹性较大</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box"><strong>分析逻辑：</strong>越靠近芯片，价值量越高但竞争壁垒越深；越往下游，国产化率越高、业绩弹性越大。投资视角需根据风险偏好选择层级。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<div class="section" id="s4">
+<h2>04 芯片层：AI芯片与存储HBM</h2>
+
+<h3>4.1 AI芯片（GPU/ASIC）</h3>
+<p><strong>全球格局：</strong>英伟达处于绝对统治地位。Blackwell架构已量产，能效比较Hopper高30倍；下一代Rubin GPU集成288GB HBM4、22TB/s带宽，性能达GB300的3.3倍，预计2026年GTC发布。</p>
+<p><strong>竞争格局：</strong>AMD、Google（TPU 8t/8i，单集群可扩展至9,600芯片、121 ExaFlops）、AWS（Trainium/Inferentia）均在加速布局。</p>
+<p><strong>国产替代：</strong>华为昇腾910C（7nm）遵循"一年一代、算力翻倍"的迭代逻辑；海光信息、寒武纪、昆仑芯、沐曦、燧原、摩尔线程等构成国产AI芯片第一梯队。</p>
+
+<h3>4.2 存储芯片（HBM）</h3>
+<p><strong>市场规模：</strong>2026年全球存储芯片市场预计突破5,500亿美元，同比增长134%。HBM市场2025年已超120亿美元。</p>
+<p><strong>供需状况：</strong>HBM产能2026年已基本锁定并提前售罄；DDR5现货价自2025年9月上涨约300%，256GB服务器DDR5内存条突破5万元。AI需求"虹吸"全球存储先进产能，消费级DRAM严重短缺，结构性紧缺至少持续至2027年。</p>
+<p><strong>技术演进：</strong>HBM4已量产，带宽2TB/s以上（较HBM3E提升67%），单堆栈容量36-64GB；HBM4E预计2027年量产。</p>
+<p><strong>市场格局：</strong>SK海力士57%、三星22%、美光21%——韩企合计近80%份额。</p>
+
+<div class="policy"><span class="policy-tag">重点数据</span>以英伟达GB300 NVL72机架为例：存储占整机价值量约12%，单机架存储价值量约41.2万美元。从DGX A100到GB300，机架HBM配置从0.6TB提升至20TB，存储价值量从1.7万美元跃升至41.2万美元——价值量提升超过24倍。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<div class="section" id="s5">
+<h2>05 硬件层：PCB与光模块</h2>
+
+<h3>5.1 PCB（印制电路板）</h3>
+<p><strong>市场规模：</strong>2026年全球约150亿美元。</p>
+<p><strong>核心驱动：</strong>AI服务器PCB材料和层数升级（更高层、更高速），单芯片PCB价值量逐代提升；英伟达率先引入高阶加厚板HDI。AI服务器PCB价值量比普通服务器高数倍。</p>
+<p><strong>国产份额：</strong>中国大陆厂商2025年约占30%，2026年展望大幅提升。</p>
+<p><strong>代表公司：</strong>胜宏科技（英伟达AI服务器PCB全球50%+份额，2025年归母净利润预增260%-295%）、生益电子。</p>
+
+<h3>5.2 光模块</h3>
+<p><strong>市场规模：</strong>2026年全球数通高速光模块市场350-400亿美元。</p>
+<p><strong>技术迭代：</strong>400G→800G→1.6T→3.2T快速升级；1.6T光模块已进入量产初期，2025-2026年开始规模上量；CPO（共封装光学）技术将光引擎与交换芯片紧耦合，功耗降低30-50%。</p>
+<p><strong>国产份额：</strong>中国大陆厂商2025年占全球60%以上，2026年稳中有升。</p>
+<p><strong>代表公司：</strong>中际旭创（全球高速光模块龙头，绑定英伟达、谷歌、亚马逊）、新易盛（布局LPO、硅光、CPO）、Lumentum（EML激光器全球市占约50%）。</p>
+
+<div class="highlight-box green"><strong>投资逻辑：</strong>PCB与光模块是"英伟达产业链"中A股弹性最大的两个方向——逻辑清晰（跟随出货量）、业绩兑现（胜宏科技净利预增260%-295%）、国产份额持续提升。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<div class="section" id="s6">
+<h2>06 基础设施层：AI服务器与智算中心</h2>
+
+<h3>6.1 AI服务器/整机</h3>
+<p><strong>价值量：</strong>AI服务器机架单台成本150万-400万美元，其中AI加速器占机架半导体内容的70%以上。英伟达GB300 NVL72机架售价约350万美元。</p>
+<p><strong>迭代趋势：</strong>单机价值量持续提升（A100→H100→GB300），带动整机、电源、散热、连接器等配套环节同步升级。</p>
+<p><strong>代表公司：</strong>浪潮信息、新华三、联想、超微（Supermicro）、戴尔、CoreWeave。</p>
+
+<h3>6.2 智算中心</h3>
+<p><strong>中国现状：</strong>截至2025年底建成万卡级智算集群42个，智能算力总规模超1,590 EFLOPS。</p>
+<p><strong>投资规模：</strong>2025年中国算力基建投资6,800亿元（硬件占45%，约3,060亿元）；全球2023-2030年AI数据中心累计投资4万亿美元，其中约2.8万亿美元用于AI服务器硬件。</p>
+<p><strong>配套环节：</strong>液冷温控（2026年全球市场150亿美元，大陆份额从0到1突破）、服务器电源（2026年全球市场70亿美元）成为新增长点。</p>
+<p><strong>代表公司：</strong>万国数据、世纪互联（内地第二大中立数据中心）、新意网（香港龙头）、三大运营商（自建万卡集群）。</p>
+
+<div class="highlight-box"><strong>商业模式：</strong>服务器/智算中心属重资产生意，毛利率10-20%，核心是规模效应和现金流管理。投资回报期长，需关注大厂订单的持续性和利用率。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<div class="section" id="s7">
+<h2>07 财务视角与投资逻辑</h2>
+
+<h3>7.1 各环节财务特征对比</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>环节</th><th>毛利率</th><th>核心财务逻辑</th><th>风险点</th></tr></thead>
+  <tbody>
+    <tr><td>AI芯片</td><td>60-75%</td><td>赢家通吃，技术溢价</td><td>技术迭代风险，国产芯片短期难盈利</td></tr>
+    <tr><td>存储/HBM</td><td>40-60%</td><td>周期反转+涨价弹性</td><td>库存周期波动大</td></tr>
+    <tr><td>PCB</td><td>25-35%</td><td>跟随出货量放量</td><td>客户集中度高</td></tr>
+    <tr><td>光模块</td><td>30-40%</td><td>高速迭代+量价齐升</td><td>技术路线切换风险</td></tr>
+    <tr><td>AI服务器</td><td>10-20%</td><td>规模效应</td><td>重资产，议价权弱</td></tr>
+    <tr><td>智算中心</td><td>30-50%</td><td>长期现金流</td><td>投资回报期长</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>7.2 投资主线归纳</h3>
+<div class="policy">
+  <strong>主线一（确定性）：</strong>英伟达产业链——PCB（胜宏科技）、光模块（中际旭创）等跟随出货量增长的环节，业绩兑现最清晰。<br><br>
+  <strong>主线二（弹性）：</strong>存储涨价周期——HBM供不应求叠加DDR5涨价300%，存储厂商业绩弹性最大，但需关注库存周期拐点。<br><br>
+  <strong>主线三（国产替代）：</strong>AI芯片与设备——华为昇腾产业链、寒武纪、海光等，政策驱动强，但短期盈利能力弱，适合主题投资。<br><br>
+  <strong>主线四（基础设施）：</strong>智算中心与配套——液冷、电源、温控，跟随资本开支增长，关注订单兑现。
+</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<div class="section" id="s8">
+<h2>08 风险因素与跟踪框架</h2>
+
+<div class="highlight-box red"><strong>风险一：AI商业化不及预期。</strong>若大模型变现能力不足，科技巨头可能缩减资本开支，全产业链需求将回落。跟踪指标：全球主要云厂商资本开支指引。</div>
+
+<div class="highlight-box red"><strong>风险二：技术路线切换。</strong>光模块CPO对传统可插拔模块的替代、英伟达自研ASIC对第三方芯片的挤压，可能改变现有竞争格局。</div>
+
+<div class="highlight-box red"><strong>风险三：估值风险。</strong>部分环节股价已计入未来2-3年高增长预期，一旦增速放缓，估值压缩风险大。</div>
+
+<div class="highlight-box red"><strong>风险四：地缘与出口管制。</strong>先进芯片/设备出口管制政策变化，可能影响国产替代进度或全球供应链格局。</div>
+
+<h3>跟踪四个核心信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>影响环节</th></tr></thead>
+  <tbody>
+    <tr><td>英伟达财报与产品</td><td>收入指引、新品发布、产能分配</td><td>全产业链风向标</td></tr>
+    <tr><td>全球大厂资本开支</td><td>微软/谷歌/Meta/Oracle指引</td><td>服务器/智算中心</td></tr>
+    <tr><td>HBM价格与库存</td><td>DRAM现货价、HBM合约价</td><td>存储环节</td></tr>
+    <tr><td>中国算力政策</td><td>算力基建投资、国产替代政策</td><td>国产芯片/智算中心</td></tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<div class="section" id="s9">
+<h2>09 未来展望与系列预告</h2>
+
+<h3>9.1 行业演进趋势</h3>
+<p><strong>推理需求超越训练。</strong>预计2030年推理侧存储需求占比70%+，远超训练端。推理算力需求2026年预计同比增长超60%，推理算力占比首次超过训练算力。</p>
+<p><strong>技术持续迭代。</strong>HBM4量产→HBM4E、光模块1.6T→3.2T、CPO商业化，各环节价值量持续提升，技术领先者享受溢价。</p>
+<p><strong>国产算力生态成型。</strong>华为昇腾"一年一代、算力翻倍"，配合国产设备/材料，国产算力全链条正在闭环。</p>
+
+<h3>9.2 系列预告</h3>
+<p>本报告为"AI算力产业链"系列总览篇。后续将逐环节深度拆解：</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>期数</th><th>主题</th><th>核心内容</th></tr></thead>
+  <tbody>
+    <tr><td>Day 04</td><td>AI芯片</td><td>英伟达霸权与国产追赶</td></tr>
+    <tr><td>Day 05</td><td>光模块</td><td>800G→1.6T迭代逻辑</td></tr>
+    <tr><td>Day 06</td><td>PCB</td><td>AI服务器价值量暴增</td></tr>
+    <tr><td>Day 07</td><td>存储芯片（HBM）</td><td>涨价周期与供需缺口</td></tr>
+    <tr><td>Day 08</td><td>AI服务器</td><td>整机集成与产业链地位</td></tr>
+    <tr><td>Day 09</td><td>智算中心</td><td>算力基建的商业模式</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>分析师建议：</strong>算力是未来3-5年确定性最高的科技主线。对普通读者，建议优先理解"英伟达产业链"和"存储涨价"两条逻辑；对投资者，建议控制仓位、分环节配置，重点关注业绩兑现节奏。</div>
+</div>
+
+<div class="footer">— 报告结束 · 后续每期深度拆解一个环节 —</div>
+
+</div>
+</body>
+</html>
