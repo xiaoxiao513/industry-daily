@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人形机器人 行业研究报告 | 每天认识一个行业 · Day 10</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+  .company-card .cc-metrics { display: flex; gap: 16px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e0e8f0; flex-wrap: wrap; }
+  .company-card .cc-metrics .m-item .m-num { font-weight: 700; color: #003366; font-size: 14px; }
+  .company-card .cc-metrics .m-item .m-label { font-size: 11px; color: #999; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>人形机器人<br><span class="hl">2026量产元年</span></h1>
+  <p class="subtitle">—— 从概念验证到规模化商业化的产业跃迁 ——</p>
+  <div class="info">
+    <p>中国人形机器人市场（2026E）：<strong>突破200亿元</strong></p>
+    <p>2026年产量：<strong>有望突破10万台</strong></p>
+    <p>龙头：<strong>特斯拉Optimus · 宇树 · 优必选 · 智元</strong></p>
+  </div>
+  <p class="date">报告日期：2026年8月1日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：量产元年</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>市场规模与增长路径</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>竞争格局：全球玩家盘点</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>核心零部件：价值量拆解</a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>产业链：谁在赚钱</a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>商业化：从工厂到生活</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>投资逻辑与财务视角</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>风险因素与展望 <span class="badge red">4大风险</span></a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>2026年被业界公认为人形机器人"量产元年"——产业从"概念验证"迈向"规模化起步"。本报告从市场规模、竞争格局、核心零部件、产业链价值分配、商业化路径、投资逻辑六个维度，对人形机器人/具身智能行业进行系统性分析。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">200<span class="u">亿元</span></div><div class="lb">2026中国人形机器人市场（突破）</div></div>
+  <div class="stat-card"><div class="num">10万<span class="u">台</span></div><div class="lb">2026年中国产量（有望）</div></div>
+  <div class="stat-card"><div class="num">84.7%</div><div class="lb">中国2025年全球出货占比</div></div>
+  <div class="stat-card"><div class="num">4000亿<span class="u">元</span></div><div class="lb">2030年具身智能市场预测</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>2026年是人形机器人的量产元年。中国人形机器人市场预计突破200亿元，产量有望突破10万台。产业从"讲故事"进入"出产品"阶段。<br><br>
+  <strong>核心结论二：</strong>中国主导全球供给——2025年全球出货1.44万台，中国占84.7%；TOP6厂商中中国占5家，合计占全球74.1%。宇树以5,500+台居全球第一。<br><br>
+  <strong>核心结论三：</strong>核心零部件国产化率已超70%（谐波减速器、伺服电机超80%）。运动控制占机器人成本55%，是最值钱的环节；减速器单项占成本20-30%。<br><br>
+  <strong>风险提示：</strong>成本高企、可靠性不足、商业化落地慢、估值泡沫（融资超200亿元）。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：量产元年</h2>
+
+<h3>2.1 什么是人形机器人</h3>
+<p>人形机器人是外形和运动方式模仿人类的智能机器人，拥有"手、脚、脑"——灵巧手执行精细操作、双足实现移动、大模型赋予认知决策能力。其核心是"具身智能"：AI从数字世界进入物理世界。</p>
+
+<h3>2.2 为什么是2026</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>大模型突破（AI大脑）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>零部件国产化（70%+）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>成本下降</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">4</span>政策标准落地（工信部）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">5</span><strong>量产元年（2026）</strong></span>
+</div>
+
+<h3>2.3 政策标志</h3>
+<p>2026年2月，工信部发布《人形机器人与具身智能标准体系（2026版）》，这是我国首个覆盖全产业链、全生命周期的标准顶层设计。政策从"鼓励研发"进入"规范发展+推动应用"并重阶段。</p>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>人形机器人是AI的"物理出口"——大模型解决了"思考"，人形机器人解决"行动"。当AI算力（我们已做的Day03-09系列）铺就了基础设施，人形机器人就是下一个承接AI价值的硬件载体。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 市场规模与增长路径</h2>
+
+<h3>3.1 中国市场规模</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>年份</th><th>市场规模</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>2025</td><td>15.5亿元</td><td>全球占比53.8%（赛迪）</td></tr>
+    <tr><td>2026E</td><td>突破200亿元</td><td>约220亿元（OFweek）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 全球具身智能市场预测</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>年份</th><th>需求量(台)</th><th>单价(万元)</th><th>市场规模(亿元)</th></tr></thead>
+  <tbody>
+    <tr><td>2025</td><td>18,600</td><td>25</td><td>46.5</td></tr>
+    <tr><td>2026</td><td>50,000</td><td>23</td><td>115</td></tr>
+    <tr><td>2027</td><td>121,000</td><td>22</td><td>266.2</td></tr>
+    <tr><td>2028</td><td>200,000</td><td>19</td><td>380</td></tr>
+    <tr><td>2029</td><td>350,000</td><td>16</td><td>560</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.3 远期空间</h3>
+<p>2030年具身智能相关市场规模预计达4,000亿元；2035年有望突破万亿元。出货量从2025年1.44万台到2029年35万台，单价从25万元降至16万元——<strong>量增价降，是典型的成长行业曲线。</strong></p>
+
+<div class="policy"><span class="policy-tag">关键判断</span>人形机器人市场呈"小基数、高增速"特征——2026年200亿元看似不大，但5年20倍增长（到4000亿）的预期，是资本市场愿意给高估值的核心原因。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 竞争格局：全球玩家盘点</h2>
+
+<h3>4.1 2025年全球出货格局</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>排名</th><th>厂商</th><th>出货量</th><th>全球占比</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>宇树科技（中国）</td><td>超5,500台</td><td>32.4%</td></tr>
+    <tr><td>2</td><td>智元（中国）</td><td>超4,000台</td><td>23.5%</td></tr>
+    <tr><td>3</td><td>乐聚（中国）</td><td>~1,000台</td><td>5.9%</td></tr>
+    <tr><td>4</td><td>加速进化（中国）</td><td>~1,000台</td><td>5.9%</td></tr>
+    <tr><td>5</td><td>松延动力（中国）</td><td>~1,000台</td><td>5.9%</td></tr>
+    <tr><td>6</td><td>优必选（中国）</td><td>~600台</td><td>3.5%</td></tr>
+  </tbody>
+</table>
+</div>
+<p>六家中国企业合计占全球74.1%。2025年中国出货1.44万台，全球占比84.7%。</p>
+
+<h3>4.2 头部厂商对比</h3>
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">特斯拉 Optimus</span><span class="cc-tag hot">量产标杆</span></div>
+    <div class="cc-body">
+      <strong>参数：</strong>身高173cm/体重56kg，有效负载20kg，28个自由度。<strong>量产：</strong>2025年B样目标1万台；2026年C样、每月产能1万台；2027年每月10万台。弗里蒙特工厂执行零部件搬运、电池分装任务。<strong>远期：</strong>2027年德州工厂100万台/年，成本目标2万美元。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">宇树科技</span><span class="cc-tag">出货全球第一</span></div>
+    <div class="cc-body">
+      <strong>产品：</strong>H1/G1，奔跑跳跃性能全球领先，低成本规模交付。2025年出货超5,500台全球第一。<strong>供应链：</strong>减速器（美湖）、灵巧手（因时机器人一供）、主控芯片（瑞芯微）。<strong>上市：</strong>2026年有上市计划。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">优必选</span><span class="cc-tag">港股上市</span></div>
+    <div class="cc-body">
+      <strong>产品：</strong>Walker S系列，工业场景。<strong>2025年出货约600台，订单总金额近14亿元。</strong>中标2.64亿元广西项目。2026年产能提升至万台级、单价降至50万元以内。在蔚来、东风柳汽等工厂承担质检、装配辅助。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">Figure AI / 1X / Agility</span><span class="cc-tag">海外玩家</span></div>
+    <div class="cc-body">
+      <strong>Figure：</strong>BMW试点，2025年商用1,000台。<strong>1X：</strong>OpenAI投资，2026年挪威工厂产能10万台。<strong>Agility：</strong>亚马逊物流试点，2026年产能1万台。<strong>波士顿动力：</strong>技术标杆但成本>200万美元，短期无量产计划。
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box"><strong>投资含义：</strong>中国厂商占据量产主导（74.1%），特斯拉Optimus是成本标杆（目标2万美元）。关注"中国整机+特斯拉供应链"两条主线。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 核心零部件：价值量拆解</h2>
+
+<h3>5.1 成本结构</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>环节</th><th>成本占比</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>运动控制</td><td>约55%</td><td>减速器/电机/丝杠，最值钱</td></tr>
+    <tr><td>感知系统</td><td>约18%</td><td>传感器/视觉</td></tr>
+    <tr><td>能源管理</td><td>约12%</td><td>电池/电源</td></tr>
+    <tr><td>结构件</td><td>约10%</td><td>轻量化材料</td></tr>
+    <tr><td>其他</td><td>约5%</td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+<p>其中，减速器单项占机器人成本20%-30%。</p>
+
+<h3>5.2 核心零部件市场（2026E）</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>零部件</th><th>2026市场</th><th>单台用量</th><th>单件价格</th><th>格局</th></tr></thead>
+  <tbody>
+    <tr><td>减速器</td><td>220亿元</td><td>—</td><td>—</td><td>谐波国产化80%+，RV日系主导</td></tr>
+    <tr><td>无框力矩电机</td><td>45亿元</td><td>20-40个</td><td>4,500元</td><td>鸣志/步科/禾川</td></tr>
+    <tr><td>空心杯电机</td><td>17亿元</td><td>12个</td><td>2,800元</td><td>—</td></tr>
+    <tr><td>行星滚柱丝杠</td><td>6亿元</td><td>8个</td><td>1,400元</td><td>国产突破中</td></tr>
+    <tr><td>伺服系统</td><td>300亿元</td><td>—</td><td>—</td><td>国产主导</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>5.3 灵巧手：人形机器人的"灵魂"</h3>
+<p>灵巧手是人形机器人执行精细操作的核心，也是技术迭代最快的环节：</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>厂商/产品</th><th>自由度</th><th>关键参数</th><th>价格(元/只)</th></tr></thead>
+  <tbody>
+    <tr><td>因时机器人</td><td>主动6/关节12</td><td>540g，指尖载荷8kg</td><td>22,000</td></tr>
+    <tr><td>宇树Dex3-1</td><td>7</td><td>33触觉传感器</td><td>36,000-41,000</td></tr>
+    <tr><td>强脑Revo 2</td><td>主动6/关节11</td><td>383g，抓取3kg</td><td>20,000-35,000</td></tr>
+    <tr><td>速腾聚创Papert 2.0</td><td>20</td><td>负载5kg，14力传感器</td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>关键判断：</strong>核心零部件国产化率已超70%（谐波减速器、伺服电机超80%）。减速器、电机、丝杠、灵巧手是价值量最高的环节，也是国产替代最确定的方向。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 产业链：谁在赚钱</h2>
+
+<h3>6.1 产业链结构</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>上游：核心零部件</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>中游：整机制造</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>下游：应用场景</span>
+</div>
+
+<h3>6.2 各环节赚钱逻辑</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>环节</th><th>赚钱逻辑</th><th>代表</th></tr></thead>
+  <tbody>
+    <tr><td>减速器（价值最高）</td><td>谐波国产化80%+，绿的谐波获特斯拉订单</td><td>绿的谐波、双环传动</td></tr>
+    <tr><td>电机/丝杠</td><td>单台用量大，跟随量产放量</td><td>鸣志、步科、禾川</td></tr>
+    <tr><td>灵巧手</td><td>技术迭代快，附加值高</td><td>因时、强脑</td></tr>
+    <tr><td>整机</td><td>出货放量但竞争激烈，毛利分化</td><td>宇树、优必选、智元</td></tr>
+    <tr><td>传感器/激光雷达</td><td>人形机器人增量方向</td><td>禾赛、速腾聚创</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>6.3 宇树G1拆解的启示</h3>
+<p>宇树G1拆解报告显示：核心硬件多为自研，宇树的核心竞争力在<strong>自研运控算法而非硬件</strong>。报告建议投资者关注关节模组、丝杠、减速器、轻量化材料、电机、传感器及设备等领域标的。</p>
+
+<div class="policy"><span class="policy-tag">产业链判断</span>整机厂（宇树/优必选/特斯拉）赚的是"品牌+算法"的钱；零部件厂（绿的谐波/双环/鸣志）赚的是"量产放量+国产替代"的钱。投资上，零部件环节的确定性高于整机（整机格局未定）。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 商业化：从工厂到生活</h2>
+
+<h3>7.1 落地场景演进</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>工业（工厂质检/搬运）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>物流（仓储分拣）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>服务（药店/商超）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">4</span>家庭（远期）</span>
+</div>
+
+<h3>7.2 当前商业化案例</h3>
+<ul>
+  <li><strong>特斯拉Optimus：</strong>弗里蒙特工厂执行零部件搬运、电池分装</li>
+  <li><strong>优必选Walker S：</strong>蔚来、东风柳汽工厂质检、装配辅助</li>
+  <li><strong>Agility Digit：</strong>亚马逊物流仓储试点</li>
+  <li><strong>银河通用Galbot：</strong>药店、商超场景泛化抓取</li>
+  <li><strong>北京天工：</strong>人形机器人生产线上无人化装配</li>
+</ul>
+
+<h3>7.3 商业化挑战</h3>
+<p>行业核心挑战仍是三件事：<strong>成本、可靠性、泛化能力</strong>。当前单台售价20-65万元，要达到家庭普及需要降至2万美元（约14万元）以下——特斯拉的2万美元目标就是行业风向标。</p>
+
+<div class="highlight-box"><strong>投资含义：</strong>商业化落地顺序是"工业→物流→服务→家庭"。2026-2027看工业场景放量（工厂是刚需+付费能力强），家庭场景是远期故事。跟踪特斯拉Optimus量产进度是行业风向标。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 投资逻辑与财务视角</h2>
+
+<h3>8.1 资本热度</h3>
+<ul>
+  <li>2026年前两个月中国具身智能及机器人赛道融资超30起，合计约200亿元</li>
+  <li>2026年Q1融资额同比增长近60%</li>
+  <li>银河通用2026年3月完成25亿元A+轮，估值超200亿元（中国单笔最大机器人融资）</li>
+  <li>2026年计划上市：宇树科技、银河通用、星海图、松延动力、乐聚</li>
+</ul>
+
+<h3>8.2 投资主线</h3>
+<div class="policy">
+  <strong>主线一（减速器/运动控制）：</strong>绿的谐波（谐波国产龙头，获特斯拉订单）、双环传动（RV减速器）——价值量最高+国产替代确定性。<br><br>
+  <strong>主线二（电机/丝杠）：</strong>鸣志电器、步科股份、禾川科技——单台用量大，跟随量产放量。<br><br>
+  <strong>主线三（整机/融资标的）：</strong>宇树科技、优必选、智元——格局未定，弹性大风险也大。<br><br>
+  <strong>主线四（传感器/激光雷达）：</strong>禾赛、速腾聚创——人形机器人增量方向。
+</div>
+
+<h3>8.3 财务视角</h3>
+<p>当前人形机器人行业整体处于"投入期"：整机厂（优必选等）多数尚未盈利，靠订单预期支撑估值；零部件厂（绿的谐波等）已有成熟业务（工业机器人零部件），人形机器人是增量期权。<strong>投资逻辑本质是"给2027-2030年的量产买单"。</strong></p>
+
+<div class="highlight-box"><strong>一句话总结：</strong>人形机器人是2026年最硬的成长赛道——市场5年20倍（200亿→4000亿）、中国主导供给、零部件国产化70%+。投资上零部件确定性>整机弹性，核心跟踪特斯拉Optimus量产与国产零部件订单落地。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 风险因素与展望</h2>
+
+<div class="highlight-box red"><strong>风险一：成本高企（中高风险）。</strong>当前单台售价20-65万元，距离家庭普及的2万美元目标仍有数倍差距。若成本下降不及预期，规模化进程将推迟。</div>
+
+<div class="highlight-box red"><strong>风险二：可靠性不足（中高风险）。</strong>人形机器人需要在真实环境稳定运行，当前技术成熟度（TRL）仍处早期，工业场景的可靠性要求极高，量产落地可能不及预期。</div>
+
+<div class="highlight-box red"><strong>风险三：估值泡沫（中风险）。</strong>2026年融资超200亿元、头部估值200亿+，行业尚无明显收入，估值已大幅透支未来。若量产不及预期，估值回调风险大。</div>
+
+<div class="highlight-box red"><strong>风险四：竞争格局未定（中风险）。</strong>整机厂商格局尚未固化（特斯拉/宇树/优必选/Figure混战），押注单一整机标的风险高。</div>
+
+<h3>展望与跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>特斯拉Optimus量产</td><td>C样进度、月产能、成本</td><td>行业风向标</td></tr>
+    <tr><td>国产出货量</td><td>宇树/优必选季度出货</td><td>量产验证</td></tr>
+    <tr><td>零部件订单</td><td>绿的谐波等订单落地</td><td>产业链确定性</td></tr>
+    <tr><td>融资/上市</td><td>宇树/银河通用IPO</td><td>资本市场认可</td></tr>
+    <tr><td>工业场景落地</td><td>工厂部署台数、复购</td><td>商业化验证</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>人形机器人是2026-2030年的确定性成长赛道，但当前处于"预期先行、业绩未到"阶段。建议核心跟踪特斯拉Optimus量产进度与国产零部件订单，优先配置确定性高的零部件龙头（减速器/电机），谨慎追高整机估值。控制仓位，等待量产数据验证。</div>
+</div>
+
+<div class="disclaimer-box" style="background:#f8f9fa;border:1px solid #e0e2e8;border-radius:6px;padding:14px 18px;margin:24px 0 12px;font-size:12px;color:#999;line-height:1.8;"><strong style="color:#888;">免责声明：</strong>本文由"行业拆解日记"基于公开资料整理，仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</div>
+<div class="footer">— 报告结束 · 行业拆解日记 · 人形机器人 —</div>
+
+</div>
+</body>
+</html>
