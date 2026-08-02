@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCB 行业研究报告 | 每天认识一个行业 · Day 06</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+  .company-card .cc-metrics { display: flex; gap: 16px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e0e8f0; flex-wrap: wrap; }
+  .company-card .cc-metrics .m-item .m-num { font-weight: 700; color: #003366; font-size: 14px; }
+  .company-card .cc-metrics .m-item .m-label { font-size: 11px; color: #999; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>PCB<br><span class="hl">AI服务器的骨架</span></h1>
+  <p class="subtitle">—— 高多层板与HDI升级下的价值重估 ——</p>
+  <div class="info">
+    <p>全球PCB市场（2024）：<strong>735.7亿美元（+5.8%）</strong></p>
+    <p>数据中心PCB市场（2026E）：<strong>约150亿美元</strong></p>
+    <p>龙头：<strong>胜宏科技 · 沪电股份</strong></p>
+    <p>综合评级：<strong style="color:#0a0;">积极（Positive）</strong></p>
+  </div>
+  <p class="date">报告日期：2026年7月31日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：PCB是什么</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>市场规模与增长逻辑</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>AI服务器PCB：价值量暴增</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>技术壁垒：高多层板与HDI</a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>竞争格局与核心公司 <span class="badge green">4家</span></a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>上游材料：覆铜板</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>财务分析与投资逻辑</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>风险因素与展望 <span class="badge red">4大风险</span></a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>PCB（印制电路板）是电子设备的"骨架"，在AI算力产业链中扮演服务器基板的关键角色。本报告是"AI算力产业链"系列第四篇，聚焦PCB行业，从市场规模、AI服务器价值量、技术壁垒、竞争格局、上游材料、财务分析六个维度展开。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">735.7<span class="u">亿美元</span></div><div class="lb">全球PCB市场（2024，+5.8%）</div></div>
+  <div class="stat-card"><div class="num">150<span class="u">亿美元</span></div><div class="lb">数据中心PCB市场（2026E）</div></div>
+  <div class="stat-card"><div class="num">+260~295%</div><div class="lb">胜宏科技2025净利预增</div></div>
+  <div class="stat-card"><div class="num">28层</div><div class="lb">高多层板层数门槛</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>PCB是AI算力产业链中业绩兑现最清晰的"第二梯队"环节（仅次于光模块）。2026年数据中心PCB市场约150亿美元，中国大陆厂商份额约30%且快速提升。<br><br>
+  <strong>核心结论二：</strong>AI服务器拉动PCB价值量逐代提升——高多层板（≥28层）、高阶HDI（8阶28层）、高阶加厚板HDI构成技术升级主线。高端产能建设周期长达18-24个月，良率爬坡慢，形成供需结构性矛盾。<br><br>
+  <strong>核心结论三：</strong>胜宏科技占据英伟达AI服务器PCB全球50%以上份额，2025年净利预增260%-295%，是产业链最受益的标的。<br><br>
+  <strong>风险提示：</strong>客户集中（胜宏依赖英伟达）、产能过剩周期、材料成本、估值偏高（PE 50倍）。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：PCB是什么</h2>
+
+<h3>2.1 定义与角色</h3>
+<p>PCB（Printed Circuit Board，印制电路板）是电子元器件的支撑体和电气连接的载体，被称为"电子产品之母"。在AI服务器中，PCB承载GPU、CPU、HBM等核心芯片，负责信号传输与电力分配。</p>
+
+<h3>2.2 在算力产业链中的位置</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>AI芯片（算力）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span><strong>PCB（服务器骨架）</strong></span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>AI服务器（整机）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">4</span>智算中心（部署）</span>
+</div>
+
+<h3>2.3 与AI芯片的关系</h3>
+<p>PCB的成长逻辑高度绑定AI芯片迭代：英伟达新一代GPU（Blackwell→GB300→Rubin）算力提升，对PCB的层数、材料、工艺要求同步升级，单芯片对应的PCB价值量逐代提升。可以说，<strong>AI芯片越强，PCB价值量越高</strong>。</p>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>PCB是AI芯片的"承载体"，享受芯片迭代带来的价值量升级红利。英伟达率先引入高阶加厚板HDI，倒逼中国PCB龙头研发升级，最终获得主供地位。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 市场规模与增长逻辑</h2>
+
+<h3>3.1 全球PCB市场</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>全球PCB产值（2024）</td><td>735.7亿美元</td><td>同比+5.8%（Prismark）</td></tr>
+    <tr><td>全球PCB产值（2029E）</td><td>946.6亿美元</td><td>2024-2029 CAGR 5.2%</td></tr>
+    <tr><td>数据中心/数通PCB（2026E）</td><td>约150亿美元</td><td>AI驱动的高增长细分</td></tr>
+    <tr><td>中国大陆厂商份额（2025）</td><td>约30%</td><td>2026年展望大幅提升</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 结构分化：AI是主引擎</h3>
+<p>传统PCB市场增速约5%（跟随电子行业周期），而数据中心/AI PCB是增速最高的细分——受益于AI服务器出货量和单机价值量双升。行业呈现明显的"AI强、传统弱"分化格局。</p>
+
+<h3>3.3 增长逻辑链</h3>
+<p>AI大模型训练需求 → 云厂商资本开支提升 → AI服务器出货放量 → 单机PCB价值量提升（高多层+HDI）→ 数据中心PCB市场高增。</p>
+
+<div class="policy"><span class="policy-tag">关键判断</span>与光模块（中国厂商主导）不同，PCB中国大陆份额约30%仍在提升通道——兼具"国产替代"和"AI放量"双重逻辑。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 AI服务器PCB：价值量暴增</h2>
+
+<h3>4.1 价值量提升逻辑</h3>
+<p>AI服务器PCB的单芯片对应价值量"逐个代际持续提升"（定性：从普通服务器到AI服务器，从H100到GB300，价值量成倍增长）。核心驱动：</p>
+<ul>
+  <li><strong>层数提升：</strong>普通服务器PCB约8-16层，AI服务器高多层板≥28层</li>
+  <li><strong>材料升级：</strong>高速低损耗材料（M6/M7/M8等级）用量增加</li>
+  <li><strong>工艺升级：</strong>高阶HDI（任意层互联）、高阶加厚板HDI</li>
+  <li><strong>载板化：</strong>PCB向类载板（Substrate-like PCB）演进</li>
+</ul>
+
+<h3>4.2 英伟达的拉动</h3>
+<p>英伟达率先在AI服务器中引入<strong>高阶加厚板HDI</strong>，对纳米级层间对位、0.076mm钻孔精度提出极高要求。这倒逼中国PCB龙头加大研发、采购先进钻孔设备、提升良率，最终获得主供地位。</p>
+
+<div class="highlight-box"><strong>投资含义：</strong>PCB投资的本质是"跟随芯片代际"——英伟达每代新品（GB200→GB300→Rubin）都带来PCB价值量提升。当前处于GB200/GB300放量周期，是业绩释放的黄金窗口。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 技术壁垒：高多层板与HDI</h2>
+
+<h3>5.1 三大技术趋势</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>趋势</th><th>内容</th><th>壁垒</th></tr></thead>
+  <tbody>
+    <tr><td>材料升级</td><td>高速低损耗材料（M6/M7/M8）</td><td>树脂/铜箔配方与认证</td></tr>
+    <tr><td>层数升级</td><td>高多层板≥28层</td><td>层间对位精度要求高</td></tr>
+    <tr><td>载板化</td><td>PCB向类载板演进</td><td>接近IC载板工艺</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>5.2 高端产能的结构性短缺</h3>
+<p>高端PCB（≥28层高多层、8阶28层HDI）产能建设周期长达18-24个月，且良率爬坡缓慢。胜宏科技的8阶28层HDI量产良率达98.5%，而行业平均仅75%——这种良率差距直接转化为成本优势和毛利溢价。</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>对比项</th><th>胜宏科技</th><th>行业平均</th></tr></thead>
+  <tbody>
+    <tr><td>8阶28层HDI量产良率</td><td>98.5%</td><td>75%</td></tr>
+    <tr><td>产能利用率</td><td>90%+</td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box red"><strong>结构性矛盾：</strong>AI需求爆发 vs 高端产能建设慢（18-24个月）= 高端PCB供给紧张将持续。率先完成产能和技术布局的龙头（胜宏、沪电）享受量价齐升。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 竞争格局与核心公司</h2>
+
+<h3>6.1 格局概览</h3>
+<p>全球PCB市场高度分散，但AI服务器PCB高度集中于少数厂商。中国大陆厂商2025年份额约30%，2023-2025年间完成海外客户突破，份额仍在提升。</p>
+
+<h3>6.2 核心公司</h3>
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">胜宏科技</span><span class="cc-tag hot">AI PCB绝对龙头</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>进入英伟达AI服务器PCB供应链核心层（Tier 1），2025年Q1英伟达订单占比超70%，占英伟达AI服务器PCB全球50%以上份额。<strong>产能：</strong>"惠州核心+越南+泰国"全球矩阵，利用率超90%。<strong>技术：</strong>8阶28层HDI良率98.5%（行业平均75%）。
+    </div>
+    <div class="cc-metrics">
+      <div class="m-item"><div class="m-num">41.6-45.6亿</div><div class="m-label">2025净利预增+260~295%</div></div>
+      <div class="m-item"><div class="m-num">36%</div><div class="m-label">毛利率</div></div>
+      <div class="m-item"><div class="m-num">~50x</div><div class="m-label">PE（高估值）</div></div>
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">沪电股份</span><span class="cc-tag">AI服务器+汽车</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>AI服务器PCB重要玩家+汽车电子PCB龙头，"AI+汽车"双轮驱动。2024年Q4收入同比+52%。
+    </div>
+    <div class="cc-metrics">
+      <div class="m-item"><div class="m-num">+43%</div><div class="m-label">2026E利润增速</div></div>
+      <div class="m-item"><div class="m-num">36.2x</div><div class="m-label">2026E PE</div></div>
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">生益科技</span><span class="cc-tag">上游覆铜板</span></div>
+    <div class="cc-body">
+      <strong>定位：</strong>全球覆铜板（CCL）龙头，PCB上游核心材料供应商。AI服务器高速材料需求（M6/M7/M8）带来产品结构升级机会。（数据待补充）
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">深南电路</span><span class="cc-tag">载板+PCB</span></div>
+    <div class="cc-body">
+      <strong>定位：</strong>PCB+IC载板双布局，受益"PCB载板化"趋势。（数据待补充）
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 上游材料：覆铜板</h2>
+
+<h3>7.1 覆铜板（CCL）的角色</h3>
+<p>覆铜板是PCB的核心材料，占PCB成本的30-40%，决定了PCB的性能等级。AI服务器对高速低损耗材料（M6/M7/M8）的需求，推动覆铜板产品结构升级。</p>
+
+<h3>7.2 国产覆铜板格局</h3>
+<p>生益科技是全球覆铜板龙头之一。高速材料是国产替代的重点方向——M6及以上等级材料此前由日本厂商（松下等）主导，国产厂商正加速突破。</p>
+
+<div class="highlight-box"><strong>产业链联动：</strong>PCB龙头（胜宏、沪电）业绩爆发 → 上游覆铜板（生益科技）量价齐升 → 再上游树脂/铜箔（建滔、南亚等）受益。AI服务器PCB景气向全产业链传导。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 财务分析与投资逻辑</h2>
+
+<h3>8.1 核心公司财务对比</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>公司</th><th>2025净利</th><th>核心驱动</th><th>估值</th><th>主要风险</th></tr></thead>
+  <tbody>
+    <tr><td>胜宏科技</td><td>41.6-45.6亿（+260~295%）</td><td>英伟达AI PCB 50%+份额</td><td>PE ~50x</td><td>客户集中（英伟达70%+）</td></tr>
+    <tr><td>沪电股份</td><td>—</td><td>AI服务器+汽车双轮</td><td>2026E 36.2x</td><td>估值消化</td></tr>
+    <tr><td>生益科技</td><td>—</td><td>覆铜板材料升级</td><td>—</td><td>材料价格波动</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>8.2 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（AI PCB龙头）：</strong>胜宏科技——英伟达AI服务器PCB全球50%+份额，业绩确定性最强，但PE 50倍已计入高增长预期。<br><br>
+  <strong>主线二（稳健+双轮）：</strong>沪电股份——AI服务器+汽车双轮，估值相对合理（2026E 36倍）。<br><br>
+  <strong>主线三（上游材料）：</strong>生益科技——覆铜板材料升级，弹性跟随PCB景气。<br><br>
+  <strong>主线四（载板化）：</strong>深南电路——PCB向IC载板演进的核心受益者。
+</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>PCB是AI算力产业链中"业绩兑现清晰+国产替代双重逻辑"的环节。龙头看胜宏（英伟达绑定），稳健看沪电，上游看生益，长期看载板化。核心跟踪英伟达芯片迭代节奏。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 风险因素与展望</h2>
+
+<div class="highlight-box red"><strong>风险一：客户集中（中高风险）。</strong>胜宏科技2025Q1英伟达订单占比超70%，一旦英伟达供应链调整（如引入新供应商、订单分流），业绩将剧烈波动。</div>
+
+<div class="highlight-box red"><strong>风险二：产能过剩周期（中风险）。</strong>PCB行业历史上周期性明显，若AI资本开支放缓或高端产能集中释放，可能出现供给过剩。高端产能建设周期18-24个月是缓冲，但需跟踪行业扩产计划。</div>
+
+<div class="highlight-box red"><strong>风险三：材料成本（中风险）。</strong>铜箔、树脂等原材料价格波动影响毛利；高速材料（M6/M7/M8）的供应和认证影响交付。</div>
+
+<div class="highlight-box red"><strong>风险四：估值风险（中风险）。</strong>胜宏科技PE约50倍，市值一年涨6倍（+605%），估值已计入未来2-3年高增长，一旦增速放缓回调压力大。</div>
+
+<h3>展望与跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>英伟达芯片迭代</td><td>GB300/Rubin量产、NVL72出货</td><td>PCB价值量核心驱动</td></tr>
+    <tr><td>胜宏产能与订单</td><td>惠州/越南/泰国产能爬坡、英伟达订单占比</td><td>龙头景气度</td></tr>
+    <tr><td>高端产能扩张</td><td>行业新增28层+/HDI产能规划</td><td>判断供给拐点</td></tr>
+    <tr><td>覆铜板价格</td><td>高速材料供需与价格</td><td>材料环节景气</td></tr>
+    <tr><td>云厂商资本开支</td><td>AI服务器采购节奏</td><td>需求端验证</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>PCB是AI算力产业链中确定性较高的"第二梯队"环节——业绩兑现清晰（胜宏净利+260%~295%）、国产替代逻辑强（份额30%→提升）、价值量随芯片代际提升。建议核心跟踪英伟达芯片迭代与胜宏订单，在估值回调时布局龙头，关注上游覆铜板（生益）的联动机会。</div>
+</div>
+
+<div class="footer">— 报告结束 · 每天认识一个行业 · 系列：AI算力产业链 —</div>
+
+</div>
+</body>
+</html>
