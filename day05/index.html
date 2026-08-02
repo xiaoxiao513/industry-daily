@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光模块 行业研究报告 | 每天认识一个行业 · Day 05</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+  .company-card .cc-metrics { display: flex; gap: 16px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e0e8f0; flex-wrap: wrap; }
+  .company-card .cc-metrics .m-item .m-num { font-weight: 700; color: #003366; font-size: 14px; }
+  .company-card .cc-metrics .m-item .m-label { font-size: 11px; color: #999; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>光模块<br><span class="hl">AI数据高速公路</span></h1>
+  <p class="subtitle">—— 800G放量、1.6T迭代、CPO变局的全面透视 ——</p>
+  <div class="info">
+    <p>全球数通高速光模块市场（2026E）：<strong>350-400亿美元</strong></p>
+    <p>中国大陆厂商份额：<strong>超60%</strong></p>
+    <p>龙头：<strong>中际旭创 · 新易盛 · 天孚通信</strong></p>
+    <p>综合评级：<strong style="color:#0a0;">积极（Positive）</strong></p>
+  </div>
+  <p class="date">报告日期：2026年7月31日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：数据高速公路</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>市场规模与增长逻辑</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>技术迭代：800G→1.6T→3.2T</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>CPO：终极方向还是颠覆者</a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>竞争格局与核心公司 <span class="badge green">4家</span></a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>上游卡脖子：光芯片</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>财务分析与投资逻辑</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>风险因素与展望 <span class="badge red">4大风险</span></a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>光模块是AI数据中心的数据传输咽喉，被称为"AI数据高速公路"。本报告是"AI算力产业链"系列第三篇，聚焦光模块行业，从市场规模、技术迭代、CPO变局、竞争格局、上游卡脖子、财务分析六个维度展开。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">350-400<span class="u">亿美元</span></div><div class="lb">2026年全球数通高速光模块市场</div></div>
+  <div class="stat-card"><div class="num">60%+</div><div class="lb">中国大陆厂商全球份额</div></div>
+  <div class="stat-card"><div class="num">+196%</div><div class="lb">新易盛2025年营收增速</div></div>
+  <div class="stat-card"><div class="num">5-10倍</div><div class="lb">Scale Up市场空间vs Scale Out</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>光模块是AI算力产业链中业绩兑现最清晰的环节之一。2026年全球市场350-400亿美元，中国大陆厂商份额超60%且稳中有升。<br><br>
+  <strong>核心结论二：</strong>技术迭代驱动价值量持续提升——800G为主力、1.6T放量初期、3.2T预研。AI算力集群从万卡向十万卡扩展，光模块需求呈倍数增长。<br><br>
+  <strong>核心结论三：</strong>CPO（共封装光学）是终极方向，1.6T时代开始在超大规模数据中心应用，将重构光模块产业链价值分配——有光芯片自研能力的厂商占优。<br><br>
+  <strong>风险提示：</strong>CPO替代风险、技术路线切换、客户集中、估值已高（龙头2026E PE 45倍+）。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：数据高速公路</h2>
+
+<h3>2.1 光模块是什么</h3>
+<p>光模块是光通信的核心器件，负责将电信号转换为光信号（发射）和将光信号转换为电信号（接收），实现数据中心内部和之间的高速数据传输。在AI算力体系中，光模块是连接GPU服务器集群的"数据高速公路"。</p>
+
+<h3>2.2 在算力产业链中的位置</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>AI芯片（算力）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>服务器/PCB（算力容器）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span><strong>光模块（数据传输）</strong></span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">4</span>智算中心（算力地产）</span>
+</div>
+
+<h3>2.3 需求拉动逻辑</h3>
+<p>谷歌、亚马逊、微软、Meta持续建设AI数据中心 → 云厂商资本开支大幅提升 → AI算力集群增大使互联距离变长 → 高速光模块需求爆发。</p>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>AI训练集群从万卡级向十万卡级扩展，光模块需求量呈倍数增长。每台AI服务器机架中光收发器是核心组件之一——算力越大，数据传输需求越强，光模块越受益。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 市场规模与增长逻辑</h2>
+
+<h3>3.1 市场规模</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>全球数通高速光模块市场（2026E）</td><td>350-400亿美元</td><td>景顺长城基金2026.07</td></tr>
+    <tr><td>中国大陆厂商份额（2025）</td><td>超60%</td><td>2026年稳中有升</td></tr>
+    <tr><td>全球AI数据中心投资（2023-2030）</td><td>4.0万亿美元</td><td>其中2.8万亿用于半导体和硬件</td></tr>
+    <tr><td>数据中心电力需求（2030）</td><td>增长至少160%</td><td>主要由AI负载驱动</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 Scale Up：更大的增量市场</h3>
+<p>光模块正从Scale Out（横向扩展）向Scale Up（纵向扩展）网络渗透。<strong>Scale Up市场空间是Scale Out的5-10倍</strong>——这是光模块行业最重要的增量逻辑。随着AI集群从万卡向十万卡扩展，Scale Up网络对高速光模块的需求将爆发式增长。</p>
+
+<h3>3.3 中国厂商的份额逻辑</h3>
+<p>中国光模块厂商已从"成本优势"转向"<strong>工程师红利+迭代效率</strong>"驱动——全球前10大厂商中中国大陆占7家，份额超60%。这是中国在AI硬件产业链中少有的"主场作战"环节。</p>
+
+<div class="policy"><span class="policy-tag">关键判断</span>与AI芯片（国产替代率低）不同，光模块是中国厂商已主导的环节。投资逻辑不是"替代"，而是"跟随AI资本开支放量"。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 技术迭代：400G→800G→1.6T→3.2T</h2>
+
+<h3>4.1 代际演进</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>代际</th><th>状态</th><th>关键特征</th></tr></thead>
+  <tbody>
+    <tr><td>400G</td><td>上一代主力</td><td>早期产品</td></tr>
+    <tr><td>800G</td><td>当前市场主力</td><td>中际旭创等龙头靠800G驱动业绩</td></tr>
+    <tr><td>1.6T</td><td>量产初期，2025-2026规模上量</td><td>速率约为800G的2倍，PAM4调制，200G/通道EML</td></tr>
+    <tr><td>3.2T</td><td>下一代预研</td><td>持续升级方向</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>4.2 中国厂商的领先</h3>
+<p>2024年Q1中国厂商已率先推出1.6T硅光光模块，在硅光方案上领先全球。<strong>技术代际切换是中国光模块厂商保持全球竞争力的核心武器</strong>——每一代新产品都带来"需求、价格和利润同步提升"。</p>
+
+<div class="highlight-box"><strong>投资含义：</strong>光模块投资的本质是"跟代际"——每一代新技术（800G→1.6T→3.2T）量产，都带来一轮业绩释放。当前处于800G放量+1.6T上量的黄金窗口。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 CPO：终极方向还是颠覆者</h2>
+
+<h3>5.1 什么是CPO</h3>
+<p>CPO（Co-Packaged Optics，共封装光学）将光引擎与交换芯片直接集成在同一封装内，是光模块技术的终极演进方向。</p>
+
+<h3>5.2 核心优势</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>维度</th><th>传统可插拔</th><th>CPO</th><th>提升</th></tr></thead>
+  <tbody>
+    <tr><td>端口功耗（800G）</td><td>约30W</td><td>降至9W</td><td>降低70%</td></tr>
+    <tr><td>能效</td><td>18.75pJ/bit</td><td>5.63pJ/bit</td><td>提升3.3倍</td></tr>
+    <tr><td>电损耗</td><td>约22dB</td><td>降至4dB</td><td>完整性提高63倍</td></tr>
+    <tr><td>离散光学组件</td><td>—</td><td>减少80%</td><td>故障率降10倍</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>5.3 进展与影响</h3>
+<p>CPO处于早期产业化阶段，预计从1.6T时代开始在超大规模数据中心应用。英伟达2025年GTC推出基于CPO的Spectrum-X和Quantum-X交换机，采用台积电COUPE封装，Spectrum-X总吞吐量高达400Tbps（黄仁勋称"全垒打式创新"）。</p>
+
+<div class="highlight-box red"><strong>替代影响：</strong>CPO是终极方向，将对传统可插拔光模块形成替代压力。但替代是渐进的——1.6T时代CPO与可插拔并存，且CPO将重构产业链价值分配，<strong>拥有光芯片自研能力的厂商（中际旭创、天孚通信等）在新格局中占优</strong>。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 竞争格局与核心公司</h2>
+
+<h3>6.1 全球格局</h3>
+<p>全球前10大光模块厂商中，中国大陆占7家（LightCounting 2023）：中际旭创（第1）、华为（第3）、光迅科技（第5）、海信宽带（第6）、新易盛（第7）、华工科技（第8）、索尔思光电（第9）。</p>
+
+<h3>6.2 核心公司</h3>
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">中际旭创（300308）</span><span class="cc-tag hot">全球龙头</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>全球高速光模块龙头（2023年全球第1），800G驱动业绩，1.6T已小批量出货。深度绑定英伟达、谷歌、亚马逊。<strong>技术：</strong>自研硅光芯片，是谷歌1.6T光模块核心供应商。
+    </div>
+    <div class="cc-metrics">
+      <div class="m-item"><div class="m-num">54亿美元</div><div class="m-label">2025收入（+62%）</div></div>
+      <div class="m-item"><div class="m-num">15亿美元</div><div class="m-label">2025净利（+96%）</div></div>
+      <div class="m-item"><div class="m-num">28%</div><div class="m-label">净利率</div></div>
+      <div class="m-item"><div class="m-num">45.5x</div><div class="m-label">2026E PE</div></div>
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">新易盛（300502）</span><span class="cc-tag hot">高弹性</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>全球排名第7，点对点/PON光模块，高端产品带动毛利率提升。前瞻布局LPO、硅光、CPO。<strong>客户：</strong>海外收入占比高，绑定北美云厂商。
+    </div>
+    <div class="cc-metrics">
+      <div class="m-item"><div class="m-num">35亿美元</div><div class="m-label">2025收入（+196%）</div></div>
+      <div class="m-item"><div class="m-num">13亿美元</div><div class="m-label">2025净利（+218%）</div></div>
+      <div class="m-item"><div class="m-num">47%</div><div class="m-label">毛利率</div></div>
+      <div class="m-item"><div class="m-num">34.5x</div><div class="m-label">2026E PE</div></div>
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">天孚通信</span><span class="cc-tag">上游无源</span></div>
+    <div class="cc-body">
+      <strong>定位：</strong>硅光引擎、FAU（无源器件）供应商，是光模块产业链的上游关键环节。CPO趋势下的受益者。
+    </div>
+    <div class="cc-metrics">
+      <div class="m-item"><div class="m-num">52%</div><div class="m-label">毛利率</div></div>
+      <div class="m-item"><div class="m-num">+219%</div><div class="m-label">2025年市值涨幅</div></div>
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">Lumentum</span><span class="cc-tag">光芯片</span></div>
+    <div class="cc-body">
+      <strong>定位：</strong>EML激光器全球市占约50%，CPO激光器布局领先。获英伟达20亿美元投资。<strong>关键数据：</strong>EML产能已预订至2027年，供给紧张。
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 上游卡脖子：光芯片</h2>
+
+<h3>7.1 光芯片格局</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>环节</th><th>格局</th><th>状态</th></tr></thead>
+  <tbody>
+    <tr><td>EML激光器</td><td>Lumentum全球市占约50%</td><td>产能预订至2027年，供给紧张</td></tr>
+    <tr><td>InP激光芯片</td><td>全球缺口25-30%</td><td>关键卡脖子环节</td></tr>
+    <tr><td>硅光</td><td>中际旭创自研，中国大陆2024Q1率先推1.6T硅光模块</td><td>国产在硅光方案领先</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>7.2 卡脖子的意义</h3>
+<p>光芯片是光模块产业链中少数仍被海外主导的环节（EML、InP激光芯片）。这既是风险（供给紧张），也是机会——国产光芯片替代是光模块行业的下一个增长极。</p>
+
+<div class="highlight-box"><strong>产业链启示：</strong>中际旭创自研硅光芯片是行业标杆——掌握上游芯片能力，才能在新代际（1.6T/CPO）竞争中掌握主动权。光芯片国产化是值得跟踪的中期逻辑。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 财务分析与投资逻辑</h2>
+
+<h3>8.1 核心公司财务对比</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>公司</th><th>2025收入</th><th>2025净利</th><th>毛利率</th><th>2026E增速</th><th>2026E PE</th></tr></thead>
+  <tbody>
+    <tr><td>中际旭创</td><td>54亿美元(+62%)</td><td>15亿美元(+96%)</td><td>—</td><td>+135%</td><td>45.5x</td></tr>
+    <tr><td>新易盛</td><td>35亿美元(+196%)</td><td>13亿美元(+218%)</td><td>47%</td><td>+84%</td><td>34.5x</td></tr>
+    <tr><td>天孚通信</td><td>—</td><td>—</td><td>52%</td><td>—</td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>8.2 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（确定性龙头）：</strong>中际旭创——全球第一+深度绑定英伟达/谷歌/亚马逊，业绩确定性强，PE相对合理。<br><br>
+  <strong>主线二（高弹性）：</strong>新易盛——营收+196%的高增长，毛利率47%提升，弹性大。<br><br>
+  <strong>主线三（CPO受益）：</strong>天孚通信——上游无源器件+硅光引擎，CPO趋势下的确定性受益者。<br><br>
+  <strong>主线四（光芯片）：</strong>Lumentum等——EML/InP卡脖子环节，供给紧张带来议价权。
+</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>光模块是中国在AI硬件产业链中已主导的环节（份额60%+），投资逻辑是"跟随AI资本开支放量"。龙头看确定性（中际旭创），弹性看新易盛，中长期看CPO与光芯片国产化。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 风险因素与展望</h2>
+
+<div class="highlight-box red"><strong>风险一：CPO替代（中高风险）。</strong>CPO是终极方向，从1.6T时代开始在超大规模数据中心应用。若CPO渗透超预期，传统可插拔光模块厂商将面临价值重估。但CPO同样需要光引擎，有光芯片能力的厂商占优。</div>
+
+<div class="highlight-box red"><strong>风险二：技术路线切换（中风险）。</strong>硅光、LPO、薄膜铌酸锂等路线并存，押错路线的厂商可能掉队。</div>
+
+<div class="highlight-box red"><strong>风险三：客户集中（中风险）。</strong>光模块厂商收入高度依赖少数云厂商（北美大厂），一旦云厂商资本开支调整，业绩波动大。</div>
+
+<div class="highlight-box red"><strong>风险四：估值风险（中风险）。</strong>龙头2026E PE已达45倍以上，市值一年涨4倍（中际旭创+401%、新易盛+435%），估值已计入高增长预期，一旦增速放缓回调风险大。</div>
+
+<h3>展望与跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>英伟达产品迭代</td><td>GB300/GB200出货、新机架光模块用量</td><td>需求核心驱动</td></tr>
+    <tr><td>1.6T量产节奏</td><td>中际旭创/新易盛1.6T出货爬坡</td><td>新一轮业绩释放</td></tr>
+    <tr><td>云厂商资本开支</td><td>谷歌/亚马逊/Meta指引</td><td>行业景气度风向标</td></tr>
+    <tr><td>CPO渗透进度</td><td>英伟达CPO交换机出货</td><td>技术变局风险与机会</td></tr>
+    <tr><td>光芯片国产化</td><td>EML/InP国产替代进度</td><td>下一个增长极</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>光模块是AI算力产业链中确定性较高的环节——中国份额主导、代际迭代驱动、业绩兑现清晰。短期关注1.6T量产与云厂商资本开支，中期看CPO格局变化，长期看光芯片国产化。建议在估值回调时配置龙头，跟踪技术路线变化。</div>
+</div>
+
+<div class="footer">— 报告结束 · 每天认识一个行业 · 系列：AI算力产业链 —</div>
+
+</div>
+</body>
+</html>
