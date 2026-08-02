@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI服务器 行业研究报告 | 每天认识一个行业 · Day 08</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+  .company-card .cc-metrics { display: flex; gap: 16px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e0e8f0; flex-wrap: wrap; }
+  .company-card .cc-metrics .m-item .m-num { font-weight: 700; color: #003366; font-size: 14px; }
+  .company-card .cc-metrics .m-item .m-label { font-size: 11px; color: #999; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>AI服务器<br><span class="hl">算力的容器</span></h1>
+  <p class="subtitle">—— 单台350万美元，谁在组装AI时代的算力 ——</p>
+  <div class="info">
+    <p>中国AI服务器市场（2024）：<strong>190亿美元（+86.9%）</strong></p>
+    <p>GB300 NVL72机架售价：<strong>约350万美元</strong></p>
+    <p>龙头：<strong>工业富联 · 浪潮信息</strong></p>
+  </div>
+  <p class="date">报告日期：2026年7月31日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：算力的容器</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>市场规模与增长</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>英伟达机架：价值量解剖</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>竞争格局与核心公司 <span class="badge green">3家</span></a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>配套环节：液冷与电源</a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>国产AI服务器</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>投资逻辑与财务视角</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>风险因素与展望 <span class="badge red">4大风险</span></a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>AI服务器是算力的"容器"——把AI芯片、存储、PCB、光模块等所有硬件集成组装成可部署的算力单元。本报告是"AI算力产业链"系列第六篇，聚焦AI服务器行业，从市场规模、英伟达机架价值量、竞争格局、配套环节、投资逻辑五个维度展开。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">190<span class="u">亿美元</span></div><div class="lb">中国AI服务器市场（2024，+86.9%）</div></div>
+  <div class="stat-card"><div class="num">350<span class="u">万美元</span></div><div class="lb">GB300 NVL72机架售价</div></div>
+  <div class="stat-card"><div class="num">+51~54%</div><div class="lb">工业富联2025净利增速</div></div>
+  <div class="stat-card"><div class="num">36.1%</div><div class="lb">浪潮中国加速服务器份额</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>AI服务器是AI算力的"集成环节"，市场高速增长。中国AI服务器市场2024年190亿美元（+86.9%），2025年预计259亿，2028年预计552亿。<br><br>
+  <strong>核心结论二：</strong>单台AI服务器价值量极高（GB300 NVL72约350万美元），GPU占价值70%+，存储占12%。机架化（NVL72）是英伟达主导的形态，带动整机、液冷、电源全环节升级。<br><br>
+  <strong>核心结论三：</strong>工业富联是全球AI服务器代工龙头（GB300组装订单约70%），浪潮信息是中国加速服务器龙头（份额36.1%）。液冷、电源等配套环节国产份额正从0到1突破。<br><br>
+  <strong>风险提示：</strong>毛利率偏低、客户集中、英伟达依赖、周期波动。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：算力的容器</h2>
+
+<h3>2.1 AI服务器的角色</h3>
+<p>AI服务器是专门为AI训练和推理设计的服务器，将AI芯片（GPU）、存储（HBM/DRAM）、互联（光模块/铜缆）、供电（电源）、散热（液冷）等硬件集成为一体。它把"算力零件"组装成"算力机器"。</p>
+
+<h3>2.2 在算力产业链中的位置</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>AI芯片（算力）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>PCB/存储/光模块（零件）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span><strong>AI服务器（整机集成）</strong></span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">4</span>智算中心（部署）</span>
+</div>
+
+<h3>2.3 与普通服务器的区别</h3>
+<p>AI服务器与普通服务器有本质区别：单台价值量高一个数量级（普通服务器几万元，AI机架数百万美元）、需要液冷散热、GPU互联复杂度极高。AI服务器是算力产业链的"集成商"，其价值在于整合能力而非单一硬件。</p>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>AI服务器是"算力从零件到机器"的关键环节。虽然整机组装毛利率低（约7%），但它是产业链收入规模最大的环节之一——赚的是"组装+集成"的钱，规模效应明显。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 市场规模与增长</h2>
+
+<h3>3.1 中国AI服务器市场</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>年份</th><th>市场规模</th><th>同比</th></tr></thead>
+  <tbody>
+    <tr><td>2024</td><td>190亿美元</td><td>+86.9%</td></tr>
+    <tr><td>2025E</td><td>259亿美元</td><td>+36.2%</td></tr>
+    <tr><td>2028E</td><td>552亿美元</td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 全球算力容量</h3>
+<p>全球算力中心总容量从2026年约102GW增至2030年220GW，其中AI负载占比从60%升至71%。全球服务器出货量从2023年12百万台增至2026年17百万台，服务器单机存储容量持续提升（DRAM 2026E达1,040GB/台）。</p>
+
+<h3>3.3 未来五年支出</h3>
+<p>仲量联行预计2026-2030年全球数据中心行业规模增长97GW，未来五年数据中心总支出接近3万亿美元——其中AI服务器硬件是最大投入方向。</p>
+
+<div class="policy"><span class="policy-tag">关键判断</span>AI服务器是算力产业链中"收入规模最大"的环节之一。2028年中国市场552亿美元，叠加全球3万亿美元数据中心支出，AI服务器处于高增长长周期。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 英伟达机架：价值量解剖</h2>
+
+<h3>4.1 历代机架对比</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>机型</th><th>售价(万美元)</th><th>HBM/机架</th><th>存储价值占比</th></tr></thead>
+  <tbody>
+    <tr><td>GB200 NVL72</td><td>320</td><td>13.5 TB</td><td>10%</td></tr>
+    <tr><td>GB300 NVL72</td><td>350</td><td>20.0 TB</td><td>12%</td></tr>
+    <tr><td>NVL144（Rubin）</td><td>360</td><td>20.0 TB</td><td>11%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>4.2 GB300 NVL72成本结构</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>托盘类型</th><th>数量/机架</th><th>价值/机架</th></tr></thead>
+  <tbody>
+    <tr><td>计算托盘</td><td>2-4个</td><td>$1.5M-3.5M（核心）</td></tr>
+    <tr><td>电源托盘</td><td>1-2个</td><td>$50K-290K</td></tr>
+    <tr><td>加速器互连托盘</td><td>8-18个</td><td>$10K-50K</td></tr>
+    <tr><td>网络与IPMI托盘</td><td>1-2个</td><td>$17K-25K</td></tr>
+    <tr><td>CDU托盘（液冷）</td><td>1-2个</td><td>$15K-30K</td></tr>
+  </tbody>
+</table>
+</div>
+<p>单个AI服务器机架含约4,500颗芯片（约20,000个独立半导体晶粒），GPU/加速器占机架价值的70%以上。</p>
+
+<h3>4.3 下一代：Vera Rubin</h3>
+<p>Vera Rubin NVL72：72×Rubin GPU + 36×Vera CPU，系统内存54TB LPDDR5X，NVFP4算力2,520 PFLOPS。<strong>Rubin GPU整体性能为GB300的3.3倍</strong>，集成288GB HBM4、22TB/s带宽。</p>
+
+<div class="highlight-box"><strong>投资含义：</strong>英伟达机架化（NVL72形态）带动整机价值量提升，每一代新品都拉动服务器OEM、液冷、电源、连接器等全环节升级。跟踪英伟达新品节奏是判断AI服务器景气的核心。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 竞争格局与核心公司</h2>
+
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">工业富联</span><span class="cc-tag hot">全球AI服务器代工龙头</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>全球AI服务器代工龙头，与英伟达合作始于2017年，覆盖GPU模组→基板→整机组装全产业链。<strong>关键：</strong>H200 GPU基板独家供应商，GB300组装订单占比约70%。自研超流体浸没式液冷方案（PUE可低至1.06），英伟达订单排至2026-2027年。
+    </div>
+    <div class="cc-metrics">
+      <div class="m-item"><div class="m-num">351-357亿</div><div class="m-label">2025归母净利（+51~54%）</div></div>
+      <div class="m-item"><div class="m-num">超50%</div><div class="m-label">云计算营收占比</div></div>
+      <div class="m-item"><div class="m-num">~7%</div><div class="m-label">毛利率（偏低）</div></div>
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">浪潮信息</span><span class="cc-tag">国产AI服务器龙头</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>2024年中国加速服务器市场份额36.1%，主导地位。2024年中国液冷服务器市场前三（浪潮、超聚变、宁畅）合计约七成。<strong>技术：</strong>2025年8月发布元脑SD200超节点，聚合64路本土GPU芯片，面向万亿大模型训推场景。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">新华三</span><span class="cc-tag">政企+运营商</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>依托运营商和政企客户资源，在非GPU架构（FPGA等）加速服务器领域扩大布局。（详细数据待补充）
+    </div>
+  </div>
+</div>
+
+<h3>5.1 格局特征</h3>
+<p>AI服务器市场呈现"英伟达主导+OEM代工"的格局：工业富联等代工龙头赚组装费（毛利低、规模大），浪潮等整机厂商做品牌市场。云厂商自研（谷歌TPU等）也在挤压部分市场。</p>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 配套环节：液冷与电源</h2>
+
+<h3>6.1 液冷</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>2026全球液冷市场</td><td>约150亿美元</td><td>大陆份额~0%，2026年完成从0到1</td></tr>
+    <tr><td>中国液冷服务器市场（2024）</td><td>23.7亿美元</td><td>+67%</td></tr>
+    <tr><td>中国液冷市场CAGR</td><td>59%（2022-2027）</td><td>2027年将突破千亿元</td></tr>
+    <tr><td>渗透率</td><td>从7%→2030年45%</td><td>AI带动渗透加速</td></tr>
+  </tbody>
+</table>
+</div>
+<p>为什么必须液冷：液体导热能力是空气的25倍，同体积带走热量为空气3,000倍。传统风冷极限约12-15kW，而AI服务器单机柜功率达30-50kW甚至100kW+。"东数西算"要求PUE<1.2，液冷可将PUE降至1.1以下（甚至1.07），节能30%-50%。</p>
+
+<h3>6.2 服务器电源</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>2026全球服务器电源市场</td><td>约70亿美元</td><td>大陆份额~0%，2026年从0到1</td></tr>
+    <tr><td>海外交付周期</td><td>变压器100周+</td><td>中国企业仅需3-6个月</td></tr>
+    <tr><td>技术方向</td><td>800V HVDC + GaN</td><td>功率密度提升一倍</td></tr>
+  </tbody>
+</table>
+</div>
+<p>AI服务器功率从几十kW向>300kW/机柜演进，电源成为瓶颈环节。英诺赛科（全球首家8英寸硅基GaN量产）可为英伟达提供800V全链路电源方案；伊顿与英伟达合作升级HVDC至800V。</p>
+
+<div class="highlight-box green"><strong>关键判断：</strong>液冷和电源是AI服务器产业链中"从0到1"的国产化机会——中国大陆份额接近0，但凭借交付周期优势（3-6个月 vs 海外100周）正快速切入。这是比光模块/PCB更早期的国产替代窗口。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 国产AI服务器</h2>
+<p>国产AI服务器围绕华为昇腾生态构建：</p>
+<ul>
+  <li><strong>浪潮信息元脑SD200：</strong>聚合64路本土GPU芯片，3D Mesh架构，面向万亿大模型训推</li>
+  <li><strong>华为Atlas 900 A3超节点：</strong>384颗昇腾+192颗鲲鹏，总算力900 PFLOPs（详见Day04）</li>
+  <li><strong>国产液冷服务器前三：</strong>浪潮信息、超聚变、宁畅合计约七成份额</li>
+  <li><strong>新华三：</strong>在FPGA等非GPU架构加速服务器领域布局</li>
+</ul>
+<p>中国加速服务器市场2024年190亿美元（+86.9%），国产化趋势明确。DeepSeek V4实现国产芯片Day0适配（详见Day04），为国产AI服务器提供了软件生态支撑。</p>
+
+<div class="highlight-box"><strong>投资含义：</strong>国产AI服务器的核心逻辑是"昇腾生态+信创替代"——受益于国产算力政策和大厂采购，弹性大但竞争格局仍待固化。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 投资逻辑与财务视角</h2>
+
+<h3>8.1 核心公司财务对比</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>公司</th><th>2025净利</th><th>核心驱动</th><th>毛利率</th><th>主要风险</th></tr></thead>
+  <tbody>
+    <tr><td>工业富联</td><td>351-357亿（+51~54%）</td><td>GB300组装70%、英伟达订单</td><td>~7%</td><td>客户集中、毛利低</td></tr>
+    <tr><td>浪潮信息</td><td>—</td><td>国产AI服务器龙头</td><td>—</td><td>国产芯片供给</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>8.2 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（英伟达链代工）：</strong>工业富联——GB300组装70%份额，业绩确定性强，但毛利低、赚规模钱。<br><br>
+  <strong>主线二（国产服务器）：</strong>浪潮信息——国产AI服务器龙头，受益昇腾生态+信创。<br><br>
+  <strong>主线三（液冷/电源）：</strong>英维克、麦格米特、英诺赛科等——从0到1的国产化窗口，弹性最大。<br><br>
+  <strong>主线四（上游零部件）：</strong>高速连接器、CDU等——跟随英伟达机架升级。
+</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>AI服务器是算力产业链"收入规模最大"的集成环节。龙头看工业富联（英伟达绑定）、浪潮（国产），弹性看液冷/电源（从0到1）。核心跟踪英伟达机架迭代与订单分配。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 风险因素与展望</h2>
+
+<div class="highlight-box red"><strong>风险一：客户集中（高风险）。</strong>工业富联前五大客户占比超65%，GB300订单高度依赖英伟达。一旦英伟达调整代工份额或订单延迟，业绩波动大。</div>
+
+<div class="highlight-box red"><strong>风险二：毛利率偏低（中风险）。</strong>AI服务器代工毛利率约7%，赚规模钱不赚利润钱，抗风险能力弱。液冷等配套环节毛利相对高但体量小。</div>
+
+<div class="highlight-box red"><strong>风险三：云厂商自研冲击（中风险）。</strong>谷歌TPU、亚马逊Trainium等自研芯片+自研服务器，可能挤压传统OEM和英伟达依赖型厂商的市场。</div>
+
+<div class="highlight-box red"><strong>风险四：周期波动（中风险）。</strong>AI资本开支若放缓，服务器出货首当其冲。全球服务器出货量2026年仅+4%，增长放缓信号值得关注。</div>
+
+<h3>展望与跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>英伟达新品</td><td>GB300/Rubin出货、NVL72订单</td><td>服务器需求核心</td></tr>
+    <tr><td>云厂商资本开支</td><td>北美大厂AI服务器采购</td><td>需求验证</td></tr>
+    <tr><td>工业富联订单</td><td>GB300组装份额、在手订单</td><td>龙头景气度</td></tr>
+    <tr><td>液冷渗透</td><td>液冷服务器占比</td><td>配套环节放量</td></tr>
+    <tr><td>国产芯片供给</td><td>昇腾产能、国产服务器出货</td><td>国产链景气</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>AI服务器是算力产业链中"赚规模钱"的环节——龙头（工业富联）业绩确定性来自英伟达绑定，但毛利低需以量补价。弹性更大的是液冷、电源等从0到1的配套环节。建议核心跟踪英伟达机架迭代、云厂商资本开支与液冷渗透率。</div>
+</div>
+
+<div class="disclaimer-box" style="background:#f8f9fa;border:1px solid #e0e2e8;border-radius:6px;padding:14px 18px;margin:24px 0 12px;font-size:12px;color:#999;line-height:1.8;"><strong style="color:#888;">免责声明：</strong>本文由"行业拆解日记"基于公开资料整理，仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</div>
+<div class="footer">— 报告结束 · 行业拆解日记 · 系列：AI算力产业链 —</div>
+
+</div>
+</body>
+</html>
