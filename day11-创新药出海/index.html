@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创新药出海 行业研究报告 | 每天认识一个行业 · Day 11</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  /* 数据来源 */
+  .sources { background: #f8f9fa; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; border: 1px solid #e0e2e8; }
+  .sources h2 { font-size: 18px; color: #1a1a2e; border-left: 4px solid #c9a84c; padding-left: 12px; margin-bottom: 14px; }
+  .sources ul { list-style: none; padding-left: 0; }
+  .sources li { font-size: 13px; color: #555; padding: 6px 0; border-bottom: 1px dashed #e0e2e8; }
+  .sources li:last-child { border-bottom: none; }
+  .sources li::before { content: '▸ '; color: #c9a84c; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>创新药出海<br><span class="hl">License-out的黄金时代</span></h1>
+  <p class="subtitle">—— 2025年BD总金额1300亿美元，中国创新药驶向全球 ——</p>
+  <div class="info">
+    <p>2025年BD总金额：<strong>接近1,300亿美元（较2024年翻倍）</strong></p>
+    <p>中国项目占MNC大额BD：<strong>超40%（2020年不足5%）</strong></p>
+    <p>龙头：<strong>恒瑞 · 百济 · 康方 · 信达</strong></p>
+  </div>
+  <p class="date">报告日期：2026年8月3日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：什么是License-out</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>市场规模：BD交易的爆发</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>代表性交易案例</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>主要药企盘点 <span class="badge green">5家</span></a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>出海模式对比</a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>热门赛道：ADC/双抗/CAR-T</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>驱动因素与投资逻辑</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>风险因素与展望</a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>中国创新药出海（License-out）正经历爆发式增长——2025年BD总金额接近1,300亿美元，中国项目在跨国药企（MNC）大额预付款交易中的占比从2020年的不足5%提升至超40%。本报告从市场规模、交易案例、药企格局、出海模式、热门赛道、投资逻辑六个维度展开。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">1,300<span class="u">亿美元</span></div><div class="lb">2025年BD总金额（较2024翻倍）</div></div>
+  <div class="stat-card"><div class="num">158<span class="u">笔</span></div><div class="lb">2025年License-out交易数</div></div>
+  <div class="stat-card"><div class="num">40%+</div><div class="lb">中国项目占MNC大额BD（2020年<5%）</div></div>
+  <div class="stat-card"><div class="num">200亿<span class="u">美元</span></div><div class="lb">恒瑞累计潜在BD</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>中国创新药出海进入黄金时代。2025年BD总金额接近1,300亿美元、较2024年翻倍，单笔交易金额屡创新高。<br><br>
+  <strong>核心结论二：</strong>研发效率优势是根本驱动——临床前开发比海外快2-3倍、成本低至1/2-2/3，临床阶段快2-5倍。MNC正加速"买入中国资产"。<br><br>
+  <strong>核心结论三：</strong>ADC和双抗是最受青睐的赛道（重磅出海交易中ADC约占一半），恒瑞、康方、映恩等成为出海标杆。<br><br>
+  <strong>风险提示：</strong>临床失败风险、FDA审批不确定性、地缘政治、商业化不及预期。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：什么是License-out</h2>
+
+<h3>2.1 定义</h3>
+<p>License-out（对外授权）是中国创新药企将药物的海外权益授权给跨国药企（MNC），由MNC负责海外临床开发和商业化。中国药企获得首付款、里程碑付款和销售分成。</p>
+
+<h3>2.2 为什么是"出海"的起点</h3>
+<p>创新药研发投入大、周期长、风险高（临床失败率90%+）。License-out让中国药企：</p>
+<ul>
+  <li><strong>快速回血：</strong>获得大额首付款（如恒瑞-GSK首付5亿美元）</li>
+  <li><strong>借船出海：</strong>利用MNC的全球临床和商业化能力</li>
+  <li><strong>风险分散：</strong>让渡部分权益，换取确定性现金流</li>
+</ul>
+
+<h3>2.3 从"卖原料药"到"卖创新药"</h3>
+<p>中国医药出海经历三个时代：原料药/仿制药出海（卖成本）→ 制剂出海（卖产品）→ <strong>创新药License-out（卖知识产权）</strong>。当前正处于第三个时代的爆发期。</p>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>创新药出海是中国医药产业升级的里程碑——从"世界工厂"变成"全球药房"。License-out的本质是把中国药企的研发效率优势，直接变现为全球商业价值。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 市场规模：BD交易的爆发</h2>
+
+<h3>3.1 核心数据</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>2025年License-out交易数</td><td>158笔</td><td>较2024年大幅增长</td></tr>
+    <tr><td>2025年BD事件总数</td><td>340笔</td><td>较2024年增长21%</td></tr>
+    <tr><td>2025年BD总金额</td><td>接近1,300亿美元</td><td>较2024年接近翻倍</td></tr>
+    <tr><td>MNC占出海BD金额</td><td>48%</td><td>全球前20大MNC</td></tr>
+    <tr><td>中国项目占MNC大额预付款BD</td><td>超40%</td><td>2020年不足5%（DealForma）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 量价齐升</h3>
+<p>2025年BD交易呈现"量价齐升"特征：交易数量增长21%，总金额接近翻倍，单笔交易金额快速提升、创历史新高。MNC正加速将中国创新药纳入全球管线。</p>
+
+<h3>3.3 结构变化</h3>
+<p>中国资产在MNC主导的大额预付款（≥5,000万美元）BD中占比，从2020年的不足5%提升至当前的超40%——<strong>中国已成为全球创新药交易最重要的供给方之一</strong>。</p>
+
+<div class="policy"><span class="policy-tag">关键判断</span>1300亿美元BD总金额、中国占比40%+，说明中国创新药已从"被MNC观察"进入"MNC争抢"阶段。这是中国医药产业从仿制到创新的价值兑现。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 代表性交易案例</h2>
+
+<h3>4.1 恒瑞医药：最活跃的出海方</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>时间</th><th>受让方</th><th>项目</th><th>金额</th></tr></thead>
+  <tbody>
+    <tr><td>2025.07</td><td>GSK</td><td>HRS-9821等11款药（PDE3/4）</td><td>首付5亿+里程碑120亿美元</td></tr>
+    <tr><td>2025.03</td><td>MSD默沙东</td><td>HRS-5346（Lp(a)）</td><td>首付2亿+里程碑17.7亿美元</td></tr>
+    <tr><td>2024.05</td><td>Kailera</td><td>GLP-1产品组合</td><td>首付1亿+里程碑59.35亿美元</td></tr>
+    <tr><td>2023.10</td><td>默克</td><td>CLDN-18.2 ADC等</td><td>总额约14.88亿美元</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>4.2 康方生物：双抗标杆</h3>
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">康方生物 × Summit</span><span class="cc-tag hot">50亿美元交易</span></div>
+    <div class="cc-body">
+      <strong>产品：</strong>依沃西（AK112，PD-1/VEGF双抗）。<strong>交易：</strong>2022年签约，首付5亿美元+里程碑50亿美元+海外销售分成。<strong>临床数据：</strong>HARMONi-2 III期对照K药一线治疗PD-L1阳性NSCLC，mPFS强阳性（HR=0.51）——这是中国双抗挑战全球药王的标志性事件。
+    </div>
+  </div>
+</div>
+
+<h3>4.3 其他重要交易</h3>
+<ul>
+  <li><strong>信达生物 × 罗氏：</strong>CLDN-18.2双抗、CAR-T授权，首付1.4亿+里程碑19.6亿美元</li>
+  <li><strong>百济神州 × 映恩生物：</strong>DB-1312（B7-H4 ADC），总额约13亿美元</li>
+  <li><strong>映恩生物：</strong>多笔授权（BioNTech、百济、GSK、Avenzo），总价值超60亿美元</li>
+</ul>
+
+<div class="highlight-box"><strong>投资含义：</strong>单笔10亿+美元交易从"偶发"变"常态"，验证了中国创新药资产质量已获MNC认可。交易金额是创新药企估值最直接的催化剂。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 主要药企盘点</h2>
+
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">恒瑞医药</span><span class="cc-tag hot">License-out龙头</span></div>
+    <div class="cc-body">
+      <strong>模式：</strong>License-out为主（GSK、MSD、默克等）。<strong>成果：</strong>GSK 120亿美元+MSD多笔，累计潜在超200亿美元。<strong>市值：</strong>2025年港股IPO后约370亿美元，2026年4月约529亿美元。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">百济神州</span><span class="cc-tag">自主出海标杆</span></div>
+    <div class="cc-body">
+      <strong>模式：</strong>自主出海为主。<strong>成果：</strong>泽布替尼（BTK抑制剂）2023年全球销售13亿美元（国内首个十亿美元分子），2024年26.44亿美元（+105%）。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">康方生物</span><span class="cc-tag">双抗出海</span></div>
+    <div class="cc-body">
+      <strong>模式：</strong>License-out（Summit）+自主出海。<strong>成果：</strong>依沃西单笔潜在50亿美元；卡度尼利（PD-1/CTLA-4）已入医保。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">信达生物</span><span class="cc-tag">双抗+CAR-T</span></div>
+    <div class="cc-body">
+      <strong>模式：</strong>License-out+自主研发。<strong>成果：</strong>罗氏19.6亿美元BD；IBI363（PD-1/IL-2α-bias双抗）全球首创；已披露BD约21亿美元。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">映恩生物</span><span class="cc-tag">ADC平台</span></div>
+    <div class="cc-body">
+      <strong>模式：</strong>多笔License-out。<strong>成果：</strong>BioNTech、百济、GSK、Avenzo等授权总价值超60亿美元——ADC平台的出海样板。
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box"><strong>格局判断：</strong>出海药企分化出两条路径——恒瑞/康方/信达/映恩走License-out（快速变现），百济走自主出海（利润最大化）。前者适合大多数药企，后者是少数头部玩家的进阶选择。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 出海模式对比</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>维度</th><th>License-out</th><th>自主出海</th></tr></thead>
+  <tbody>
+    <tr><td>代表</td><td>恒瑞、康方、信达、映恩</td><td>百济神州</td></tr>
+    <tr><td>操作</td><td>授权海外权益给MNC</td><td>自建海外商业化团队</td></tr>
+    <tr><td>优势</td><td>风险低、快速回血、借MNC能力</td><td>利润最大化、建立全球品牌</td></tr>
+    <tr><td>劣势</td><td>让渡利润大头、受制于人</td><td>成本高、周期长、监管风险大</td></tr>
+    <tr><td>适用</td><td>大多数创新药企</td><td>头部少数玩家</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="policy"><span class="policy-tag">模式判断</span>License-out是当前主流（中国药企缺乏海外商业化经验），自主出海是终极目标。多数药企会经历"先License-out积累资金和经验，再逐步自主出海"的路径。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 热门赛道：ADC/双抗/CAR-T</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>赛道</th><th>代表交易</th><th>要点</th></tr></thead>
+  <tbody>
+    <tr><td>ADC</td><td>恒瑞CLDN-18.2→默克；映恩多款→BioNTech/百济/GSK</td><td>重磅出海交易中ADC约占一半</td></tr>
+    <tr><td>双抗</td><td>康方依沃西→Summit；信达CLDN-18.2双抗→罗氏</td><td>最受MNC青睐</td></tr>
+    <tr><td>CAR-T</td><td>信达CLDN-18.2 CAR-T→罗氏</td><td>实体瘤CAR-T出海早期</td></tr>
+    <tr><td>PD-1衍生</td><td>康方依沃西（PD-1/VEGF）；信达IBI363</td><td>肿瘤及代谢是MNC重点</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>ADC为什么最火：</strong>ADC（抗体偶联药物）被称为"魔法子弹"，将化疗药精准递送到肿瘤细胞。中国ADC研发进度全球领先（创新药出海交易中ADC约占一半），映恩生物等平台型公司通过多笔授权实现"一鱼多吃"。</p>
+
+<div class="highlight-box green"><strong>关键判断：</strong>ADC是当前出海确定性最高的赛道，双抗（尤其PD-1双抗）是中国突破全球药王（K药）的机会，CAR-T代表远期想象。布局这些赛道的药企最受益于出海逻辑。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 驱动因素与投资逻辑</h2>
+
+<h3>8.1 出海四大驱动</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>驱动</th><th>数据/逻辑</th></tr></thead>
+  <tbody>
+    <tr><td>研发效率</td><td>临床前开发快2-3倍、成本低至1/2-2/3；临床阶段快2-5倍</td></tr>
+    <tr><td>成本优势</td><td>临床试验成本不足欧美一半</td></tr>
+    <tr><td>MNC需求</td><td>全球TOP20 MNC面临专利悬崖，需要补充管线</td></tr>
+    <tr><td>资产质量</td><td>中国项目占MNC大额BD从<5%升至>40%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>8.2 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（License-out弹性）：</strong>恒瑞医药——最活跃出海方，累计潜在BD超200亿美元，License收入持续兑现。<br><br>
+  <strong>主线二（自主出海标杆）：</strong>百济神州——泽布替尼全球十亿美元分子，商业化验证。<br><br>
+  <strong>主线三（双抗/ADC平台）：</strong>康方生物、映恩生物——单笔大额交易催化估值。<br><br>
+  <strong>主线四（CXO/上游）：</strong>创新药出海带动研发外包（CXO）订单。
+</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>创新药出海是中国医药产业的"价值重估"——研发效率优势通过License-out直接变现为全球收入。投资逻辑是"跟着MNC的美元走"：谁拿到大额BD订单，谁的估值就上台阶。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 风险因素与展望</h2>
+
+<div class="highlight-box red"><strong>风险一：临床失败（中高风险）。</strong>创新药三期临床失败率高达50%+，License-out交易中里程碑付款大多取决于临床成功。单笔交易金额再大，临床失败即归零。</div>
+
+<div class="highlight-box red"><strong>风险二：FDA审批不确定性（中风险）。</strong>中国创新药出海面临FDA审批的临床数据质量和标准差异，部分药物可能被要求补充试验，推迟上市。</div>
+
+<div class="highlight-box red"><strong>风险三：地缘政治（中风险）。</strong>中美关系波动可能影响生物医药领域的合作，极端情况下可能出现针对中国生物技术的限制措施。</div>
+
+<div class="highlight-box red"><strong>风险四：商业化不及预期（中风险）。</strong>License-out后，MNC的商业化能力决定最终销售，中国药企对海外销售缺乏控制力。</div>
+
+<h3>展望与跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>BD交易量价</td><td>License-out数量、单笔金额</td><td>行业景气核心</td></tr>
+    <tr><td>重磅交易</td><td>恒瑞/康方新授权</td><td>个股催化</td></tr>
+    <tr><td>临床数据读出</td><td>三期临床成功/失败</td><td>里程碑兑现</td></tr>
+    <tr><td>FDA审批</td><td>出海药物获批节奏</td><td>商业化验证</td></tr>
+    <tr><td>海外销售</td><td>泽布替尼等放量</td><td>自主出海验证</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>创新药出海是2026年医药板块最确定的投资主线之一。建议优先关注License-out订单兑现确定性高的龙头（恒瑞），跟踪ADC/双抗赛道的大额BD，留意临床数据读出节点。估值已包含出海预期，需结合临床进度控制仓位。</div>
+</div>
+
+<!-- ======== 数据来源 ======== -->
+<!--PAGE--><div class="sources">
+  <h2>数据来源</h2>
+  <ul>
+    <li>国金证券 中国创新药行业研究报告（2026）</li>
+    <li>景顺长城基金《中国企业出海新趋势及投资机遇展望》（2026.07.28）</li>
+    <li>《厚积薄发，中国创新药迈向全球舞台》行业报告（2025.09.17）</li>
+    <li>《中企出海白皮书——医药和医疗器械篇》（2025.05.07）</li>
+    <li>《2025-2026年科技行业主要变化趋势梳理与总结》（2025.06.11）</li>
+    <li>DealForma 全球BD交易数据（中国项目占MNC大额预付款BD占比）</li>
+    <li>上市公司公告及公开新闻（恒瑞-GSK/MSD、康方-Summit、百济-映恩等交易）</li>
+  </ul>
+</div>
+
+<div class="disclaimer-box" style="background:#f8f9fa;border:1px solid #e0e2e8;border-radius:6px;padding:14px 18px;margin:24px 0 12px;font-size:12px;color:#999;line-height:1.8;"><strong style="color:#888;">免责声明：</strong>本文由"行业拆解日记"基于公开资料整理，仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</div>
+<div class="footer">— 报告结束 · 行业拆解日记 · 创新药出海 —</div>
+
+</div>
+</body>
+</html>
