@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄金 行业研究报告 | 每天认识一个行业 · Day 13</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .sources { background: #f8f9fa; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; border: 1px solid #e0e2e8; }
+  .sources h2 { font-size: 18px; color: #1a1a2e; border-left: 4px solid #c9a84c; padding-left: 12px; margin-bottom: 14px; }
+  .sources ul { list-style: none; padding-left: 0; }
+  .sources li { font-size: 13px; color: #555; padding: 6px 0; border-bottom: 1px dashed #e0e2e8; }
+  .sources li:last-child { border-bottom: none; }
+  .sources li::before { content: '▸ '; color: #c9a84c; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>黄金<br><span class="hl">冲高回落后的去与留</span></h1>
+  <p class="subtitle">—— 2026年先涨后回调，央行购金逻辑是否依然成立 ——</p>
+  <div class="info">
+    <p>现货金价（2026.08）：<strong>约4,055美元/盎司（4000-4200震荡）</strong></p>
+    <p>2026年上半年高点：<strong>冲高至4,400美元上方</strong></p>
+    <p>央行二季度净购金：<strong>289吨（同比+62%）</strong></p>
+  </div>
+  <p class="date">报告日期：2026年8月4日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>2026年行情回顾：先涨后回调</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>黄金的定价逻辑</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>央行购金：本轮牛市的核心</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>需求结构：谁在买金</a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>上市公司盘点 <span class="badge green">3家</span></a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>机构观点：多空博弈</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>投资逻辑与风险</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>展望与跟踪信号</a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>黄金在2025年大涨65%创历史新高后，2026年经历"先涨后回调"——上半年冲高至4,400美元上方，7-8月回落至4,000-4,200美元区间震荡。本报告以2026年最新行情为基准，从行情回顾、定价逻辑、央行购金、需求结构、上市公司、多空博弈、投资逻辑七个维度展开。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">4,055<span class="u">美元</span></div><div class="lb">现货金价（2026.08，4000-4200震荡）</div></div>
+  <div class="stat-card"><div class="num">4,400+</div><div class="lb">2026上半年高点（美元/盎司）</div></div>
+  <div class="stat-card"><div class="num">289<span class="u">吨</span></div><div class="lb">央行二季度净购金（同比+62%）</div></div>
+  <div class="stat-card"><div class="num">4,700<span class="u">美元</span></div><div class="lb">德银年底公允价值预测</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>2026年黄金行情是"冲高→回调"——上半年冲至4,400+美元，7-8月回落至4,000-4,200美元区间震荡7周。回调主因：美联储偏鹰（9月加息概率约65-68%）、实际利率高企、地缘冲突反复削弱避险溢价。<br><br>
+  <strong>核心结论二：</strong>央行购金是本轮牛市的核心支柱——全球央行黄金储备（市值计）已超海外美债规模；2026年二季度净购金289吨（同比+62%），韩国央行时隔13年重启购金。<br><br>
+  <strong>核心结论三：</strong>机构仍偏乐观——德银称黄金处于"爆发阶段"（1975年以来仅出现5次），预计年底公允价值4,700美元；金价或已在3,900美元附近见底。<br><br>
+  <strong>风险提示：</strong>美联储加息超预期、实际利率上行、地缘缓和、技术面跌破4,000美元。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 2026年行情回顾：先涨后回调</h2>
+
+<h3>2.1 价格走势时间线</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>时点</th><th>价格（美元/盎司）</th><th>事件</th></tr></thead>
+  <tbody>
+    <tr><td>2025年底</td><td>约3,500</td><td>全年+65%，创历史新高</td></tr>
+    <tr><td>2026年初</td><td>YTD +15%</td><td>延续强势，全球金属普涨</td></tr>
+    <tr><td>2026上半年</td><td>冲高至4,400+</td><td>年内高点（100日均线在4,416）</td></tr>
+    <tr><td>2026.06下旬</td><td>触及4,000关口</td><td>美联储偏鹰+加息预期升温</td></tr>
+    <tr><td>2026.07-08</td><td>4,000-4,200震荡</td><td>震荡第7周，等待方向选择</td></tr>
+    <tr><td>2026.08.04</td><td>约4,055</td><td>最新价，高位回落整理</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>2.2 回调的三个原因</h3>
+<p><strong>第一，美联储转鹰。</strong>纽约联储主席威廉姆斯称"如果通胀未回落将毫不犹豫加息"，市场定价9月加息概率约65-68%，压制黄金（黄金不产生利息，实际利率上行利空）。</p>
+<p><strong>第二，地缘反复。</strong>中东冲突（美伊）反复"假动作"——特朗普暂缓打击→伊朗否认谈判，避险情绪被反复消耗，难以形成单边推力。</p>
+<p><strong>第三，技术面压制。</strong>金价低于50日均线（4,174）和100日均线（4,416），技术性抛压限制反弹。</p>
+
+<h3>2.3 为什么没崩</h3>
+<ul>
+  <li>央行二季度净购金289吨（同比+62%），为金价提供坚实底部</li>
+  <li>韩国央行时隔13年重启购金，加入全球央行增持浪潮</li>
+  <li>美元走弱（8月初刷新七周低点）降低持有成本</li>
+  <li>油价的通胀担忧（布伦特仍83-84美元）支撑抗通胀属性</li>
+</ul>
+
+<div class="highlight-box red"><strong>行情判断：</strong>黄金2026年"冲高回落"不等于牛市结束——当前4,000美元关口是多空分水岭。守住4,000则结构性牛市未破，跌破则可能下探3,850甚至3,700美元（德银回归模型）。这是当前最核心的观察点。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 黄金的定价逻辑</h2>
+
+<h3>3.1 四大属性</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>属性</th><th>驱动</th><th>2026年状态</th></tr></thead>
+  <tbody>
+    <tr><td>货币替代</td><td>央行购金、去美元化</td><td>强劲（央行购金+62%）</td></tr>
+    <tr><td>避险</td><td>地缘冲突、滞胀</td><td>反复（中东"假动作"）</td></tr>
+    <tr><td>抗通胀</td><td>油价、通胀预期</td><td>偏强（油价83-84美元）</td></tr>
+    <tr><td>利率敏感</td><td>实际利率、美联储</td><td>承压（9月加息概率65%+）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 本轮牛市的特殊性</h3>
+<p>传统上黄金牛市由"实际利率下行"驱动，但本轮牛市（始于2018年1,178美元，至2025年6月3,280美元累计+178%）的核心驱动力是<strong>央行购金</strong>——这是本轮与以往最大的不同。即使实际利率高企，央行持续购金仍推动金价上行。</p>
+
+<div class="policy"><span class="policy-tag">关键判断</span>2026年回调的本质是"利率属性"对"货币属性"的阶段性压制——美联储鹰派抬升实际利率，但央行购金的长期逻辑未变。短期看利率，长期看央行。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 央行购金：本轮牛市的核心</h2>
+
+<h3>4.1 关键数据</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>央行黄金储备（市值计）</td><td>已超海外美债规模</td><td>2025年里程碑</td></tr>
+    <tr><td>2026年Q2央行净购金</td><td>289吨</td><td>同比+62%</td></tr>
+    <tr><td>韩国央行</td><td>时隔13年重启购金</td><td>并布局黄金ETF</td></tr>
+    <tr><td>中国高净值人群</td><td>黄金占配置15.7%</td><td>首选投资标的（超越A股/基金）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>4.2 为什么央行持续购金</h3>
+<ul>
+  <li><strong>去美元化：</strong>地缘冲突后各国寻求储备多元化</li>
+  <li><strong>货币替代：</strong>黄金无主权信用风险，是"终极储备"</li>
+  <li><strong>对冲制裁风险：</strong>美债可作为制裁工具，黄金不能</li>
+  <li><strong>韩国转向：</strong>长期回避黄金的央行也加入，信号意义强</li>
+</ul>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>央行购金是本轮黄金牛市区别于历史的最大特征。2026年Q2净购金289吨（+62%），韩国央行13年来首次转向，说明"去美元化+储备多元化"的长期趋势正在强化——这是金价4,000美元上方最重要的支撑。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 需求结构：谁在买金</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>需求方</th><th>2026年状态</th><th>影响</th></tr></thead>
+  <tbody>
+    <tr><td>央行</td><td>Q2净购金289吨（+62%）</td><td>最核心的长期买家</td></tr>
+    <tr><td>投资（ETF）</td><td>2025上半年净流入380亿美元</td><td>AUM 3,830亿美元历史高位</td></tr>
+    <tr><td>消费（金饰）</td><td>2025Q1中国黄金消费840亿元（+29%）</td><td>创历史季度纪录</td></tr>
+    <tr><td>高净值人群</td><td>黄金占配置15.7%（首选）</td><td>超越A股和基金</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>5.1 投资需求与消费需求</h3>
+<p>黄金需求呈"央行+投资双轮驱动"：央行提供长期底部支撑，ETF和高净值人群提供弹性。金价高位回调期间，投资需求可能阶段性降温，但央行购金提供缓冲。</p>
+
+<div class="policy"><span class="policy-tag">需求判断</span>2026年黄金需求的"锚"是央行（确定性最强），"弹性"是ETF和投资需求（跟随利率预期）。回调中消费需求（金饰）反而可能因"逢低买入"增加。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 上市公司盘点</h2>
+
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">山东黄金</span><span class="cc-tag hot">A股黄金龙头</span></div>
+    <div class="cc-body">
+      <strong>2025年数据：</strong>市值约240亿美元（+91%），收入约145亿美元（+26%）。<strong>逻辑：</strong>A股黄金矿企龙头，金价每上涨10%，业绩弹性显著。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">招金矿业</span><span class="cc-tag">高弹性</span></div>
+    <div class="cc-body">
+      <strong>2025年数据：</strong>收入+44%，P/E约30倍。<strong>逻辑：</strong>黄金矿企，业绩跟随金价弹性大。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">中国黄金国际</span><span class="cc-tag">海外矿山</span></div>
+    <div class="cc-body">
+      <strong>2025年数据：</strong>市值约80亿美元（+282%）。<strong>逻辑：</strong>海外金矿资产，金价上行受益。
+    </div>
+  </div>
+</div>
+
+<h3>6.1 黄金股的投资属性</h3>
+<p>黄金股的弹性通常大于金价（杠杆效应）：金价涨10%，矿企利润可能涨20-30%（因成本固定）。但股价也受估值、产量、成本控制影响。<strong>黄金股是"金价+经营"双重变量，风险收益比高于直接买金。</strong></p>
+
+<div class="highlight-box"><strong>投资含义：</strong>A股黄金股（山东黄金、中金黄金、招金矿业等）是参与黄金行情的主要工具。金价4,000美元上方，黄金股业绩确定性较强，但需注意金价回调时股价的放大下跌风险。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 机构观点：多空博弈</h2>
+
+<h3>7.1 多头观点</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>机构</th><th>观点</th></tr></thead>
+  <tbody>
+    <tr><td>德意志银行</td><td>黄金仍处"爆发阶段"（1975年以来仅5次），年底公允价值4,700美元；金价或已在3,900美元附近见底</td></tr>
+    <tr><td>美银调查</td><td>76%基金经理预期滞胀，44%认为地缘冲突是最大尾部风险——滞胀环境利多黄金</td></tr>
+    <tr><td>分析师共识</td><td>金价守住4,000美元说明结构性牛市未破，适合长期资金加仓窗口</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>7.2 空头/谨慎观点</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>机构</th><th>观点</th></tr></thead>
+  <tbody>
+    <tr><td>美联储鹰派</td><td>9月加息概率65-68%，若加息落地，实际利率上行压制金价</td></tr>
+    <tr><td>德银风险提示</td><td>若按1986年基准调整，金价理论上存在下探2,600美元的风险（极端情形）</td></tr>
+    <tr><td>技术派</td><td>跌破4,000美元将打开下探3,850-3,700美元的空间</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box"><strong>多空判断：</strong>机构主流仍偏多（德银4,700美元目标、滞胀预期），但短期受美联储加息压制。黄金处于"长期牛市中的中期回调"——多空分水岭在4,000美元，突破4,200看新高，跌破4,000看3,850。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 投资逻辑与风险</h2>
+
+<h3>8.1 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（实物金/ETF）：</strong>黄金ETF、银行积存金——最直接的金价暴露，适合配置。<br><br>
+  <strong>主线二（黄金股）：</strong>山东黄金、中金黄金、招金矿业——杠杆弹性，适合进攻。<br><br>
+  <strong>主线三（黄金+科技）：</strong>黄金开采科技、回收——差异化。<br><br>
+  <strong>主线四（金银比）：</strong>白银（2025年+150%）——金价的"高弹性版"，适合风险偏好高者。
+</div>
+
+<h3>8.2 风险提示</h3>
+<div class="highlight-box red"><strong>风险一：美联储加息超预期（中高风险）。</strong>若9月加息落地且后续再加，实际利率显著上行，金价可能跌破4,000美元。<br><br><strong>风险二：地缘缓和（中风险）。</strong>若中东冲突真正降温，避险溢价消退，金价短期承压。<br><br><strong>风险三：技术破位（中风险）。</strong>跌破4,000美元将引发技术性抛售，下探3,850-3,700美元。<br><br><strong>风险四：央行购金放缓（低概率高影响）。</strong>若全球央行购金节奏放缓（当前+62%），牛市核心支柱动摇。</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>黄金2026年"冲高回落"，短期受美联储加息压制，长期受央行购金支撑。当前4,000美元是多空分水岭——机构主流偏多（德银4,700美元目标），但需警惕加息和地缘缓和风险。适合作为组合中的"防御性配置"，而非追高工具。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 展望与跟踪信号</h2>
+
+<h3>9.1 2026下半年展望</h3>
+<p>金价在4,000-4,200美元区间震荡7周后，面临方向选择。向上突破需催化剂（美联储转鸽、地缘升级、通胀再起）；向下跌破需利空（加息落地、就业强劲）。德银认为年底公允价值4,700美元，但路径取决于美联储。</p>
+
+<h3>9.2 跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>美联储决议</td><td>9月是否加息、点阵图</td><td>短期最大变量</td></tr>
+    <tr><td>非农就业</td><td>8月5日非农数据</td><td>影响加息预期</td></tr>
+    <tr><td>4,000美元关口</td><td>是否有效跌破</td><td>多空分水岭</td></tr>
+    <tr><td>央行购金</td><td>Q3央行购金数据</td><td>长期核心支撑</td></tr>
+    <tr><td>中东局势</td><td>美伊谈判进展</td><td>避险溢价</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>黄金作为"防御性资产"适合中长期配置，但当前处于回调期需控制节奏。策略上：①配置型资金可在4,000美元附近分批建仓（央行购金提供底部）；②交易型资金等待方向明确（突破4,200或跌破4,000）；③黄金股弹性大但波动大，仓位需低于实物金配置。核心跟踪美联储与4,000美元关口。</div>
+</div>
+
+<!-- ======== 数据来源 ======== -->
+<!--PAGE--><div class="sources">
+  <h2>数据来源</h2>
+  <ul>
+    <li>现货黄金行情（2026.08.04）：约4,055美元/盎司，4000-4200区间震荡</li>
+    <li>德银研报《黄金仍处"爆发阶段"》（2026.08.03，年底公允价值4,700美元）</li>
+    <li>FX168/汇通财经/金投网 2026年8月黄金行情报道</li>
+    <li>新华财经《金价短期维持震荡格局》（2026.08.04）</li>
+    <li>美银基金经理调查（2026年4月：76%预期滞胀）</li>
+    <li>全球央行二季度净购金289吨（同比+62%），韩国央行重启购金</li>
+    <li>行业知识库（2026年7月有色金属报告：黄金2025年+65%、2026年YTD走势）</li>
+    <li>上市公司数据（2025年报：山东黄金、招金矿业、中国黄金国际）</li>
+  </ul>
+</div>
+
+<div class="disclaimer-box" style="background:#f8f9fa;border:1px solid #e0e2e8;border-radius:6px;padding:14px 18px;margin:24px 0 12px;font-size:12px;color:#999;line-height:1.8;"><strong style="color:#888;">免责声明：</strong>本文由"行业拆解日记"基于公开资料整理，仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</div>
+<div class="footer">— 报告结束 · 行业拆解日记 · 黄金 —</div>
+
+</div>
+</body>
+</html>
