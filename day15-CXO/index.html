@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CXO行业 行业研究报告 | 每天认识一个行业 · Day 15</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .sources { background: #f8f9fa; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; border: 1px solid #e0e2e8; }
+  .sources h2 { font-size: 18px; color: #1a1a2e; border-left: 4px solid #c9a84c; padding-left: 12px; margin-bottom: 14px; }
+  .sources ul { list-style: none; padding-left: 0; }
+  .sources li { font-size: 13px; color: #555; padding: 6px 0; border-bottom: 1px dashed #e0e2e8; }
+  .sources li:last-child { border-bottom: none; }
+  .sources li::before { content: '▸ '; color: #c9a84c; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>CXO医药外包<br><span class="hl">创新药的"卖水人"</span></h1>
+  <p class="subtitle">—— 订单全面回升，2026年景气度确认反转 ——</p>
+  <div class="info">
+    <p>全球CXO市场（2025）：<strong>约1,966亿美元</strong></p>
+    <p>中国CXO市场（2025E）：<strong>约2,477亿元（CAGR 26.6%）</strong></p>
+    <p>龙头：<strong>药明康德 · 康龙化成 · 泰格医药 · 凯莱英</strong></p>
+  </div>
+  <p class="date">报告日期：2026年8月5日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：什么是CXO</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>市场规模：全球与中国</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>2026年景气度反转的证据</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>核心公司：药明系与第一梯队 <span class="badge green">5家</span></a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>产业链与商业模式</a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>地缘风险：生物安全法案</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>投资逻辑与风险</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>展望与跟踪信号</a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>CXO（医药外包）是创新药产业链的"卖水人"——药企把研发、生产外包给专业机构。2026年CXO行业景气度确认反转：龙头药明康德2026上半年营收+38.9%、在手订单664亿（+25.2%），7家CRO公司新签订单全面回升（+20%~+111%）。本报告从市场规模、景气反转、核心公司、商业模式、地缘风险、投资逻辑六个维度展开。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">1,966<span class="u">亿美元</span></div><div class="lb">全球CXO市场（2025，CAGR 14%）</div></div>
+  <div class="stat-card"><div class="num">2,477<span class="u">亿元</span></div><div class="lb">中国CXO市场（2025E，CAGR 26.6%）</div></div>
+  <div class="stat-card"><div class="num">+38.9%</div><div class="lb">药明康德2026H1营收增速</div></div>
+  <div class="stat-card"><div class="num">+20~111%</div><div class="lb">7家CRO Q1新签订单增速</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>CXO景气度在2026年确认反转。药明康德2026上半年营收289亿（+38.9%）、净利润110.8亿（+29.4%）、扣非+89.4%，在手订单664亿（+25.2%），上调全年指引至585-605亿（+35-39%）。<br><br>
+  <strong>核心结论二：</strong>驱动逻辑是"融资回暖+BD出海+新分子浪潮"三重共振——2026Q1国内创新药一级融资+128.6%、中国BD出海金额997亿美元、GLP-1/ADC/TIDES新分子需求爆发（药明康德TIDES半年收入72.6亿+44.3%）。<br><br>
+  <strong>核心结论三：</strong>行业进入"K型分化"——订单向"技术+产能"双优的头部集中（药明康德净利率40%创新高），中小企业持续出清（2021年以来10+家IPO失败）。强者恒强。<br><br>
+  <strong>风险提示：</strong>美国《生物安全法案》地缘风险、应收账款增速高于营收、汇率波动、订单向海外分流。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：什么是CXO</h2>
+
+<h3>2.1 定义</h3>
+<p>CXO是医药外包（Contract X Organization）的总称，指制药企业将研发、生产、销售环节外包给专业机构，包括：</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>类型</th><th>全称</th><th>做什么</th><th>代表</th></tr></thead>
+  <tbody>
+    <tr><td>CRO</td><td>研发外包</td><td>药物发现、临床前、临床试验</td><td>泰格医药、昭衍新药</td></tr>
+    <tr><td>CDMO</td><td>生产外包</td><td>工艺开发+规模化生产</td><td>凯莱英、博腾股份</td></tr>
+    <tr><td>CRDMO</td><td>研发+生产一体化</td><td>从发现到商业化全链</td><td>药明康德</td></tr>
+    <tr><td>CMO/CDO</td><td>纯代工/开发</td><td>生产制造</td><td>九洲药业</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>2.2 "卖水人"商业模式</h3>
+<p>CXO的本质是"卖水人"——不管创新药成功与否，只要药企持续投入研发，CXO就能持续接到订单。行业景气度与生物医药投融资高度相关：融资回暖→药企敢花钱研发→CXO订单增长。</p>
+
+<h3>2.3 中国CXO的崛起</h3>
+<p>中国CXO产业萌芽于1999年（药明康德创立），经过25年发展，已从"便宜合成化合物"演化为覆盖靶点发现到商业化生产的完整平台，在全球CXO市场占25-30%份额，靠的是<strong>工程师红利+成本优势+全球交付能力</strong>。</p>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>CXO是创新药产业链的"确定性卖铲人"——药企研发投入持续增长（全球CAGR 5-6%）+外包率提升（34.8%→51.9%→2034年65.6%），行业长期增长逻辑刚性。2026年融资回暖+BD出海让行业进入新一轮景气周期。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 市场规模：全球与中国</h2>
+
+<h3>3.1 市场规模</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>全球CXO市场（2025）</td><td>约1,966亿美元</td><td>2021-2025 CAGR 14%</td></tr>
+    <tr><td>中国CXO市场（2025E）</td><td>约2,477亿元</td><td>2020-2025 CAGR 26.56%</td></tr>
+    <tr><td>中国CRO（2025）</td><td>约1,629亿元</td><td>占全球22-25%</td></tr>
+    <tr><td>中国CDMO（2025）</td><td>约1,436亿元</td><td>增速快于全球</td></tr>
+    <tr><td>全球CRO（2025）</td><td>约800-850亿美元</td><td>—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 细分赛道（2026E）</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>细分</th><th>全球</th><th>中国</th><th>增速</th></tr></thead>
+  <tbody>
+    <tr><td>临床前CRO</td><td>332.5亿美元</td><td>528.6亿元</td><td>中国CAGR 14.2%</td></tr>
+    <tr><td>临床CRO</td><td>732.0亿美元</td><td>598亿元</td><td>中国恢复增长</td></tr>
+    <tr><td>CDMO整体</td><td>1,189亿美元</td><td>1,370亿元</td><td>中国高增</td></tr>
+    <tr><td>多肽/ADC/TIDES</td><td>高景气</td><td>—</td><td>CAGR 60-100%+</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="policy"><span class="policy-tag">关键判断</span>中国CXO增速（26.6%）显著高于全球（14%），核心是"全球产业转移+工程师红利+BD出海需求"。行业从2023-2025年收缩周期进入2026年扩张周期，龙头资本开支回升（药明康德2026年CAPEX 65-75亿）印证信心。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 2026年景气度反转的证据</h2>
+
+<h3>4.1 药明康德2026半年报（超预期）</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>2026H1</th><th>同比</th><th>亮点</th></tr></thead>
+  <tbody>
+    <tr><td>营收</td><td>289亿元</td><td>+38.9%</td><td>大超预期</td></tr>
+    <tr><td>归母净利润</td><td>110.8亿元</td><td>+29.4%</td><td>—</td></tr>
+    <tr><td>扣非净利润</td><td>105.7亿元</td><td>+89.4%</td><td>利润弹性大</td></tr>
+    <tr><td>在手订单</td><td>664.3亿元</td><td>+25.2%</td><td>覆盖1-2年收入</td></tr>
+    <tr><td>化学业务</td><td>249.9亿元</td><td>+53.3%</td><td>占总营收86%</td></tr>
+    <tr><td>TIDES业务</td><td>72.6亿元</td><td>+44.3%</td><td>GLP-1拉动</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>关键信号：</strong>药明康德上调2026全年指引至585-605亿元（持续经营收入同比+35-39%），净利率40%创历史新高——从"高增长标的"变"高确定性资产"。</p>
+
+<h3>4.2 7家CRO订单全面回升</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>公司</th><th>Q1新签订单</th><th>信号</th></tr></thead>
+  <tbody>
+    <tr><td>昭衍新药</td><td>+111.6%</td><td>最锐利的拐点信号</td></tr>
+    <tr><td>凯莱英（多肽）</td><td>+127.5%</td><td>GLP-1超级周期</td></tr>
+    <tr><td>康龙化成（全球Top20）</td><td>+47.98%</td><td>跨国药企外包率提升</td></tr>
+    <tr><td>药明康德</td><td>在手597.7亿（+23.6%）</td><td>全年高可见度</td></tr>
+    <tr><td>美迪西</td><td>Q1扭亏为盈</td><td>临床前CRO走出至暗时刻</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>4.3 三重驱动</h3>
+<p><strong>① 融资回暖：</strong>2026Q1国内创新药一级融资25.9亿美元（+128.6%）；2026H1中国BD出海金额997亿美元（接近2025全年73%）。</p>
+<p><strong>② 新分子浪潮：</strong>GLP-1（减肥药）全球爆发、ADC/双抗/多肽需求旺盛——药明康德TIDES半年收入72.6亿逼近全球巨头CordenPharma全年体量。</p>
+<p><strong>③ 研发外包率提升：</strong>全球外包率从34.8%（2015）→51.9%（2024）→2034年65.6%。</p>
+
+<div class="highlight-box green"><strong>景气反转确认：</strong>订单是CXO行业的前瞻指标——7家公司Q1新签订单全面回升（+20%~+111%），药明康德在手订单664亿。订单端已率先修复，正在向报表端传导，2026下半年业绩兑现确定性高。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 核心公司：药明系与第一梯队</h2>
+
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">药明康德（603259）</span><span class="cc-tag hot">绝对龙头</span></div>
+    <div class="cc-body">
+      <strong>地位：</strong>全球营收规模最大CXO，CRDMO模式（研发+生产一体化）开创者。<strong>2026H1：</strong>营收289亿（+38.9%）、在手订单664亿（+25.2%）、净利率40%创新高。<strong>亮点：</strong>TIDES业务72.6亿（+44.3%）承接GLP-1浪潮；上调全年指引至585-605亿。<strong>估值：</strong>2027年预测PE仅17.6倍。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">药明生物（02269）</span><span class="cc-tag">大分子CDMO</span></div>
+    <div class="cc-body">
+      <strong>定位：</strong>大分子生物药CDMO龙头，FDA+EMA双认证。<strong>2025：</strong>收入217.9亿（+16.7%）、净利润+45.3%，未完成订单237亿美元（+28%）。<strong>2026指引：</strong>收入+13-17%。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">药明合联（02268）</span><span class="cc-tag">ADC龙头</span></div>
+    <div class="cc-body">
+      <strong>定位：</strong>ADC（抗体偶联药物）CDMO全球龙头。<strong>2025：</strong>收入+46.7%、净利润+69.9%。<strong>目标：</strong>2025-2030年收入CAGR 30-35%（行业平均25.6%）。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">康龙化成 / 泰格医药 / 凯莱英</span><span class="cc-tag">第一梯队</span></div>
+    <div class="cc-body">
+      <strong>康龙化成：</strong>全流程一体化，2026Q1全球Top20药企收入+47.98%。<strong>泰格医药：</strong>临床CRO龙头，2025年新签订单+20.7%，冲刺全球前五。<strong>凯莱英：</strong>小分子CDMO龙头，多肽订单+127.5%。
+    </div>
+  </div>
+</div>
+
+<h3>5.1 竞争格局：K型分化</h3>
+<p>全球CXO市场持续扩容（Frost & Sullivan：2029年全球2,395亿美元，CAGR 11.9%），但增量并不普惠——<strong>订单加速向"技术+产能"双优的头部集中</strong>，中小厂商在价格战与产能过剩中挣扎。药明康德净利率40%（行业平均22%），差距持续拉大。中小企业2021年以来10+家IPO失败，正在出清。</p>
+
+<div class="highlight-box"><strong>格局判断：</strong>CXO进入"强者恒强"阶段。投资应聚焦有全球布局、复杂分子能力（ADC/GLP-1/TIDES）、全产业链服务的头部平台公司，避免中小标的。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 产业链与商业模式</h2>
+
+<h3>6.1 产业链位置</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>药企/Biotech（需求方）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span><strong>CXO（研发+生产外包）</strong></span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>创新药获批上市</span>
+</div>
+
+<h3>6.2 CRDMO模式的优势</h3>
+<p>药明康德开创的CRDMO（CRO+CDMO一体化）模式，通过"漏斗效应"锁定客户：前端R端（研发服务）引流 → 中端D端（开发）转化 → 后端M端（生产）放量。前端服务的"流量"沉淀为后端生产的"存量"，客户粘性极强。</p>
+
+<h3>6.3 中国CXO的"出口导向"特征</h3>
+<p>中国CXO约65-75%收入来自境外客户（药明康德85%、药明生物90%、康龙化成82%）——本质是"以中国为生产基地、服务全球药企"的离岸外包模式。这一特征既是优势（全球竞争力），也是风险（地缘敏感）。</p>
+
+<div class="policy"><span class="policy-tag">商业模式判断</span>CXO赚的是"确定性服务费"而非"爆款分成"——不赌单款药成功，赌整个行业持续研发投入。CRDMO一体化模式通过漏斗锁定客户生命周期价值，是行业最优商业模式。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 地缘风险：生物安全法案</h2>
+
+<h3>7.1 政策背景</h3>
+<p>美国《生物安全法案》（Biosecure Act）对中国CXO构成最大的地缘风险。2026年6月，美国国防部将药明康德列入"中国军工企业"名单（1260H清单），法案风险从"悬而未决"变为"具象化"。</p>
+
+<h3>7.2 实际影响（截至2026年8月）</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>维度</th><th>现状</th></tr></thead>
+  <tbody>
+    <tr><td>存量订单</td><td>未出现大规模撤单或断供，既有长期订单执行基本稳定</td></tr>
+    <tr><td>新增订单</td><td>部分美国中小biotech增加"合规缓冲期"条款，大药企决策周期拉长</td></tr>
+    <tr><td>订单分流</td><td>部分新分子订单分散至韩国（三星生物）、欧洲，但成本/质量/产能难以完全替代</td></tr>
+    <tr><td>法院诉讼</td><td>药明康德已提起诉讼，7月22日举行听证会</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>7.3 应对策略</h3>
+<p>药明康德通过"全球化网络+区域化响应"（local for local）化解风险：美国特拉华州基地2026年底投产、新加坡API工厂2027年投产、常州新基地提前启动——把地缘政治风险转化为差异化竞争优势。</p>
+
+<div class="highlight-box red"><strong>风险提示：</strong>生物安全法案是CXO的最大不确定性。短期订单影响有限，但美国客户新增订单的"寒蝉效应"需观察Q3-Q4数据。药明的应对（全球产能+法律诉讼）缓解了部分风险，但长期竞争格局仍取决于政策走向。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 投资逻辑与风险</h2>
+
+<h3>8.1 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（绝对龙头）：</strong>药明康德——2027年预测PE仅17.6倍，在手订单664亿+上调指引，确定性最强，8家券商8月金股首推。<br><br>
+  <strong>主线二（高景气细分）：</strong>药明合联（ADC）、凯莱英（GLP-1多肽）、泰格医药（临床CRO国际化）。<br><br>
+  <strong>主线三（订单拐点）：</strong>昭衍新药（Q1新签+111.6%）、美迪西（扭亏）——弹性大但波动大。<br><br>
+  <strong>主线四（CXO卖铲子）：</strong>科研服务、实验用猴（昭衍）等产业链上游。
+</div>
+
+<h3>8.2 风险提示</h3>
+<div class="highlight-box red"><strong>风险一：地缘政治（中高风险）。</strong>生物安全法案落地节奏、1260H清单影响、美国客户订单分流。<br><br><strong>风险二：应收账款（中风险）。</strong>药明康德应收账款104.7亿（+44.2%）增速高于营收，"增长"部分停留在账面。<br><br><strong>风险三：汇率波动（中风险）。</strong>美元走弱拖累人民币计价收入约3-6个百分点。<br><br><strong>风险四：投融资不及预期（中风险）。</strong>若全球医药融资再度降温，订单增长放缓。</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>CXO是创新药产业链的"确定性卖水人"，2026年景气度反转已获订单验证（药明在手664亿+7家CRO新签订单回升）。投资聚焦"海外订单占比高+复杂分子能力强"的头部平台（药明康德、药明合联），核心跟踪生物安全法案和Q3新签订单。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 展望与跟踪信号</h2>
+
+<h3>9.1 2026下半年展望</h3>
+<p>券商普遍预计CXO行业2026全年收入增长约18%，下半年业绩兑现是主要驱动。GLP-1/ADC/TIDES新分子需求持续旺盛，海外融资环境改善（2026年4-5月全球医疗融资同比+36%/+51%）。药明康德上调全年指引至585-605亿是行业最强信号。</p>
+
+<h3>9.2 跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>Q3新签订单</td><td>药明康德/昭衍等新签订单增速</td><td>景气延续验证</td></tr>
+    <tr><td>生物安全法案</td><td>1260H清单诉讼、法案进展</td><td>最大风险变量</td></tr>
+    <tr><td>GLP-1订单</td><td>多肽/口服GLP-1放量</td><td>新分子驱动</td></tr>
+    <tr><td>海外融资</td><td>美联储降息+医疗融资</td><td>订单先行指标</td></tr>
+    <tr><td>应收账款/现金流</td><td>收入向现金转化</td><td>盈利质量</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>CXO是创新药产业链中确定性最高的环节，2026年景气反转已被订单验证。核心配置药明康德（估值低+确定性），关注药明合联（ADC）和凯莱英（GLP-1）的高弹性。风险集中在生物安全法案——建议跟踪Q3新签订单验证订单持续性，控制仓位、逢低布局。</div>
+</div>
+
+<!-- ======== 数据来源 ======== -->
+<!--PAGE--><div class="sources">
+  <h2>数据来源</h2>
+  <ul>
+    <li>药明康德2026年半年度报告（2026.08，新浪财经/公司公告）</li>
+    <li>汇丰前海证券《中国医药外包行业2026年上半年业绩前瞻》（2026.07.10）</li>
+    <li>东方财富证券《CXO反弹具有业绩支撑》（2026.07）</li>
+    <li>万联证券《投融资与出海双轮驱动，CXO迎来景气度修复与全球化新周期》（2026.03）</li>
+    <li>开源证券《从"药明系"看创新药产业链的经营趋势》（2026.03）</li>
+    <li>华福证券《CXO行业深度报告：内外需共振复苏，新分子需求驱动下一轮景气周期》</li>
+    <li>摩熵咨询《CXO行业深度跟踪报告：CDMO景气度持续，CRO拐点可期》</li>
+    <li>智研咨询《2026年中国医药外包（CXO）行业分析》</li>
+    <li>医药魔方：创新药融资/BD数据（2026Q1一级融资+128.6%、2026H1 BD 997亿美元）</li>
+    <li>Frost & Sullivan：全球CXO市场规模及外包率预测</li>
+    <li>《天下工厂》CXO行业深度报告（2026.06）</li>
+    <li>财联社8月金股大数据（药明康德获8家券商推荐）</li>
+  </ul>
+</div>
+
+<div class="disclaimer-box" style="background:#f8f9fa;border:1px solid #e0e2e8;border-radius:6px;padding:14px 18px;margin:24px 0 12px;font-size:12px;color:#999;line-height:1.8;"><strong style="color:#888;">免责声明：</strong>本文由"行业拆解日记"基于公开资料整理，仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</div>
+<div class="footer">— 报告结束 · 行业拆解日记 · CXO医药外包 —</div>
+
+</div>
+</body>
+</html>
