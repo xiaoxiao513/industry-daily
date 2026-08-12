@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国防军工 行业研究报告 | 每天认识一个行业 · Day 15</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #c00; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .sources { background: #f8f9fa; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; border: 1px solid #e0e2e8; }
+  .sources h2 { font-size: 18px; color: #1a1a2e; border-left: 4px solid #c9a84c; padding-left: 12px; margin-bottom: 14px; }
+  .sources ul { list-style: none; padding-left: 0; }
+  .sources li { font-size: 13px; color: #555; padding: 6px 0; border-bottom: 1px dashed #e0e2e8; }
+  .sources li:last-child { border-bottom: none; }
+  .sources li::before { content: '▸ '; color: #c9a84c; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>国防军工<br><span class="hl">九三阅兵与十五五开启</span></h1>
+  <p class="subtitle">—— 业绩触底回升，"大军工"时代来临 ——</p>
+  <div class="info">
+    <p>2026Q1军工板块净利：<strong>107亿元（同比+47.2%）</strong></p>
+    <p>2026H1中报预增企业：<strong>49/69家</strong></p>
+    <p>关键催化：<strong>九三阅兵 · 珠海航展 · 十五五规划</strong></p>
+  </div>
+  <p class="date">报告日期：2026年8月12日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：从"周期成长"到"全面成长"</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>2026年业绩拐点确认</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>核心催化：九三阅兵与十五五</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>三条增长曲线 <span class="badge green">内需/军贸/军转民</span></a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>核心公司与标的 <span class="badge red">四大方向</span></a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>军工电子：智能化最受益</a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>投资逻辑与风险</a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>展望与跟踪信号</a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>2026年是"十五五"规划开局之年，也是2027建军百年目标的关键窗口。军工板块业绩拐点已在2025Q4确认：2026Q1板块净利107亿元（+47.2%），中报预告49/69家预增。九三阅兵（9.3）、珠海航展（11月）、十五五规模化订单三大催化叠加，机构普遍判断军工从"杀估值"转向"等催化"，战略配置窗口显现。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">+47.2%</div><div class="lb">2026Q1军工板块净利增速</div></div>
+  <div class="stat-card"><div class="num">49/69</div><div class="lb">2026H1中报预增企业占比</div></div>
+  <div class="stat-card"><div class="num">+27.7%</div><div class="lb">中证军工指数近一年涨幅</div></div>
+  <div class="stat-card"><div class="num">59.5<span class="u">倍</span></div><div class="lb">中证军工PE（事件催化期）</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>军工板块业绩拐点确认——2026Q1营收1840.6亿（+19.4%）、净利107.1亿（+47.2%），结束连续四年下行。中报预告69家披露中49家预增。<br><br>
+  <strong>核心结论二：</strong>三大催化叠加：九三阅兵（9.3，展示无人集群/高超音速等新装备）、珠海航展（11月）、十五五规模化订单下达。机构判断板块从"杀估值"转向"等催化"，战略配置窗口显现。<br><br>
+  <strong>核心结论三：</strong>行业从"周期成长"转向"全面成长"，三条增长曲线：内需（基本盘）、军贸（新引擎）、军转民（新边界，商业航天/大飞机/低空经济）。<br><br>
+  <strong>风险提示：</strong>订单落地不及预期、军品降价压力、业绩确认滞后、公募持仓仍处低位。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：从"周期成长"到"全面成长"</h2>
+
+<h3>2.1 定义与范畴</h3>
+<p>国防军工行业覆盖航空、航天、船舶、兵器、电子等七大领域，产业链从上游材料/元器件→中游分系统→下游整机（主机厂）。2026年"大军工"概念崛起，范畴拓展到商业航天、低空经济、大飞机、军贸等军技民用新赛道。</p>
+
+<h3>2.2 三轮驱动新格局</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>内需（基本盘）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>军贸（新引擎）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>军转民（新边界）</span>
+</div>
+<ul>
+  <li><strong>第一曲线·内需：</strong>"备战打仗"+装备现代化，国防预算稳定增长，强威慑高精尖+体系化无人化低成本</li>
+  <li><strong>第二曲线·军贸：</strong>性价比优势+体系化作战能力+一带一路，中国军贸份额持续提升</li>
+  <li><strong>第三曲线·军转民：</strong>商业航天、低空经济、大飞机、深海科技等万亿级新产业</li>
+</ul>
+
+<h3>2.3 行业本质</h3>
+<p>军工是典型的"订单驱动"行业——五年规划决定订单节奏，事件（阅兵/航展/地缘）催化情绪。核心变量是<strong>十五五规模化订单的下达节奏</strong>。</p>
+
+<div class="highlight-box green"><strong>核心逻辑：</strong>2026年军工进入"十五五元年+建军百年倒计时"双重窗口，订单确定性显著增强。行业从"总量扩张"转向"结构优化"、从"预期炒作"转向"价值兑现"。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 2026年业绩拐点确认</h2>
+
+<h3>3.1 板块整体数据</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>2025全年</th><th>2026Q1</th></tr></thead>
+  <tbody>
+    <tr><td>营业收入</td><td>8,314.9亿（+8.44%）</td><td>1,840.6亿（+19.36%）</td></tr>
+    <tr><td>归母净利润</td><td>318.9亿（+18.50%）</td><td>107.1亿（+47.24%）</td></tr>
+    <tr><td>毛利率</td><td>17.91%（+0.23pct）</td><td>18.96%（+0.32pct）</td></tr>
+    <tr><td>净利率</td><td>3.84%（+0.33pct）</td><td>5.82%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 分板块表现（2026Q1净利增速）</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>板块</th><th>净利增速</th><th>状态</th></tr></thead>
+  <tbody>
+    <tr><td>地面兵装</td><td>+315.3%</td><td>扭亏后爆发</td></tr>
+    <tr><td>船舶</td><td>+155.9%</td><td>民船周期+军船</td></tr>
+    <tr><td>导弹</td><td>+133.6%</td><td>消耗品补库</td></tr>
+    <tr><td>航空</td><td>-23.2%</td><td>调整中</td></tr>
+    <tr><td>国防信息化</td><td>-46.8%</td><td>承压</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>关键信号：</strong>军工电子2025年核心企业营收+24.1%、净利+38.1%，结束连续四年下行，2026Q1延续正增长——"十五五"初期订单补偿性修复，利润弹性优于收入。</p>
+
+<h3>3.3 中报预告</h3>
+<p>截至2026年7月31日，69家军工上市公司披露中报，49家预增/增长、20家预减。增长点主要在<strong>船舶和军贸</strong>（中国船舶预计H1净利92-110亿，+212%~273%）。</p>
+
+<div class="highlight-box"><strong>业绩判断：</strong>板块从"业绩预期"转向"业绩兑现"。2026Q1净利+47%确认拐点，中报继续验证。但内部结构分化明显——船舶/导弹/地面兵装强，航空/航发/信息化弱。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 核心催化：九三阅兵与十五五</h2>
+
+<h3>4.1 九三阅兵（2026.9.3）</h3>
+<p>国务院新闻办确认9月3日在北京天安门举行<strong>抗战胜利80周年阅兵</strong>，编设45个方（梯）队，重点展示<strong>无人集群、高超音速导弹</strong>等新质作战力量。这是继2015年后又一次重大阅兵，将大幅提升市场对装备迭代与列装规模的关注。</p>
+
+<h3>4.2 珠海航展（11月）</h3>
+<p>两年一度的珠海航展是军工"事件窗口"，新装备展示+军贸订单签约，提供情绪与关注度修复契机。军贸订单有望集中披露（无人机、防空预警、红外等消耗类装备）。</p>
+
+<h3>4.3 十五五规划</h3>
+<p>2026年3月"十五五"规划纲要草案已提请人大审查，明确"如期实现建军百年目标"。参照历史，五年规划开局之年军工订单确定性增强——<strong>下半年规模化订单下达是核心催化</strong>。</p>
+
+<div class="highlight-box green"><strong>催化判断：</strong>短期看九三阅兵（9月）事件驱动，中期看十五五订单下达（下半年），长期看2027建军百年目标。机构判断军工从"杀估值"转向"等催化"，战略配置窗口显现。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 三条增长曲线</h2>
+
+<h3>5.1 内需：新质战斗力</h3>
+<p>装备体系由机械化、信息化向<strong>智能化</strong>融合演进，核心方向：</p>
+<ul>
+  <li><strong>强威慑/高精尖：</strong>高超音速武器、三位一体核打击、防空反导、激光武器</li>
+  <li><strong>无人化/低成本：</strong>AI赋能装备、便于低成本大批量制造的无人系统</li>
+  <li><strong>导弹/弹药：</strong>全球冲突消耗巨大（俄乌/中东），低成本精确制导弹药补库需求</li>
+</ul>
+
+<h3>5.2 军贸：第二增长曲线</h3>
+<p>印巴5·7空战充分验证中国装备实战能力（歼-10CE+PL-15E击落阵风），叠加俄乌拖累俄军贸产能（俄份额21%→11%），中国军贸迎来补位机会。巴基斯坦占中国军贸出口51%，印尼等转向采购歼-10CE。无人机出口尤具优势（翼龙-1约100万美元，美MQ-1约400万）。</p>
+
+<h3>5.3 军转民：万亿新赛道</h3>
+<p>尖端军工技术向民用溢出，催生商业航天（可回收火箭+卫星组网）、低空经济（eVTOL）、大飞机（C919/CJ1000A）、深海科技、可控核聚变等万亿级产业。</p>
+
+<div class="policy"><span class="policy-tag">主线判断</span>军工投资四大方向：①传统军工修复（航空/导弹/船舶）；②大军工轮动（商业航天/民机/燃机）；③军贸出海（无人机/红外/弹药）；④军工电子（军事智能化+AI外溢）。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 核心公司与标的</h2>
+
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">航空装备：中航沈飞 / 中航成飞 / 中航西飞 / 航发动力</span><span class="cc-tag hot">主机厂</span></div>
+    <div class="cc-body">
+      <strong>沈飞：</strong>歼击机龙头，净利率突破5%（唯一超5%的主机厂）。<strong>成飞：</strong>战斗机龙头，7月市场震荡中逆势正收益。<strong>西飞：</strong>大型运输机+大飞机机体最大供应商。<strong>航发动力：</strong>航空发动机核心标的，长期看民航发动机国产替代。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">导弹/弹药：高德红外 / 北方导航 / 国博电子</span><span class="cc-tag">消耗品</span></div>
+    <div class="cc-body">
+      <strong>高德红外：</strong>大额订单公告+红外制导。<strong>北方导航：</strong>精确制导。<strong>国博电子：</strong>TR组件（有源相控阵雷达核心）。导弹2026Q1净利+133.6%，低成本精确制导是十五五重点。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">船舶：中国船舶 / 中国重工 / 中国海防</span><span class="cc-tag">高景气</span></div>
+    <div class="cc-body">
+      <strong>中国船舶：</strong>2026H1净利预增+212%~273%（92-110亿）。<strong>全球份额：</strong>新接订单占全球82.3%、手持订单71.2%。民船高景气+军船交付双轮驱动。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">军工电子：火炬电子 / 航天电器 / 宏达电子 / 振华科技</span><span class="cc-tag">智能化</span></div>
+    <div class="cc-body">
+      <strong>火炬电子：</strong>高端电容（MLCC），6月涨71.6%。<strong>航天电器：</strong>连接器+AI外溢配套。<strong>宏达电子：</strong>被动元器件。<strong>振华科技：</strong>军工电子平台。军工电子2025年净利+38%，是智能化最受益方向。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">商业航天：中国卫星 / 航天电子 / 海格通信 / 中科星图</span><span class="cc-tag">大军工</span></div>
+    <div class="cc-body">
+      <strong>逻辑：</strong>可回收火箭突破（长征十号乙一子级回收）+千帆/星网组网提速（在轨332颗）+卫星互联网批量生产。商业航天从事件题材切换为业绩成长主线。
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box"><strong>标的思路：</strong>军工板块PE 59.5倍（事件催化期偏高），建议沿"业绩确定性+事件催化"双线配置：主机厂看订单兑现（沈飞/成飞/航发动力），弹性看导弹/船舶（中报验证），成长看军工电子（智能化）和商业航天（大军工）。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 军工电子：智能化最受益</h2>
+
+<h3>7.1 为什么军工电子最受益</h3>
+<p>装备体系正由机械化、信息化向<strong>智能化</strong>融合演进，感知、通信、指控、电子对抗、无人化协同等环节价值量持续提升。军工电子从传统配套属性，升级为装备体系升级中最清晰、最具成长性的方向。</p>
+
+<h3>7.2 业绩拐点</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th></tr></thead>
+  <tbody>
+    <tr><td>2025年核心企业营收</td><td>+24.14%（结束连续四年下行）</td></tr>
+    <tr><td>2025年归母净利润</td><td>+38.08%</td></tr>
+    <tr><td>2026Q1</td><td>营收/净利同比再度正增长</td></tr>
+    <tr><td>细分表现</td><td>上游元器件回补最强，连接器稳健</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>7.3 三大需求共振</h3>
+<p>①<strong>军工智能化：</strong>装备升级的确定性增量；②<strong>AI外溢：</strong>军工企业以高可靠/自主可控优势切入国产算力、服务器、电力（连接器、MLCC、功率器件）；③<strong>商业航天：</strong>星载电子全链条需求（射频、电源、处理、传感）。</p>
+
+<div class="highlight-box green"><strong>成长判断：</strong>军工电子兼具"军工底色+AI成长属性"，是下半年最具超额收益潜力的方向。重点看火炬电子（MLCC）、航天电器（连接器）、国博电子（TR组件）。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 投资逻辑与风险</h2>
+
+<h3>8.1 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（传统修复）：</strong>航空装备（沈飞/成飞/西飞/航发动力）+导弹（高德红外/北方导航）——十五五订单+建军百年催化。<br><br>
+  <strong>主线二（大军工）：</strong>商业航天（中国卫星/航天电子/海格通信）、民机（中航西飞/航发动力）、燃气轮机（应流股份/万泽股份）——催化密集、弹性强。<br><br>
+  <strong>主线三（军贸）：</strong>中无人机/航天彩虹/国睿科技/中航西飞——印巴实战验证+珠海航展订单披露。<br><br>
+  <strong>主线四（军工电子）：</strong>火炬电子/航天电器/宏达电子/振华科技——智能化+AI外溢双重逻辑。<br><br>
+  <strong>主线五（船舶）：</strong>中国船舶/中国重工——中报高增验证（+212%~273%）。
+</div>
+
+<h3>8.2 风险提示</h3>
+<div class="highlight-box red"><strong>风险一：订单落地不及预期（中高风险）。</strong>军品订单受人事、规划节奏影响，十五五订单下达可能推迟。<br><br><strong>风险二：军品降价（中风险）。</strong>军品采购低成本化趋势，上游材料和电子元器件毛利率已下滑1.4pct。<br><br><strong>风险三：业绩确认滞后（中风险）。</strong>军工产品验收、定价机制导致回款慢，应收账款高企。<br><br><strong>风险四：估值偏高（中风险）。</strong>中证军工PE 59.5倍，事件催化期估值已计入部分预期；公募持仓2.7%处历史低位（外资持仓创新高631亿）。</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>军工板块2026年"业绩拐点+事件催化"共振——九三阅兵（9月）短期催化、十五五订单（下半年）中期驱动、建军百年（2027）长期逻辑。投资沿"业绩确定性（船舶/导弹）+事件弹性（阅兵/航展）+成长方向（军工电子/商业航天）"配置。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 展望与跟踪信号</h2>
+
+<h3>9.1 2026下半年节奏</h3>
+<p>中航证券预判：Q3中报验证+九三阅兵事件脉冲，Q4交付与回款高峰+十五五再锚定+珠海航展窗口。全年震荡上行、波段轮动，长期成长逻辑坚实。</p>
+
+<h3>9.2 跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>九三阅兵</td><td>新装备亮相（无人集群/高超音速）</td><td>短期最强催化</td></tr>
+    <tr><td>十五五订单</td><td>规模化订单下达节奏</td><td>中期核心驱动</td></tr>
+    <tr><td>中报业绩</td><td>船舶/导弹/军贸兑现</td><td>业绩验证</td></tr>
+    <tr><td>珠海航展</td><td>军贸订单签约</td><td>11月催化</td></tr>
+    <tr><td>公募持仓</td><td>持仓占比回升</td><td>资金面信号</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>军工是2026年高确定性主线之一，当前处"等催化"阶段（业绩拐点已确认、事件催化密集、公募持仓低位）。建议：①9月阅兵前布局事件弹性（主机厂/新装备）；②中报验证期配置业绩确定性（船舶/导弹/军工电子）；③下半年跟踪十五五订单下达作为核心验证。控制仓位、波段操作，警惕估值偏高回调。</div>
+</div>
+
+<!-- ======== 数据来源 ======== -->
+<!--PAGE--><div class="sources">
+  <h2>数据来源</h2>
+  <ul>
+    <li>中航证券《军工行业周报：高质量推进国防和军队现代化》（2026.08.06）</li>
+    <li>中航证券《2026年下半年军工电子展望："十五五"首季报触底》（2026.08）</li>
+    <li>中信建投《军工板块25年报&26Q1综述：业绩触底回升》（2026.05.19）</li>
+    <li>东方财富证券《国防军工2026年中期策略：聚焦新域新质与第二增长曲线》（2026.06）</li>
+    <li>国金证券《军贸与商业航天共振，静待新质战斗力订单催化》（2026.05）</li>
+    <li>广发证券《国防军工：国产算力渗透率提升，两机、大飞机和军贸景气向上》（2026.07）</li>
+    <li>中信建投《军工板块发布半年报预告：船舶增速显著航发企稳》（2026.08.12）</li>
+    <li>国新办"九三"阅兵新闻发布会（2026.08.20，45个方队）</li>
+    <li>工信部/自然资源部2026上半年船舶工业数据</li>
+    <li>SIPRI军贸数据、全球国防开支数据</li>
+  </ul>
+</div>
+
+<div class="disclaimer-box" style="background:#f8f9fa;border:1px solid #e0e2e8;border-radius:6px;padding:14px 18px;margin:24px 0 12px;font-size:12px;color:#999;line-height:1.8;"><strong style="color:#888;">免责声明：</strong>本文由"行业拆解日记"基于公开资料整理，仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</div>
+<div class="footer">— 报告结束 · 行业拆解日记 · 国防军工 —</div>
+
+</div>
+</body>
+</html>
