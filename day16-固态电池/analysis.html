@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>固态电池 行业研究报告 | 行业拆解日记 · Day 16</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&family=Noto+Serif+SC:wght@600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f2f5; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #1a1a2e; line-height: 1.8; }
+  .page { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+
+  .cover { text-align: center; padding: 100px 40px 60px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+  .cover .tag { display: inline-block; background: #00695c; color: #fff; font-size: 13px; padding: 4px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px; }
+  .cover h1 { font-size: 32px; color: #003366; margin-bottom: 12px; letter-spacing: 2px; }
+  .cover h1 .hl { color: #c9a84c; }
+  .cover .subtitle { font-size: 16px; color: #666; font-family: 'Noto Serif SC', serif; margin-bottom: 50px; }
+  .cover .info { font-size: 14px; color: #888; line-height: 2.2; }
+  .cover .info strong { color: #003366; }
+  .cover .date { font-size: 15px; color: #999; margin-top: auto; padding-top: 40px; }
+
+  .toc { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .toc h2 { text-align: center; font-size: 22px; color: #003366; margin-bottom: 24px; letter-spacing: 6px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 14px; color: #333; text-decoration: none; border-bottom: 1px dashed #eee; }
+  .toc-item:hover { color: #003366; }
+  .toc-item .toc-num { font-weight: 700; color: #003366; min-width: 60px; }
+  .toc-item .badge { font-size: 11px; padding: 1px 10px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+  .toc-item .badge.red { background: #c00; color: #fff; }
+  .toc-item .badge.green { background: #0a0; color: #fff; }
+  .toc-item .badge.teal { background: #00695c; color: #fff; }
+
+  .section { background: #fff; border-radius: 12px; padding: 36px 44px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .section h2 { font-size: 21px; color: #003366; border-left: 4px solid #003366; padding-left: 14px; margin-bottom: 18px; }
+  .section h3 { font-size: 17px; color: #1a3a5c; margin: 22px 0 10px; }
+  .section p { margin-bottom: 12px; color: #333; line-height: 1.8; }
+  .section p strong { color: #1a1a2e; }
+  ul { padding-left: 24px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; font-size: 14px; color: #444; }
+
+  .policy { background: #f7faff; border-left: 3px solid #003366; padding: 12px 18px; margin: 12px 0; font-size: 14px; color: #333; border-radius: 0 6px 6px 0; line-height: 1.8; }
+  .policy-tag { display: inline-block; background: #e8f0fa; color: #003366; font-size: 12px; font-weight: 600; padding: 1px 10px; border-radius: 3px; margin-right: 6px; }
+  .highlight-box { background: #fff8e6; border-left: 3px solid #f0a000; padding: 12px 18px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box.red { background: #fff0f0; border-left-color: #c00; }
+  .highlight-box.green { background: #f0fff4; border-left-color: #0a0; }
+  .highlight-box.teal { background: #f0faf8; border-left-color: #00695c; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #d9e2f3; color: #003366; font-weight: 600; padding: 10px 13px; text-align: left; border: 1px solid #c5d0e6; white-space: nowrap; }
+  td { padding: 9px 13px; border: 1px solid #dde3ed; color: #444; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  tr:nth-child(even) { background: #f8faff; }
+  tr:hover { background: #eef4ff; }
+
+  .stat-row { display: flex; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; background: #f7faff; border-radius: 8px; padding: 18px 20px; border: 1px solid #e0e8f0; min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: #003366; line-height: 1; }
+  .stat-card .num .u { font-size: 13px; font-weight: 400; color: #888; }
+  .stat-card .lb { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+  .company-list { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .company-card { background: #f7faff; border-radius: 8px; padding: 16px 18px; border: 1px solid #e0e8f0; }
+  .company-card .cc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .company-card .cc-name { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .company-card .cc-tag { font-size: 11px; padding: 1px 10px; border-radius: 3px; font-weight: 600; background: #e8f0fa; color: #003366; }
+  .company-card .cc-tag.hot { background: #fde8e8; color: #c94a4a; }
+  .company-card .cc-tag.teal { background: #e0f2ef; color: #00695c; }
+  .company-card .cc-body { font-size: 13px; color: #444; line-height: 1.7; }
+  .company-card .cc-body strong { color: #1a1a2e; }
+
+  .flow-chart { display: flex; flex-wrap: wrap; gap: 6px 4px; justify-content: center; margin: 16px 0; padding: 16px; background: #fafcff; border-radius: 8px; border: 1px solid #e0e8f0; }
+  .flow-step { display: inline-flex; align-items: center; background: #fff; border: 1px solid #c5d0e6; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #003366; }
+  .flow-step .num { display: inline-block; background: #003366; color: #fff; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; margin-right: 6px; }
+  .flow-arrow { color: #c5d0e6; font-size: 18px; padding: 0 2px; }
+
+  .sources { background: #f8f9fa; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; border: 1px solid #e0e2e8; }
+  .sources h2 { font-size: 18px; color: #1a1a2e; border-left: 4px solid #c9a84c; padding-left: 12px; margin-bottom: 14px; }
+  .sources ul { list-style: none; padding-left: 0; }
+  .sources li { font-size: 13px; color: #555; padding: 6px 0; border-bottom: 1px dashed #e0e2e8; }
+  .sources li:last-child { border-bottom: none; }
+  .sources li::before { content: '▸ '; color: #c9a84c; }
+
+  .footer { text-align: center; padding: 40px 0 20px; color: #999; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 20px 12px; }
+    .section { padding: 20px 16px; }
+    .cover { padding: 60px 20px; min-height: auto; }
+    .cover h1 { font-size: 24px; }
+    .toc { padding: 24px 20px; }
+    .stat-row { flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+    .cover { min-height: auto; }
+    @page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ======== 封面 ======== -->
+<!--PAGE--><div class="cover">
+  <span class="tag">行业研究报告</span>
+  <h1>固态电池<br><span class="hl">从"装车验证"到"全固态前夜"</span></h1>
+  <p class="subtitle">—— 2026半固态元年，2027全固态小批量，2030规模化 ——</p>
+  <div class="info">
+    <p>2025年国内半固态装车：<strong>31.7GWh（同比+272%）</strong></p>
+    <p>2030年全球固态电池预测：<strong>约600-800GWh</strong></p>
+    <p>关键催化：<strong>国标实施 · 装车验证元年 · 温等静压突破</strong></p>
+  </div>
+  <p class="date">报告日期：2026年8月18日</p>
+</div>
+
+<!-- ======== 目录 ======== -->
+<!--PAGE--><div class="toc">
+  <h2>目&emsp;录</h2>
+  <a class="toc-item" href="#s1"><span class="toc-num">01</span>执行摘要</a>
+  <a class="toc-item" href="#s2"><span class="toc-num">02</span>行业概览：锂电池的终极形态之争</a>
+  <a class="toc-item" href="#s3"><span class="toc-num">03</span>2026年进展：装车验证元年</a>
+  <a class="toc-item" href="#s4"><span class="toc-num">04</span>技术路线与核心瓶颈</a>
+  <a class="toc-item" href="#s5"><span class="toc-num">05</span>市场规模：2030年600-800GWh</a>
+  <a class="toc-item" href="#s6"><span class="toc-num">06</span>全球格局：中国领跑半固态，日韩押注全固态</a>
+  <a class="toc-item" href="#s7"><span class="toc-num">07</span>产业链拆解：设备与材料 <span class="badge red">最受益环节</span></a>
+  <a class="toc-item" href="#s8"><span class="toc-num">08</span>核心公司与标的 <span class="badge teal">四大环节</span></a>
+  <a class="toc-item" href="#s9"><span class="toc-num">09</span>投资逻辑与风险</a>
+  <a class="toc-item" href="#s10"><span class="toc-num">10</span>展望与跟踪信号</a>
+</div>
+
+<!-- ======== 01 ======== -->
+<!--PAGE--><div class="section" id="s1">
+<h2>01 执行摘要</h2>
+<p>2026年是固态电池产业化的分水岭：7月国标GB/T 43568-2026正式实施，工信部将2026年定义为"装车验证元年"。2025年国内半固态装车31.7GWh（+272%），2026年预计82GWh，产业化元年成立但规模化渗透未到。全固态电池仍在攻坚——宁德时代2027年小批量、2030年前百万辆级装车难度大，行业正从"概念炒作"转向"设备与材料兑现"。</p>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="num">31.7<span class="u">GWh</span></div><div class="lb">2025年国内半固态装车量（+272%）</div></div>
+  <div class="stat-card"><div class="num">82<span class="u">GWh</span></div><div class="lb">2026年半固态装车预测</div></div>
+  <div class="stat-card"><div class="num">2030</div><div class="lb">全固态规模化量产时间点</div></div>
+  <div class="stat-card"><div class="num">3000-8000<span class="u">万/台</span></div><div class="lb">等静压设备单台价值量</div></div>
+</div>
+
+<div class="policy">
+  <strong>核心结论一：</strong>半固态已过验证期——2025年装车31.7GWh（+272%），2026年国标实施+装车验证元年，主流车企旗舰车型开始搭载，渗透率从4.1%向10%+爬坡。<br><br>
+  <strong>核心结论二：</strong>全固态是"马拉松"——固-固界面接触是核心瓶颈，温等静压等工艺设备2026-2027年有望根本性突破，但大规模量产预计2030年以后，2027-2029年高端车型小批量示范装车。<br><br>
+  <strong>核心结论三：</strong>投资主线从"电池厂"转向"卖铲人"——设备（温等静压/干法电极/电解质成膜）和材料（硫化锂，占电解质成本70-80%）是最确定的受益环节，2030年全球固态电池设备市场预测超千亿元。<br><br>
+  <strong>风险提示：</strong>量产不及预期（规划产能450GWh+ vs 实际25GWh+）、技术路线未收敛、成本居高不下（全固态为液态3-4倍）、行业出清风险。
+</div>
+</div>
+
+<!-- ======== 02 ======== -->
+<!--PAGE--><div class="section" id="s2">
+<h2>02 行业概览：锂电池的终极形态之争</h2>
+
+<h3>2.1 什么是固态电池</h3>
+<p>固态电池是用<strong>固态电解质</strong>替代传统锂电池的液态电解液+隔膜，能量密度、安全性、循环寿命全面提升。按电解质形态分为<strong>半固态</strong>（固液混合）与<strong>全固态</strong>（电解质全部为固态）两类。</p>
+
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>传统液态电池（液态>20%）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>半固态/固液混合（5%-20%）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>全固态（<5%）</span>
+</div>
+<p class="policy-tag" style="margin-top:10px;">分类依据：2026年7月1日实施的国标GB/T 43568-2026，按电解液含量划分。</p>
+
+<h3>2.2 为什么是"必经之路"</h3>
+<ul>
+  <li><strong>能量密度：</strong>液态锂电逼近理论极限（约300Wh/kg），固态可突破400Wh/kg以上，是实现"电动中国"、能源安全、"双碳"目标的关键一环（陈立泉院士语）</li>
+  <li><strong>安全性：</strong>固态电解质不可燃，从根上解决热失控问题，适配800V高压快充</li>
+  <li><strong>国家战略：</strong>工信部设全固态电池专项约60亿元，日本/韩国/美国均推出国家级补助计划</li>
+</ul>
+
+<h3>2.3 行业本质</h3>
+<p>固态电池是典型的<strong>"技术+工程"双驱动</strong>行业——材料体系决定天花板（硫化物/氧化物/聚合物），工艺设备决定量产速度（等静压/干法电极）。2026年的核心变量：<strong>温等静压等关键工艺能否突破、头部电池厂装车进度能否兑现</strong>。</p>
+
+<div class="highlight-box teal"><strong>核心逻辑：</strong>2026年是"半固态兑现、全固态蓄势"的一年。投资重心从"赌技术路线"转向"看设备订单和材料放量"——卖铲人逻辑比挖金人更确定。</div>
+</div>
+
+<!-- ======== 03 ======== -->
+<!--PAGE--><div class="section" id="s3">
+<h2>03 2026年进展：装车验证元年</h2>
+
+<h3>3.1 标志性事件</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>时间</th><th>事件</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>2026.07.01</td><td>国标GB/T 43568-2026实施</td><td>固态电池首次有法可依，明确半/全固态定义</td></tr>
+    <tr><td>2026</td><td>工信部定义"装车验证元年"</td><td>政策定调，产业化进入验证期</td></tr>
+    <tr><td>2026.07</td><td>曾毓群：全固态成熟度4级/9级</td><td>理性降温，"2027小批量、2030年百万辆级难度大"</td></tr>
+    <tr><td>2026</td><td>陈立泉院士：固-固界面是核心瓶颈</td><td>点明量产最大技术难点</td></tr>
+    <tr><td>2026.01</td><td>丰田-出光兴产电解质中试厂动工</td><td>海外头部全固态产业化提速</td></tr>
+    <tr><td>2026.02</td><td>QuantumScape Eagle Line投产</td><td>海外无负极锂金属路线商业化推进</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.2 装车数据</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>指标</th><th>数据</th><th>来源</th></tr></thead>
+  <tbody>
+    <tr><td>2025年半固态装车</td><td>31.7GWh（+272%）</td><td>中汽协</td></tr>
+    <tr><td>2025年渗透率</td><td>约4.1%（全年动力装机769.7GWh）</td><td>中汽协</td></tr>
+    <tr><td>2026年预测</td><td>82GWh</td><td>中汽协</td></tr>
+    <tr><td>2030年预测</td><td>420GWh，占全球动力电池26%</td><td>中汽协</td></tr>
+    <tr><td>2026年半固态出货</td><td>预计超15GWh</td><td>GGII</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3.3 头部玩家进展（2026）</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>公司</th><th>路线</th><th>关键进展</th></tr></thead>
+  <tbody>
+    <tr><td>宁德时代</td><td>硫化物</td><td>凝聚态半固态500Wh/kg，2026Q3批量交付（蔚来ET9/问界M9/极氪9X）；宜宾15GWh全固态线投产</td></tr>
+    <tr><td>比亚迪</td><td>硫化物</td><td>刀片半固态（液&lt;10%）2026Q4搭仰望U8改款；全固态400Wh/kg通过中汽研88项车规验证，2027千台示范</td></tr>
+    <tr><td>国轩高科</td><td>硫化物</td><td>"金石"突破400Wh/kg，2GWh线2026年底小批量</td></tr>
+    <tr><td>亿纬锂能</td><td>硫化物</td><td>成都龙泉二号10Ah（300Wh/kg），2026年末100MWh交付能力</td></tr>
+    <tr><td>中创新航</td><td>硫化物</td><td>"无界"约430Wh/kg，2027推进装车</td></tr>
+    <tr><td>卫蓝新能源</td><td>氧化物+聚合物</td><td>360Wh/kg量产供蔚来；2027坪山全固态400Wh/kg；Pre-IPO估值200亿</td></tr>
+    <tr><td>清陶能源</td><td>氧化物+聚合物</td><td>半固态368Wh/kg装智己；全固态421Wh/kg试产，2026.3样车下线</td></tr>
+    <tr><td>太蓝新能源</td><td>氧化物</td><td>无人机/机器人固态电池批量交付</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box"><strong>现状判断：</strong>"产业化元年"成立但"规模渗透"未到。半固态已上车验证，全固态仍处攻坚期——2027年小批量（产能仅0.1-1GWh/年），2030年规模化。市场对"2027装车"的兑现度应保持审慎（曾毓群泼冷水即是最强信号）。</div>
+</div>
+
+<!-- ======== 04 ======== -->
+<!--PAGE--><div class="section" id="s4">
+<h2>04 技术路线与核心瓶颈</h2>
+
+<h3>4.1 三大技术路线对比</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>路线</th><th>离子电导率</th><th>优势</th><th>劣势</th><th>代表企业</th></tr></thead>
+  <tbody>
+    <tr><td>硫化物</td><td>最高（1.7×10⁻²~2.5×10⁻² S/cm）</td><td>电导率接近液态，性能上限高</td><td>水氧敏感、成本高、工艺难</td><td>宁德、比亚迪、国轩、亿纬、丰田、三星SDI</td></tr>
+    <tr><td>氧化物</td><td>中等</td><td>稳定、安全、易保存</td><td>硬脆难加工、界面接触差</td><td>清陶、卫蓝、赣锋、辉能</td></tr>
+    <tr><td>聚合物</td><td>较低</td><td>易加工、兼容现有产线</td><td>电导率低，需加热工作</td><td>孚能、欣旺达</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>主流判断：</strong>硫化物路线因电导率最高被头部玩家押注（中国宁德/比亚迪、日韩丰田/三星SDI），但量产工艺最难；氧化物/聚合物在成本与工程上更友好，适合半固态过渡。技术路线尚未收敛，是行业最大变量之一。</p>
+
+<h3>4.2 核心瓶颈：固-固界面接触</h3>
+<div class="policy">
+  <strong>陈立泉院士（2026年7月）判断：</strong>核心瓶颈=固-固界面接触差、离子传输阻力大、规模量产困难。这不是"能否突破"的问题，而是"何时突破"的问题——突破后还要经历工艺设备成熟、良率爬坡等阶段。
+</div>
+<ul>
+  <li><strong>固-固界面接触：</strong>固体之间无法像液体那样"无缝贴合"，接触差导致阻抗大——温等静压工艺是当前攻坚核心（6000大气压"压实"），需60-80吨高压化成</li>
+  <li><strong>锂枝晶：</strong>锂金属负极充放电中枝晶生长，可能刺穿电解质短路</li>
+  <li><strong>良率与一致性：</strong>放大至安时级大电芯后缺陷成倍放大，全固态电芯良率当前极低</li>
+  <li><strong>成本：</strong>全固态成本为液态3-4倍，硫化锂（核心原料）降价依赖规模化</li>
+</ul>
+
+<h3>4.3 时间线共识</h3>
+<div class="flow-chart">
+  <span class="flow-step"><span class="num">1</span>2026 半固态规模渗透</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">2</span>2027-2028 全固态小批量（高端车型示范）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step"><span class="num">3</span>2030 规模化量产</span>
+</div>
+<p>利元亨杜义贤预计：<strong>2026-2027年智能等静压控制技术有望根本性突破</strong>，第一批GWh级全固态示范线建成。欧阳明高院士：2030年300Wh/kg全固态上市"是大概率事件"。</p>
+
+<div class="highlight-box red"><strong>关键提醒：</strong>2027年装车承诺可信度仅"中等"——丰田多次跳票是前车之鉴，头部企业集体推迟的可能性不可排除。全固态投资应"看技术、更看兑现节奏"。</div>
+</div>
+
+<!-- ======== 05 ======== -->
+<!--PAGE--><div class="section" id="s5">
+<h2>05 市场规模：2030年600-800GWh</h2>
+
+<h3>5.1 主流机构预测</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>机构</th><th>2030年全球固态电池</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>中信证券</td><td>642.6GWh</td><td>2024-2030 CAGR 133%，新能源车渗透25%</td></tr>
+    <tr><td>中金公司</td><td>808GWh</td><td>其中半固态650GWh、全固态150GWh</td></tr>
+    <tr><td>EVTank</td><td>614.1GWh</td><td>市场超2500亿元，渗透率10%</td></tr>
+    <tr><td>TrendForce</td><td>&gt;206GWh</td><td>2035年&gt;740GWh</td></tr>
+    <tr><td>SNE Research</td><td>122GWh</td><td>渗透率1.6%；2035年493GWh（占电池6.1%）</td></tr>
+    <tr><td>SMM</td><td>122GWh（全固态）</td><td>渗透率4%</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>机构分歧明显：</strong>中性预测2030年约600GWh（渗透率10%上下），激进预测800GWh+，保守（SNE）仅122GWh。差异主要来自对全固态量产速度的判断。取中位数<strong>约600-800GWh</strong>作为合理区间。</p>
+
+<h3>5.2 设备市场空间（最确定的蛋糕）</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>机构</th><th>预测</th></tr></thead>
+  <tbody>
+    <tr><td>招商证券</td><td>2030年全固态设备市场592亿元</td></tr>
+    <tr><td>银河证券</td><td>2030年全球全固态设备320.59亿/中国251.36亿元</td></tr>
+    <tr><td>东莞证券</td><td>2030年全球固态设备1080亿元</td></tr>
+    <tr><td>东吴证券</td><td>2030年全固态100GWh、市场空间1500亿元</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>设备类型</th><th>价值量数据</th></tr></thead>
+  <tbody>
+    <tr><td>等静压机</td><td>单台3000万-8000万元；百MWh中试线需1-2台（含冗余3-5台）</td></tr>
+    <tr><td>单GWh设备投资</td><td>占总投资12%-14%；全固态单GWh设备投资4-5亿→2030年降至2-3亿</td></tr>
+    <tr><td>电解质产线</td><td>单GWh价值量约1亿元（灵鸽科技）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>5.3 材料：硫化锂的"十倍弹性"</h3>
+<div class="policy">
+  <strong>硫化锂逻辑：</strong>占硫化物电解质成本70%-80%，单GWh需300-400吨（是传统电解液锂需求的10倍以上）。价格已从2025年初4100元/kg降至2026年4月底1700元/kg（-58.5%），长期目标20-50万/吨。2027年全球需求1000吨→2030年近万吨。
+</div>
+
+<div class="highlight-box teal"><strong>市场判断：</strong>固态电池是"长期大赛道、短期看兑现"。确定性排序：设备（订单先行）&gt; 材料（弹性最大）&gt; 电池（技术竞争最激烈）。2030年全球固态电池市场2500亿元+、设备超千亿元，是新能源赛道下一个万亿级叙事。</div>
+</div>
+
+<!-- ======== 06 ======== -->
+<!--PAGE--><div class="section" id="s6">
+<h2>06 全球格局：中国领跑半固态，日韩押注全固态</h2>
+
+<h3>6.1 全球玩家时间线</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>玩家</th><th>路线</th><th>量产时间点</th><th>最新进展（2026）</th></tr></thead>
+  <tbody>
+    <tr><td>丰田</td><td>硫化物</td><td>2027-28</td><td>与出光兴产建大型固体电解质中试厂（2026.1动工，2027建成）</td></tr>
+    <tr><td>三星SDI</td><td>硫化物</td><td>2027下半年</td><td>ULSAN厂；2026H2供人形机器人样品；2026-40投资25万亿韩元</td></tr>
+    <tr><td>日产</td><td>硫化物</td><td>2028（FY2028）</td><td>横滨试产线2025.1运行</td></tr>
+    <tr><td>QuantumScape</td><td>氧化物/无负极锂金属</td><td>—</td><td>2026.2 Eagle Line投产；与大众PowerCo合作（最多$75.4M）；2026.6与本田联合研发</td></tr>
+    <tr><td>Solid Power</td><td>硫化物</td><td>—</td><td>与宝马技术转移；三星SDI 2025.10加入三方合作</td></tr>
+    <tr><td>Factorial Energy</td><td>半固态/硫化物</td><td>—</td><td>2026.6借壳上市（NASDAQ: FAC，估值约$11亿）；与SK On签MoU</td></tr>
+    <tr><td>LG新能源</td><td>干电极/无负极</td><td>2029-2030</td><td>石墨基ASSB 2029年商用；无负极2030</td></tr>
+    <tr><td>SK On</td><td>硫化物</td><td>2029</td><td>与Solid Power合作、大田试产线</td></tr>
+    <tr><td>本田</td><td>硫化物</td><td>—</td><td>栃木演示线2025.1运行；投资约430亿日元</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>6.2 中美日韩谁领先</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>维度</th><th>中国</th><th>日本</th><th>韩国</th><th>欧美</th></tr></thead>
+  <tbody>
+    <tr><td>半固态商业化</td><td>领先（全球5.3→8.0GWh出货几乎全在中国）</td><td>—</td><td>—</td><td>Factorial半固态追赶中</td></tr>
+    <tr><td>全固态技术储备</td><td>专利增长最快（Q1 2026新增1710项中超半来自中国）</td><td>专利最强（占全球37%，丰田独占约40%）</td><td>高价值专利多</td><td>绑定头部OEM</td></tr>
+    <tr><td>产业化/供应链</td><td>产能规划450GWh+、企业近100家、动力电池全球份额70.4%</td><td>商业化慢</td><td>量产2027-2029</td><td>产能与商业化落后</td></tr>
+    <tr><td>政策支持</td><td>工信部全固态专项约60亿元</td><td>METI补助约$6.6亿（¥1057亿）</td><td>1824亿韩元（$1.3亿）</td><td>美国DOE $30亿+新增$5亿</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>全球格局结论：</strong>半固态中国占优（已规模化验证），全固态日韩技术储备领先（专利+基础）、中国产业化加速（量产线最多）、欧美靠资本+车企绑定追赶。"技术领先≠量产领先"，胜负取决于制造成本与良率突破。</p>
+
+<div class="highlight-box teal"><strong>格局判断：</strong>中国是唯一在半固态实现规模化装车的国家（2024年全球5.3GWh出货几乎全部来自中国，2025年8.0GWh），这给了中国产业链"边量产边迭代"的独特优势——设备与材料环节的订单确定性全球最强。</div>
+</div>
+
+<!-- ======== 07 ======== -->
+<!--PAGE--><div class="section" id="s7">
+<h2>07 产业链拆解：设备与材料（最受益环节）</h2>
+
+<h3>7.1 设备端：卖铲人逻辑</h3>
+<p>固态电池设备与液态产线<strong>完全不兼容</strong>，需全套新建。中试线→量产线的扩产周期中，设备订单先行。核心设备：<strong>温等静压机</strong>（压实固-固界面）、<strong>干法电极设备</strong>（无溶剂工艺）、<strong>电解质成膜设备</strong>。</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>环节</th><th>公司</th><th>进展</th></tr></thead>
+  <tbody>
+    <tr><td>整线+等静压</td><td>利元亨</td><td>干法电极+成膜+等静压一体化整线，已通过头部电池企业中试验证，进入小批量订单</td></tr>
+    <tr><td>整线</td><td>先导智能</td><td>全固态整线方案，2026Q2持续斩获头部客户订单</td></tr>
+    <tr><td>温等静压</td><td>科新机电/华自科技/荣旗科技</td><td>布局温等静压设备；荣旗参股四川力能</td></tr>
+    <tr><td>配套</td><td>先惠技术/纳科诺尔/联赢激光/宏工科技</td><td>固态电池设备配套</td></tr>
+    <tr><td>电解质产线</td><td>灵鸽科技</td><td>单GWh价值量约1亿元</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>7.2 材料端：硫化锂——成本占比70-80%</h3>
+<p>硫化物路线最被头部押注，而<strong>硫化锂</strong>是硫化物电解质核心原料（占成本70-80%），是固态电池弹性最大的材料环节。</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>公司</th><th>进展</th></tr></thead>
+  <tbody>
+    <tr><td>上海洗霸</td><td>硫化锂龙头（收购有研新材相关资产）</td></tr>
+    <tr><td>赣锋锂业</td><td>6000吨规划</td></tr>
+    <tr><td>天齐锂业</td><td>50吨中试+2000吨规划</td></tr>
+    <tr><td>恩捷股份</td><td>碳热还原百吨级</td></tr>
+    <tr><td>天赐材料</td><td>百吨级中试，2026Q3投产</td></tr>
+    <tr><td>光华科技</td><td>300吨，可扩3000吨</td></tr>
+    <tr><td>厦钨新能</td><td>CVD工艺</td></tr>
+    <tr><td>万邦胜辉</td><td>200吨，2026投产</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>7.3 电解质与电池材料</h3>
+<ul>
+  <li><strong>固态电解质：</strong>硫化物/氧化物电解质材料企业（上海洗霸、天赐材料、厦钨新能等）</li>
+  <li><strong>锂金属负极：</strong>锂箔加工（锂电上游锂盐企业延伸）</li>
+  <li><strong>电池厂：</strong>宁德时代（1.68万亿）、比亚迪、国轩高科、亿纬锂能、中创新航</li>
+</ul>
+
+<div class="highlight-box red"><strong>最受益环节判断：</strong>设备端订单确定性最高（中试线-量产线扩产周期设备先行，等静压单台3000-8000万）；材料端硫化锂弹性最大（单GWh用量是传统电解液的10倍+）。电池厂竞争最激烈、兑现最慢。</div>
+</div>
+
+<!-- ======== 08 ======== -->
+<!--PAGE--><div class="section" id="s8">
+<h2>08 核心公司与标的</h2>
+
+<div class="company-list">
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">电池：宁德时代 / 比亚迪 / 国轩高科 / 亿纬锂能</span><span class="cc-tag hot">技术龙头</span></div>
+    <div class="cc-body">
+      <strong>宁德时代：</strong>全固态成熟度Level 4/9（行业最领先），宜宾15GWh全固态线投产，2027年小批量；凝聚态半固态500Wh/kg 2026Q3批量交付蔚来ET9/问界M9/极氪9X。<strong>比亚迪：</strong>全固态400Wh/kg通过88项车规验证，2027千台示范。<strong>国轩高科：</strong>"金石"400Wh/kg，2GWh线2026年底小批量。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">设备：先导智能 / 利元亨 / 科新机电 / 华自科技</span><span class="cc-tag teal">卖铲人</span></div>
+    <div class="cc-body">
+      <strong>先导智能（约900亿）：</strong>全固态整线龙头，2026Q2持续获头部订单。<strong>利元亨（约100亿）：</strong>干法电极+成膜+等静压一体化整线，已进入小批量订单阶段。<strong>科新机电/华自科技：</strong>温等静压设备布局。设备单台3000-8000万，弹性与确定性兼备。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">材料·硫化锂：上海洗霸 / 天赐材料 / 恩捷股份 / 光华科技</span><span class="cc-tag teal">弹性最大</span></div>
+    <div class="cc-body">
+      <strong>上海洗霸（约140亿）：</strong>硫化锂龙头。<strong>天赐材料（约880亿）：</strong>电解质材料+硫化锂中试。<strong>恩捷股份（约630亿）：</strong>隔膜龙头延伸硫化锂。<strong>光华科技：</strong>300吨产能可扩3000吨。硫化锂占电解质成本70-80%，单GWh用量为传统10倍+。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">上游锂资源：赣锋锂业 / 天齐锂业</span><span class="cc-tag">资源卡位</span></div>
+    <div class="cc-body">
+      <strong>赣锋锂业：</strong>硫化锂6000吨规划。<strong>天齐锂业：</strong>50吨中试+2000吨规划。锂金属负极+硫化锂双重卡位，从资源端分享固态电池增量。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="cc-header"><span class="cc-name">非上市明星：卫蓝新能源 / 清陶能源 / 太蓝新能源</span><span class="cc-tag">一级市场</span></div>
+    <div class="cc-body">
+      <strong>卫蓝：</strong>估值200亿（Pre-IPO），360Wh/kg量产供蔚来。<strong>清陶：</strong>港股IPO募7-9亿美元、估值279亿，全固态421Wh/kg样车下线。<strong>太蓝：</strong>无人机/机器人固态电池批量交付。一级市场融资活跃（2025-1Q26全球超$13亿/57笔）。
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box"><strong>标的思路：</strong>固态电池投资建议沿"确定性优先"配置——①设备（先导/利元亨等）看中试线-量产线订单兑现；②材料（上海洗霸/天赐等）看硫化锂放量与降价曲线；③电池（宁德时代）看2027小批量兑现节奏；④注意部分纯题材小票估值已透支，回避无业绩支撑的标的。</div>
+</div>
+
+<!-- ======== 09 ======== -->
+<!--PAGE--><div class="section" id="s9">
+<h2>09 投资逻辑与风险</h2>
+
+<h3>9.1 投资逻辑</h3>
+<div class="policy">
+  <strong>主线一（设备·卖铲人）：</strong>先导智能/利元亨/科新机电/华自科技——中试线-量产线扩产周期设备先行，等静压单台3000-8000万元，2030年设备市场超千亿。<br><br>
+  <strong>主线二（材料·硫化锂）：</strong>上海洗霸/天赐材料/恩捷股份/光华科技——单GWh用量为传统电解液10倍+，价格已降58%仍有数倍降幅空间。<br><br>
+  <strong>主线三（电池·龙头验证）：</strong>宁德时代/比亚迪/国轩高科——技术成熟度最高、2027小批量兑现。<br><br>
+  <strong>主线四（锂资源·卡位）：</strong>赣锋锂业/天齐锂业——锂金属负极+硫化锂双卡位。
+</div>
+
+<h3>9.2 风险提示</h3>
+<div class="highlight-box red"><strong>风险一：量产不及预期（高）。</strong>2027年承诺可信度仅"中等"，丰田多次跳票是警示；规划产能450GWh+ vs 实际25GWh+，差距约18倍，兑现失败可能引发资本退潮→企业出清。<br><br><strong>风险二：技术路线变化（高）。</strong>硫化物/氧化物/聚合物尚未收敛，材料体系切换将重洗受益标的。<br><br><strong>风险三：成本居高不下（中高）。</strong>全固态成本为液态3-4倍，硫化锂降价依赖规模化，短期难破。<br><br><strong>风险四：良率与一致性（中高）。</strong>放大至安时级大电芯后缺陷成倍放大。<br><br><strong>风险五：市场情绪波动（中）。</strong>2026年7月曾毓群表态曾致板块单日蒸发千亿——行业龙头一句话即可引发剧烈波动，需警惕题材炒作后的估值回归。</div>
+
+<div class="highlight-box"><strong>一句话总结：</strong>固态电池是2026-2030年新能源赛道最确定的产业趋势之一——半固态正在放量（2025年31.7GWh→2026年82GWh），全固态2027小批量、2030规模化。投资重心从"赌路线"转向"看兑现"：设备（卖铲人）订单确定性最高，材料（硫化锂）弹性最大，电池（龙头）看2027验证。控制仓位、跟踪装车数据与技术突破节奏。</div>
+</div>
+
+<!-- ======== 10 ======== -->
+<!--PAGE--><div class="section" id="s10">
+<h2>10 展望与跟踪信号</h2>
+
+<h3>10.1 2026下半年节奏</h3>
+<p>中报窗口期看电池厂资本开支与设备公司订单确认；下半年关注：宁德时代凝聚态批量交付（Q3）、比亚迪刀片半固态装车（Q4）、国轩2GWh线投产（年底）。若头部设备公司中报订单高增，将强化"卖铲人"逻辑。</p>
+
+<h3>10.2 跟踪信号</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>信号</th><th>关注内容</th><th>意义</th></tr></thead>
+  <tbody>
+    <tr><td>装车数据</td><td>月度半固态装车量、渗透率（中汽协）</td><td>产业化验证核心指标</td></tr>
+    <tr><td>设备订单</td><td>利元亨/先导等订单公告</td><td>卖铲人逻辑兑现</td></tr>
+    <tr><td>温等静压突破</td><td>2026-2027智能等静压技术进展</td><td>全固态量产最大瓶颈</td></tr>
+    <tr><td>头部表态</td><td>宁德/比亚迪/丰田量产时间表变动</td><td>预期管理关键变量</td></tr>
+    <tr><td>硫化锂价格</td><td>价格下行曲线、产能投产</td><td>成本下降核心信号</td></tr>
+    <tr><td>海外进展</td><td>QuantumScape/三星SDI/丰田量产落地</td><td>全球格局参照</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight-box green"><strong>建议：</strong>固态电池是"长期主义"赛道，短期波动大（龙头一句话可致板块单日蒸发千亿），不宜追高纯题材。建议：①配置确定性高的设备与材料龙头（卖铲人）；②跟踪月度装车数据与等静压突破作为核心验证；③在全固态2027小批量落地前，控制仓位、以半固态放量逻辑为主。坚守"看兑现、不赌路线"。</div>
+</div>
+
+<!-- ======== 数据来源 ======== -->
+<!--PAGE--><div class="sources">
+  <h2>数据来源</h2>
+  <ul>
+    <li>中汽协：2025年国内半固态装车31.7GWh（+272%）、2026年预测82GWh、2030年420GWh</li>
+    <li>工信部：2026年为固态电池"装车验证元年"；国标GB/T 43568-2026（2026.07.01实施）</li>
+    <li>GGII：2026年半固态出货预计超15GWh</li>
+    <li>中信证券/中金公司/EVTank/TrendForce/SNE Research/SMM：2030年全球固态电池市场预测</li>
+    <li>招商证券/银河证券/东莞证券/东吴证券：2030年全固态设备市场预测</li>
+    <li>上海证券报《固态电池步入产业化攻坚期 关键温等静压设备或在明年取得突破》（2026.08.13）</li>
+    <li>陈立泉院士/曾毓群/欧阳明高院士/黄学杰公开发言（2026年）</li>
+    <li>36氪、21世纪经济报道、集邦咨询TrendForce、SMM上海有色网（2026年）</li>
+    <li>清陶能源/卫蓝新能源IPO招股材料（2026年）</li>
+    <li>海外：丰田/三星SDI/日产/QuantumScape/Solid Power/Factorial/LG新能源/SK On公开信息（2025-2026）</li>
+    <li>日本METI、韩国政府、美国DOE电池产业支持政策（2025-2026）</li>
+  </ul>
+</div>
+
+<div class="disclaimer-box" style="background:#f8f9fa;border:1px solid #e0e2e8;border-radius:6px;padding:14px 18px;margin:24px 0 12px;font-size:12px;color:#999;line-height:1.8;"><strong style="color:#888;">免责声明：</strong>本文由"行业拆解日记"基于公开资料整理，仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</div>
+<div class="footer">— 报告结束 · 行业拆解日记 · 固态电池 —</div>
+
+</div>
+</body>
+</html>
